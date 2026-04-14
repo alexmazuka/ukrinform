@@ -1,0 +1,533 @@
+{
+  "generated_at": "2026-04-14",
+  "description": "Independent verification of corpus completeness via sitemap audit",
+  "periods": {
+    "before_exclusion_matsuka": {
+      "period_slug": "before_exclusion_matsuka",
+      "label": "Period 1: Matsuka era (before IMI exclusion)",
+      "start": "2023-11-09",
+      "end": "2024-04-25",
+      "weeks_expected": 25,
+      "weeks_checked": [
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2023/45.xml",
+          "year": 2023,
+          "week": 45,
+          "status": 200,
+          "total_urls": 1984,
+          "urls_in_rubrics": 998,
+          "urls_in_date_range": 544
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2023/46.xml",
+          "year": 2023,
+          "week": 46,
+          "status": 200,
+          "total_urls": 2089,
+          "urls_in_rubrics": 1042,
+          "urls_in_date_range": 1042
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2023/47.xml",
+          "year": 2023,
+          "week": 47,
+          "status": 200,
+          "total_urls": 2239,
+          "urls_in_rubrics": 1169,
+          "urls_in_date_range": 1168
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2023/48.xml",
+          "year": 2023,
+          "week": 48,
+          "status": 200,
+          "total_urls": 2306,
+          "urls_in_rubrics": 1100,
+          "urls_in_date_range": 1098
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2023/49.xml",
+          "year": 2023,
+          "week": 49,
+          "status": 200,
+          "total_urls": 2071,
+          "urls_in_rubrics": 1045,
+          "urls_in_date_range": 1045
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2023/50.xml",
+          "year": 2023,
+          "week": 50,
+          "status": 200,
+          "total_urls": 2145,
+          "urls_in_rubrics": 1088,
+          "urls_in_date_range": 1086
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2023/51.xml",
+          "year": 2023,
+          "week": 51,
+          "status": 200,
+          "total_urls": 2071,
+          "urls_in_rubrics": 1045,
+          "urls_in_date_range": 1042
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2023/52.xml",
+          "year": 2023,
+          "week": 52,
+          "status": 200,
+          "total_urls": 2003,
+          "urls_in_rubrics": 1038,
+          "urls_in_date_range": 1037
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/01.xml",
+          "year": 2024,
+          "week": 1,
+          "status": 200,
+          "total_urls": 1942,
+          "urls_in_rubrics": 962,
+          "urls_in_date_range": 962
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/02.xml",
+          "year": 2024,
+          "week": 2,
+          "status": 200,
+          "total_urls": 2113,
+          "urls_in_rubrics": 1038,
+          "urls_in_date_range": 1036
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/03.xml",
+          "year": 2024,
+          "week": 3,
+          "status": 200,
+          "total_urls": 2078,
+          "urls_in_rubrics": 1030,
+          "urls_in_date_range": 1029
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/04.xml",
+          "year": 2024,
+          "week": 4,
+          "status": 200,
+          "total_urls": 2183,
+          "urls_in_rubrics": 1084,
+          "urls_in_date_range": 1081
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/05.xml",
+          "year": 2024,
+          "week": 5,
+          "status": 200,
+          "total_urls": 2237,
+          "urls_in_rubrics": 1104,
+          "urls_in_date_range": 1104
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/06.xml",
+          "year": 2024,
+          "week": 6,
+          "status": 200,
+          "total_urls": 2177,
+          "urls_in_rubrics": 1096,
+          "urls_in_date_range": 1095
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/07.xml",
+          "year": 2024,
+          "week": 7,
+          "status": 200,
+          "total_urls": 2243,
+          "urls_in_rubrics": 1124,
+          "urls_in_date_range": 1124
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/08.xml",
+          "year": 2024,
+          "week": 8,
+          "status": 200,
+          "total_urls": 2349,
+          "urls_in_rubrics": 1262,
+          "urls_in_date_range": 1260
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/09.xml",
+          "year": 2024,
+          "week": 9,
+          "status": 200,
+          "total_urls": 2097,
+          "urls_in_rubrics": 1043,
+          "urls_in_date_range": 1040
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/10.xml",
+          "year": 2024,
+          "week": 10,
+          "status": 200,
+          "total_urls": 1994,
+          "urls_in_rubrics": 1037,
+          "urls_in_date_range": 1033
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/11.xml",
+          "year": 2024,
+          "week": 11,
+          "status": 200,
+          "total_urls": 2226,
+          "urls_in_rubrics": 1174,
+          "urls_in_date_range": 1167
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/12.xml",
+          "year": 2024,
+          "week": 12,
+          "status": 200,
+          "total_urls": 2157,
+          "urls_in_rubrics": 1244,
+          "urls_in_date_range": 1240
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/13.xml",
+          "year": 2024,
+          "week": 13,
+          "status": 200,
+          "total_urls": 1864,
+          "urls_in_rubrics": 1102,
+          "urls_in_date_range": 1101
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/14.xml",
+          "year": 2024,
+          "week": 14,
+          "status": 200,
+          "total_urls": 1862,
+          "urls_in_rubrics": 1107,
+          "urls_in_date_range": 1099
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/15.xml",
+          "year": 2024,
+          "week": 15,
+          "status": 200,
+          "total_urls": 1835,
+          "urls_in_rubrics": 1197,
+          "urls_in_date_range": 1191
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/16.xml",
+          "year": 2024,
+          "week": 16,
+          "status": 200,
+          "total_urls": 1913,
+          "urls_in_rubrics": 1301,
+          "urls_in_date_range": 1291
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2024/17.xml",
+          "year": 2024,
+          "week": 17,
+          "status": 200,
+          "total_urls": 1750,
+          "urls_in_rubrics": 1205,
+          "urls_in_date_range": 773
+        }
+      ],
+      "monthly_counts": {
+        "2023-11": 3470,
+        "2023-12": 4572,
+        "2024-01": 4644,
+        "2024-02": 4707,
+        "2024-03": 4739,
+        "2024-04": 4556
+      },
+      "total_urls_in_rubrics": 27635,
+      "total_urls_all": 51928,
+      "errors": []
+    },
+    "before_reinclusion_after_departure": {
+      "period_slug": "before_reinclusion_after_departure",
+      "label": "Period 2: Before reinclusion (after Matsuka departure)",
+      "start": "2025-07-01",
+      "end": "2025-12-15",
+      "weeks_expected": 25,
+      "weeks_checked": [
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/27.xml",
+          "year": 2025,
+          "week": 27,
+          "status": 200,
+          "total_urls": 1615,
+          "urls_in_rubrics": 1092,
+          "urls_in_date_range": 936
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/28.xml",
+          "year": 2025,
+          "week": 28,
+          "status": 200,
+          "total_urls": 1628,
+          "urls_in_rubrics": 1122,
+          "urls_in_date_range": 1122
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/29.xml",
+          "year": 2025,
+          "week": 29,
+          "status": 200,
+          "total_urls": 1510,
+          "urls_in_rubrics": 982,
+          "urls_in_date_range": 982
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/30.xml",
+          "year": 2025,
+          "week": 30,
+          "status": 200,
+          "total_urls": 1466,
+          "urls_in_rubrics": 1095,
+          "urls_in_date_range": 1095
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/31.xml",
+          "year": 2025,
+          "week": 31,
+          "status": 200,
+          "total_urls": 1495,
+          "urls_in_rubrics": 1002,
+          "urls_in_date_range": 1002
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/32.xml",
+          "year": 2025,
+          "week": 32,
+          "status": 200,
+          "total_urls": 1512,
+          "urls_in_rubrics": 1062,
+          "urls_in_date_range": 1062
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/33.xml",
+          "year": 2025,
+          "week": 33,
+          "status": 200,
+          "total_urls": 1575,
+          "urls_in_rubrics": 1105,
+          "urls_in_date_range": 1105
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/34.xml",
+          "year": 2025,
+          "week": 34,
+          "status": 200,
+          "total_urls": 1539,
+          "urls_in_rubrics": 1129,
+          "urls_in_date_range": 1129
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/35.xml",
+          "year": 2025,
+          "week": 35,
+          "status": 200,
+          "total_urls": 1463,
+          "urls_in_rubrics": 1022,
+          "urls_in_date_range": 1022
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/36.xml",
+          "year": 2025,
+          "week": 36,
+          "status": 200,
+          "total_urls": 1605,
+          "urls_in_rubrics": 1129,
+          "urls_in_date_range": 1129
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/37.xml",
+          "year": 2025,
+          "week": 37,
+          "status": 200,
+          "total_urls": 1601,
+          "urls_in_rubrics": 1027,
+          "urls_in_date_range": 1027
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/38.xml",
+          "year": 2025,
+          "week": 38,
+          "status": 200,
+          "total_urls": 1472,
+          "urls_in_rubrics": 926,
+          "urls_in_date_range": 926
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/39.xml",
+          "year": 2025,
+          "week": 39,
+          "status": 200,
+          "total_urls": 1607,
+          "urls_in_rubrics": 1033,
+          "urls_in_date_range": 1033
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/40.xml",
+          "year": 2025,
+          "week": 40,
+          "status": 200,
+          "total_urls": 1655,
+          "urls_in_rubrics": 1084,
+          "urls_in_date_range": 1084
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/41.xml",
+          "year": 2025,
+          "week": 41,
+          "status": 200,
+          "total_urls": 1672,
+          "urls_in_rubrics": 1114,
+          "urls_in_date_range": 1114
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/42.xml",
+          "year": 2025,
+          "week": 42,
+          "status": 200,
+          "total_urls": 1640,
+          "urls_in_rubrics": 1035,
+          "urls_in_date_range": 1035
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/43.xml",
+          "year": 2025,
+          "week": 43,
+          "status": 200,
+          "total_urls": 1678,
+          "urls_in_rubrics": 1123,
+          "urls_in_date_range": 1123
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/44.xml",
+          "year": 2025,
+          "week": 44,
+          "status": 200,
+          "total_urls": 1564,
+          "urls_in_rubrics": 1055,
+          "urls_in_date_range": 1055
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/45.xml",
+          "year": 2025,
+          "week": 45,
+          "status": 200,
+          "total_urls": 1585,
+          "urls_in_rubrics": 1027,
+          "urls_in_date_range": 1027
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/46.xml",
+          "year": 2025,
+          "week": 46,
+          "status": 200,
+          "total_urls": 1518,
+          "urls_in_rubrics": 1007,
+          "urls_in_date_range": 1007
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/47.xml",
+          "year": 2025,
+          "week": 47,
+          "status": 200,
+          "total_urls": 1622,
+          "urls_in_rubrics": 1138,
+          "urls_in_date_range": 1138
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/48.xml",
+          "year": 2025,
+          "week": 48,
+          "status": 200,
+          "total_urls": 1598,
+          "urls_in_rubrics": 1107,
+          "urls_in_date_range": 1107
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/49.xml",
+          "year": 2025,
+          "week": 49,
+          "status": 200,
+          "total_urls": 1613,
+          "urls_in_rubrics": 1069,
+          "urls_in_date_range": 1069
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/50.xml",
+          "year": 2025,
+          "week": 50,
+          "status": 200,
+          "total_urls": 1590,
+          "urls_in_rubrics": 1050,
+          "urls_in_date_range": 1050
+        },
+        {
+          "url": "https://www.ukrinform.ua/sitemap/2025/51.xml",
+          "year": 2025,
+          "week": 51,
+          "status": 200,
+          "total_urls": 1495,
+          "urls_in_rubrics": 1009,
+          "urls_in_date_range": 138
+        }
+      ],
+      "monthly_counts": {
+        "2025-07": 4771,
+        "2025-08": 4683,
+        "2025-09": 4429,
+        "2025-10": 4920,
+        "2025-11": 4454,
+        "2025-12": 2260
+      },
+      "total_urls_in_rubrics": 26544,
+      "total_urls_all": 39318,
+      "errors": []
+    }
+  },
+  "comparison_with_corpus": {
+    "corpus_total": 51667,
+    "corpus_monthly": {
+      "2023-11": 3440,
+      "2023-12": 4520,
+      "2024-01": 4585,
+      "2024-02": 4634,
+      "2024-03": 4692,
+      "2024-04": 4509,
+      "2025-07": 4722,
+      "2025-08": 4646,
+      "2025-09": 4390,
+      "2025-10": 4874,
+      "2025-11": 4413,
+      "2025-12": 2242
+    },
+    "sitemap_monthly": {
+      "2023-11": 3470,
+      "2023-12": 4572,
+      "2024-01": 4644,
+      "2024-02": 4707,
+      "2024-03": 4739,
+      "2024-04": 4556,
+      "2025-07": 4771,
+      "2025-08": 4683,
+      "2025-09": 4429,
+      "2025-10": 4920,
+      "2025-11": 4454,
+      "2025-12": 2260
+    },
+    "gaps": {}
+  },
+  "verdict": {
+    "code": "A",
+    "label": "FULL CORPUS",
+    "detail": "No significant gaps detected. All months have adequate coverage."
+  }
+}
