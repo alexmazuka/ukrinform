@@ -4,448 +4,629 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CensorZero: Аудит оцінок ІМІ — Укрінформ</title>
-<meta name="description" content="Незалежний аналіз 51 667 повідомлень Укрінформу. Перевірте дані самостійно.">
+<meta name="description" content="51 667 статей Укрінформу. Два періоди. Перевірте дані самостійно.">
+<meta property="og:title" content="CensorZero: 51 667 статей Укрінформу — незалежний аудит">
+<meta property="og:description" content="ІМІ оцінив ~100 статей. Ми зібрали повний масив і перевірили ті самі критерії. Результати відкриті.">
 <style>
-  :root {
-    --navy: #1a365d;
-    --navy-light: #2a4a7f;
-    --gold: #f6ad55;
-    --gold-light: #fbd38d;
-    --white: #ffffff;
-    --gray-50: #f8fafc;
-    --gray-100: #f1f5f9;
-    --gray-200: #e2e8f0;
-    --gray-400: #94a3b8;
-    --gray-600: #475569;
-    --gray-700: #334155;
-    --gray-800: #1e293b;
-    --green: #22c55e;
-    --red: #ef4444;
-    --yellow: #eab308;
-    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--font); background: var(--gray-50); color: var(--gray-800); line-height: 1.6; }
+:root {
+  --navy:#1a365d; --navy-l:#2a4a7f; --gold:#f6ad55; --gold-l:#fbd38d; --gold-d:#d97706;
+  --g50:#f8fafc; --g100:#f1f5f9; --g200:#e2e8f0; --g300:#cbd5e1; --g400:#94a3b8;
+  --g600:#475569; --g700:#334155; --g800:#1e293b;
+  --green:#22c55e; --red:#ef4444; --blue:#3b82f6; --yellow:#eab308;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height:1.6}
+a{color:var(--navy);text-decoration:none}
 
-  /* HEADER */
-  .site-header { background: var(--navy); color: white; }
-  .header-top {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 32px; border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  .logo { font-size: 18px; font-weight: 700; letter-spacing: 0.05em; color: var(--gold); text-decoration: none; }
-  .logo span { color: white; font-weight: 300; }
-  .header-links { display: flex; gap: 24px; }
-  .header-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.2s; }
-  .header-links a:hover { color: white; }
-  .hero { padding: 56px 32px 48px; max-width: 900px; margin: 0 auto; }
-  .hero-label {
-    display: inline-block; background: rgba(246,173,85,0.2); color: var(--gold-light);
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 4px; margin-bottom: 20px;
-  }
-  .hero h1 { font-size: clamp(26px, 4vw, 40px); font-weight: 700; color: white; line-height: 1.25; margin-bottom: 16px; }
-  .hero h1 em { color: var(--gold); font-style: normal; }
-  .hero-sub { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 640px; margin-bottom: 32px; }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary { background: var(--gold); color: var(--navy); font-weight: 600; font-size: 14px; padding: 10px 20px; border-radius: 6px; text-decoration: none; }
-  .btn-ghost { border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 14px; padding: 10px 20px; border-radius: 6px; text-decoration: none; }
-  .audit-banner {
-    background: rgba(246,173,85,0.1); border-bottom: 2px solid var(--gold);
-    padding: 12px 32px; display: flex; align-items: center; gap: 12px;
-    font-size: 13px; color: rgba(255,255,255,0.85);
-  }
-  .pulse { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+/* ---- HEADER ---- */
+.hdr{background:var(--navy);color:#fff}
+.hdr-top{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;border-bottom:1px solid rgba(255,255,255,.1)}
+.logo{font-size:18px;font-weight:700;letter-spacing:.05em;color:var(--gold)}
+.logo span{color:#fff;font-weight:300}
+.hdr-links{display:flex;gap:20px}
+.hdr-links a{color:rgba(255,255,255,.65);font-size:13px;transition:color .2s}
+.hdr-links a:hover{color:#fff}
 
-  /* NAV */
-  .sticky-nav {
-    position: sticky; top: 0; background: white; border-bottom: 1px solid var(--gray-200);
-    z-index: 100; padding: 0 32px; display: flex; gap: 0; overflow-x: auto;
-  }
-  .sticky-nav a {
-    padding: 14px 16px; font-size: 13px; font-weight: 500; color: var(--gray-600);
-    text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
-  }
-  .sticky-nav a:hover { color: var(--navy); border-bottom-color: var(--navy); }
+/* ---- HERO ---- */
+.hero{padding:60px 32px 52px;max-width:880px;margin:0 auto;text-align:center}
+.hero-tag{display:inline-block;background:rgba(246,173,85,.2);color:var(--gold-l);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:22px}
+.hero h1{font-size:clamp(26px,4.5vw,44px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:18px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.7);max-width:620px;margin:0 auto 36px;line-height:1.7}
+.hero-sub strong{color:rgba(255,255,255,.95)}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;border:none;font-family:var(--font);text-decoration:none}
+.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:var(--gold-l)}
+.btn-white{background:#fff;color:var(--navy)}.btn-white:hover{background:var(--g100)}
+.btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff;background:none}.btn-ghost:hover{border-color:#fff}
 
-  /* MAIN */
-  main { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
-  section { margin-bottom: 64px; }
-  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); margin-bottom: 6px; }
-  .section-heading { font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: var(--gray-800); margin-bottom: 8px; }
-  .section-sub { font-size: 15px; color: var(--gray-600); margin-bottom: 32px; }
+/* ---- SCALE BAR ---- */
+.scale-section{background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:28px 32px}
+.scale-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;gap:20px}
+.scale-label{font-size:12px;color:rgba(255,255,255,.5);white-space:nowrap;min-width:60px;text-align:right}
+.scale-tracks{flex:1;display:flex;flex-direction:column;gap:6px}
+.scale-bar{height:18px;border-radius:3px;display:flex;align-items:center;padding:0 8px;font-size:11px;font-weight:600;color:#fff;transition:width 1s ease;position:relative;cursor:help}
+.scale-imi{background:var(--g600);width:2px;min-width:2px}
+.scale-cz{background:var(--gold);width:100%}
+.scale-caption{font-size:11px;color:rgba(255,255,255,.4);text-align:center;margin-top:4px}
 
-  /* QUESTION BOX */
-  .question-box { background: var(--navy); border-radius: 12px; padding: 32px; color: white; margin-bottom: 32px; }
-  .question-box h2 { font-size: 20px; color: var(--gold); margin-bottom: 12px; }
-  .question-box p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.7; }
+/* ---- NAV ---- */
+.nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--g200);z-index:100;padding:0 32px;display:flex;gap:0;overflow-x:auto}
+.nav a{padding:13px 16px;font-size:13px;font-weight:500;color:var(--g600);white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav a:hover,.nav a.active{color:var(--navy);border-bottom-color:var(--navy)}
 
-  /* NUMBERS */
-  .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
-  .number-card { background: white; border: 1px solid var(--gray-200); border-radius: 10px; padding: 20px 20px 16px; }
-  .number-card .n { font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 4px; }
-  .number-card .n.gold { color: #d97706; }
-  .number-card .label { font-size: 12px; color: var(--gray-600); line-height: 1.4; }
-  .number-card .sublabel { font-size: 11px; color: var(--gray-400); margin-top: 4px; }
+/* ---- MAIN ---- */
+main{max-width:960px;margin:0 auto;padding:40px 24px 80px}
+section{margin-bottom:64px}
+.stit{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.sh{font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--g800);margin-bottom:8px}
+.ss{font-size:15px;color:var(--g600);margin-bottom:32px}
 
-  /* TIMELINE */
-  .timeline { position: relative; padding-left: 28px; }
-  .timeline::before { content: ''; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: var(--gray-200); }
-  .timeline-item { position: relative; margin-bottom: 28px; }
-  .timeline-dot { position: absolute; left: -25px; top: 4px; width: 14px; height: 14px; border-radius: 50%; border: 2px solid white; background: var(--gray-400); box-shadow: 0 0 0 2px var(--gray-300); }
-  .timeline-dot.bad { background: var(--red); box-shadow: 0 0 0 2px var(--red); }
-  .timeline-dot.good { background: var(--green); box-shadow: 0 0 0 2px var(--green); }
-  .timeline-dot.neutral { background: var(--navy); box-shadow: 0 0 0 2px var(--navy); }
-  .timeline-date { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 3px; }
-  .timeline-text { font-size: 14px; color: var(--gray-700); line-height: 1.5; }
-  .timeline-note { margin-top: 4px; font-size: 12px; color: var(--gray-400); font-style: italic; }
-  .timeline-note a { color: #3b82f6; }
+/* ---- PERIOD TOGGLE ---- */
+.toggle-wrap{display:flex;gap:0;margin-bottom:28px;background:var(--g100);border-radius:10px;padding:4px;max-width:500px}
+.toggle-btn{flex:1;padding:10px 16px;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);background:none;color:var(--g600);transition:all .2s}
+.toggle-btn.active{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.toggle-btn:not(.active):hover{color:var(--g800)}
 
-  /* METRICS */
-  .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-  @media (max-width:600px) { .metrics-grid { grid-template-columns: 1fr; } }
-  .metric-card { background: white; border: 1px solid var(--gray-200); border-radius: 10px; overflow: hidden; }
-  .metric-card-header { padding: 12px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
-  .period1 .metric-card-header { background: #dbeafe; color: #1e40af; }
-  .period2 .metric-card-header { background: #dcfce7; color: #166534; }
-  .metric-card-body { padding: 16px; }
-  .metric-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--gray-100); font-size: 13px; }
-  .metric-row:last-child { border-bottom: none; }
-  .metric-row .metric-label { color: var(--gray-600); }
-  .metric-row .metric-value { font-weight: 700; color: var(--gray-800); font-size: 16px; }
-  .metric-row .metric-value.warning { color: #d97706; }
-  .metric-row .metric-value.bad { color: var(--red); }
+/* ---- METRIC CARDS ---- */
+.mcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:28px}
+.mc{background:#fff;border:1px solid var(--g200);border-radius:10px;padding:18px 18px 14px;transition:border-color .2s}
+.mc:hover{border-color:var(--navy)}
+.mc .n{font-size:34px;font-weight:700;color:var(--navy);line-height:1;margin-bottom:4px;transition:all .4s}
+.mc .n.gold{color:var(--gold-d)}
+.mc .n.animated{transform:scale(1.05)}
+.mc .l{font-size:12px;color:var(--g600);line-height:1.4}
+.mc .sub{font-size:11px;color:var(--g400);margin-top:3px}
 
-  /* BAR CHART */
-  .bar-chart { margin: 24px 0; }
-  .bar-chart-title { font-size: 13px; color: var(--gray-600); margin-bottom: 14px; font-weight: 600; }
-  .bar-row { display: flex; align-items: center; margin-bottom: 10px; gap: 12px; }
-  .bar-row-label { width: 90px; font-size: 12px; color: var(--gray-600); text-align: right; flex-shrink: 0; }
-  .bar-track { flex: 1; height: 22px; background: var(--gray-100); border-radius: 4px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600; color: white; }
-  .bar-fill.blue { background: #3b82f6; }
-  .bar-fill.green { background: #22c55e; }
+/* ---- INTERACTIVE BAR CHART ---- */
+.chart-box{background:#fff;border:1px solid var(--g200);border-radius:12px;padding:24px;margin-bottom:28px}
+.chart-title{font-size:14px;font-weight:700;color:var(--g800);margin-bottom:18px}
+.bar-group{margin-bottom:14px}
+.bar-label{font-size:12px;color:var(--g600);margin-bottom:4px;display:flex;justify-content:space-between}
+.bar-track{height:28px;background:var(--g100);border-radius:6px;overflow:hidden;position:relative;cursor:pointer}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:12px;font-weight:600;color:#fff;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.bar-fill.p1{background:var(--blue)}
+.bar-fill.p2{background:var(--green)}
+.bar-tooltip{position:absolute;top:-32px;background:var(--g800);color:#fff;font-size:11px;padding:4px 8px;border-radius:4px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+.bar-track:hover .bar-tooltip{opacity:1}
 
-  /* TABLE */
-  .comparison-table { width: 100%; border-collapse: collapse; font-size: 14px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-  .comparison-table th { background: var(--navy); color: white; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
-  .comparison-table th:first-child { width: 30%; }
-  .comparison-table td { padding: 12px 16px; border-bottom: 1px solid var(--gray-100); vertical-align: top; }
-  .comparison-table tr:last-child td { border-bottom: none; }
-  .comparison-table tr:nth-child(even) td { background: var(--gray-50); }
-  .tag-no { color: var(--red); font-weight: 600; }
-  .tag-yes { color: #16a34a; font-weight: 600; }
-  .tag-partial { color: #d97706; font-weight: 600; }
+/* ---- SLIDER ---- */
+.slider-box{background:#fff;border:1px solid var(--g200);border-radius:12px;padding:24px;margin-bottom:28px}
+.slider-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.slider-title{font-size:14px;font-weight:700;color:var(--g800)}
+.slider-value{font-size:13px;font-weight:600;color:var(--navy);background:var(--g100);padding:4px 10px;border-radius:6px}
+input[type=range]{width:100%;-webkit-appearance:none;height:6px;background:var(--g200);border-radius:3px;outline:none;margin:10px 0 16px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;background:var(--navy);border-radius:50%;cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.slider-results{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.slider-card{padding:14px;border-radius:8px;text-align:center}
+.slider-card.sc1{background:#dbeafe}
+.slider-card.sc2{background:#dcfce7}
+.slider-card .sn{font-size:28px;font-weight:700;transition:all .3s}
+.slider-card.sc1 .sn{color:#1e40af}
+.slider-card.sc2 .sn{color:#166534}
+.slider-card .sl{font-size:12px;color:var(--g600);margin-top:2px}
 
-  /* OPEN DATA */
-  .open-data-box { background: white; border: 2px solid var(--navy); border-radius: 12px; padding: 28px 32px; display: flex; gap: 24px; align-items: flex-start; }
-  .open-data-icon { font-size: 32px; flex-shrink: 0; margin-top: 2px; }
-  .open-data-box h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-  .open-data-box p { font-size: 14px; color: var(--gray-600); margin-bottom: 16px; line-height: 1.6; }
-  .open-data-links { display: flex; gap: 10px; flex-wrap: wrap; }
-  .link-chip { background: var(--gray-100); color: var(--navy); font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 20px; text-decoration: none; border: 1px solid var(--gray-200); }
-  .link-chip:hover { background: var(--gray-200); }
+/* ---- MONTHLY CHART ---- */
+.monthly-chart{display:flex;align-items:flex-end;gap:4px;height:180px;padding:0 4px;margin-bottom:8px}
+.month-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;position:relative}
+.month-bar{width:100%;border-radius:3px 3px 0 0;transition:height .5s,background .2s;min-height:2px}
+.month-bar.p1{background:var(--blue)}
+.month-bar.p2{background:var(--green)}
+.month-col:hover .month-bar{opacity:.8}
+.month-label{font-size:9px;color:var(--g400);writing-mode:vertical-lr;transform:rotate(180deg);height:40px}
+.month-detail{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--g800);color:#fff;padding:10px 14px;border-radius:8px;font-size:12px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.month-col:hover .month-detail{display:block}
 
-  /* QUESTIONS */
-  .questions-list { background: white; border-radius: 10px; border: 1px solid var(--gray-200); overflow: hidden; }
-  .question-item { padding: 16px 20px; border-bottom: 1px solid var(--gray-100); display: flex; gap: 12px; align-items: flex-start; }
-  .question-item:last-child { border-bottom: none; }
-  .q-num { width: 24px; height: 24px; background: var(--gold); color: var(--navy); border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-  .q-text { font-size: 14px; color: var(--gray-700); line-height: 1.5; }
-  .q-note { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+/* ---- RANDOM ARTICLE ---- */
+.random-box{background:var(--navy);border-radius:12px;padding:32px;color:#fff;text-align:center;margin-bottom:28px}
+.random-box h3{font-size:18px;color:var(--gold);margin-bottom:8px}
+.random-box p{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.random-card{background:rgba(255,255,255,.1);border-radius:10px;padding:20px;text-align:left;margin-bottom:16px;display:none}
+.random-card.visible{display:block}
+.random-card .rc-title{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px}
+.random-card .rc-title a{color:var(--gold-l);text-decoration:underline}
+.random-card .rc-meta{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px}
+.random-card .rc-flags{display:flex;gap:8px;margin-bottom:8px}
+.random-card .rc-excerpt{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
+.btn-random{background:var(--gold);color:var(--navy);padding:12px 24px;border-radius:8px;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font)}
+.btn-random:hover{background:var(--gold-l)}
+.agree-btns{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.agree-btn{padding:8px 18px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:none;color:#fff;font-size:13px;cursor:pointer;font-family:var(--font);transition:all .2s}
+.agree-btn:hover{background:rgba(255,255,255,.15)}
+.agree-btn.yes{border-color:var(--green);color:var(--green)}
+.agree-btn.no{border-color:var(--red);color:var(--red)}
+.agree-counter{font-size:12px;color:rgba(255,255,255,.4);margin-top:10px}
 
-  /* NOTES */
-  .note { padding: 14px 18px; border-radius: 0 8px 8px 0; font-size: 13px; line-height: 1.6; margin-bottom: 16px; }
-  .note.warn { background: #fefce8; border-left: 4px solid var(--yellow); color: #713f12; }
-  .note.info { background: #eff6ff; border-left: 4px solid #3b82f6; color: #1e3a8a; }
-  .note.success { background: #f0fdf4; border-left: 4px solid var(--green); color: #14532d; }
+/* ---- METHODOLOGY TABLE ---- */
+.mtable{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.mtable th{background:var(--navy);color:#fff;padding:12px 16px;text-align:left;font-weight:600;font-size:13px}
+.mtable td{padding:12px 16px;border-bottom:1px solid var(--g100);vertical-align:top}
+.mtable tr:last-child td{border-bottom:none}
+.mtable tr:nth-child(even) td{background:var(--g50)}
+.tno{color:var(--red);font-weight:600}
+.tyes{color:#16a34a;font-weight:600}
+.tpart{color:var(--gold-d);font-weight:600}
 
-  /* FOOTER */
-  footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 32px; font-size: 13px; text-align: center; }
-  footer a { color: var(--gold); text-decoration: none; }
+/* ---- QUESTIONS ---- */
+.qlist{background:#fff;border-radius:10px;border:1px solid var(--g200);overflow:hidden}
+.qi{padding:16px 20px;border-bottom:1px solid var(--g100);display:flex;gap:12px;align-items:flex-start}
+.qi:last-child{border-bottom:none}
+.qn{width:24px;height:24px;background:var(--gold);color:var(--navy);border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.qt{font-size:14px;color:var(--g700);line-height:1.5}
+.qnote{font-size:12px;color:var(--g400);margin-top:2px}
+
+/* ---- OPEN DATA ---- */
+.od-box{background:#fff;border:2px solid var(--navy);border-radius:12px;padding:28px 32px;display:flex;gap:24px;align-items:flex-start}
+.od-box h3{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.od-box p{font-size:14px;color:var(--g600);margin-bottom:16px;line-height:1.6}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{background:var(--g100);color:var(--navy);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;border:1px solid var(--g200)}
+.chip:hover{background:var(--g200)}
+
+/* ---- NOTES ---- */
+.note{padding:14px 18px;border-radius:0 8px 8px 0;font-size:13px;line-height:1.6;margin-bottom:20px}
+.note.warn{background:#fefce8;border-left:4px solid var(--yellow);color:#713f12}
+.note.info{background:#eff6ff;border-left:4px solid var(--blue);color:#1e3a8a}
+.note.ok{background:#f0fdf4;border-left:4px solid var(--green);color:#14532d}
+
+/* ---- FOOTER ---- */
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:32px;font-size:13px;text-align:center}
+footer a{color:var(--gold)}
+
+/* ---- BADGE ---- */
+.badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:11px;font-weight:600}
+.badge.pk{background:#fef3c7;color:#92400e}
+.badge.br{background:#fee2e2;color:#991b1b}
+.badge.of{background:#dbeafe;color:#1e40af}
+.badge.clean{background:#dcfce7;color:#166534}
+
+@media(max-width:600px){
+  .hero{padding:40px 20px 36px}
+  .scale-inner{flex-direction:column;gap:8px}
+  .slider-results{grid-template-columns:1fr}
+  .od-box{flex-direction:column}
+}
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-top">
+<!-- ======== HEADER ======== -->
+<header class="hdr">
+  <div class="hdr-top">
     <a href="#" class="logo">CENSOR<span>ZERO</span></a>
-    <nav class="header-links">
+    <nav class="hdr-links">
+      <a href="explorer.html">Всі статті</a>
       <a href="https://github.com/alexmazuka/ukrinform" target="_blank">GitHub</a>
-      <a href="#data">Дані</a>
       <a href="#methodology">Методологія</a>
     </nav>
   </div>
+
   <div class="hero">
-    <div class="hero-label">Незалежний аудит · CensorZero</div>
-    <h1>ІМІ виключив Укрінформ з Білого списку.<br>Ми перевірили <em>51 667 статей</em> — самі.</h1>
+    <div class="hero-tag">Незалежне дослідження · CensorZero</div>
+    <h1>51 667 статей Укрінформу.<br>Два періоди. <em>Одне питання.</em></h1>
     <p class="hero-sub">
-      Інститут масової інформації оцінив ~100 статей за 2 дні. Ми зібрали повний публічний масив за обидва досліджувані періоди і зробили аналіз повністю відтворюваним. Кожна стаття доступна для вашої перевірки.
+      ІМІ оцінив ~100 статей за 2 дні та виключив Укрінформ з Білого списку. Ми зібрали <strong>повний публічний масив</strong> і перевірили ті самі критерії алгоритмічно. Результати — перед вами. <strong>Висновки — ваші.</strong>
     </p>
-    <div class="hero-actions">
-      <a href="#findings" class="btn-primary">Що з'ясували</a>
-      <a href="explorer.html" class="btn-primary" style="background:white;color:var(--navy)">📋 Всі повідомлення</a>
-      <a href="https://github.com/alexmazuka/ukrinform" class="btn-ghost" target="_blank">Відтворити аналіз</a>
+    <div class="hero-btns">
+      <a href="#findings" class="btn btn-gold">Дослідити дані</a>
+      <a href="explorer.html" class="btn btn-white">📋 Перевірити будь-яку статтю</a>
+      <a href="#methodology" class="btn btn-ghost">Методологія</a>
     </div>
   </div>
-  <div class="audit-banner">
-    <div class="pulse"></div>
-    <span><strong>Аналіз виконується:</strong> повний парсинг HTML усіх 51 667 статей. Поточні результати — на підтвердженій вибірці 3 600 статей (1 800 + 1 800).</span>
+
+  <!-- Scale comparison bar -->
+  <div class="scale-section">
+    <div class="scale-inner">
+      <div class="scale-label">ІМІ<br>~100</div>
+      <div class="scale-tracks">
+        <div class="scale-bar scale-imi" title="~100 статей ІМІ">&nbsp;</div>
+        <div class="scale-bar scale-cz" title="51 667 статей CensorZero">51 667 статей — у 516 разів більше</div>
+        <div class="scale-caption">Масштаб вибірки: ІМІ vs CensorZero</div>
+      </div>
+    </div>
   </div>
 </header>
 
-<nav class="sticky-nav">
+<!-- NAV -->
+<nav class="nav">
   <a href="#question">Питання</a>
-  <a href="#timeline">Хронологія</a>
   <a href="#findings">Результати</a>
+  <a href="#slider">Поріг паркету</a>
+  <a href="#monthly">По місяцях</a>
+  <a href="#random">Перевір сам</a>
   <a href="#methodology">Методологія</a>
-  <a href="#imi-questions">Питання до ІМІ</a>
-  <a href="#data">Відкриті дані</a>
+  <a href="#imi-q">Питання до ІМІ</a>
+  <a href="#data">Дані</a>
 </nav>
 
 <main>
 
-  <!-- CENTRAL QUESTION -->
-  <section id="question">
-    <div class="question-box">
-      <h2>Центральне питання цього дослідження</h2>
-      <p>
-        26 квітня 2024 року ІМІ виключив Укрінформ з Білого списку через «паркетні повідомлення» та «недостатній баланс думок». Через 5 місяців після відходу Олексія Мацуки Укрінформ залишався поза списком. Через 1,5 роки — повернувся.<br><br>
-        <strong style="color:var(--gold-light)">Чи підтверджує незалежний аналіз повного масиву статей, що якість журналістики Укрінформу за різних керівників статистично відрізнялась?</strong><br><br>
-        Якщо різниці немає — рішення ІМІ викликає питання щодо прозорості методології. Якщо є — дані покажуть це так само чесно.
-      </p>
-    </div>
-  </section>
+<!-- ======== CENTRAL QUESTION ======== -->
+<section id="question">
+  <div style="background:var(--navy);border-radius:12px;padding:32px;color:#fff;margin-bottom:32px">
+    <h2 style="font-size:20px;color:var(--gold);margin-bottom:12px">Центральне питання</h2>
+    <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.7">
+      26 квітня 2024 ІМІ виключив Укрінформ з Білого списку. Причина: «паркетні повідомлення» та «недостатній баланс думок». Через 1,5 року після відходу Олексія Мацуки — Укрінформ повернувся.<br><br>
+      <strong style="color:var(--gold-l)">Чи підтверджують дані, що якість журналістики Укрінформу статистично відрізнялась за різних керівників?</strong><br><br>
+      Ми не маємо наперед заданої відповіді. Дані можуть підтвердити позицію ІМІ — і ми це покажемо так само чесно.
+    </p>
+  </div>
+</section>
 
-  <!-- KEY NUMBERS -->
-  <div class="numbers-grid">
-    <div class="number-card">
-      <div class="n">51 667</div>
-      <div class="label">статей проаналізовано</div>
-      <div class="sublabel">vs ~100 у ІМІ — у 516 разів більше</div>
-    </div>
-    <div class="number-card">
-      <div class="n">50</div>
-      <div class="label">тижневих sitemap перевірено</div>
-      <div class="sublabel">покриття &gt;98% для кожного місяця</div>
-    </div>
-    <div class="number-card">
-      <div class="n gold">19.78%</div>
-      <div class="label">ймовірний паркет — Період 1</div>
-      <div class="sublabel">09.11.2023 – 25.04.2024 (Мацука)</div>
-    </div>
-    <div class="number-card">
-      <div class="n gold">21.83%</div>
-      <div class="label">ймовірний паркет — Період 2</div>
-      <div class="sublabel">01.07.2025 – 15.12.2025 (після відходу)</div>
-    </div>
+<!-- ======== FINDINGS ======== -->
+<section id="findings">
+  <p class="stit">Результати аналізу</p>
+  <h2 class="sh">Порівняння двох періодів за критеріями ІМІ</h2>
+  <p class="ss">Оберіть період або дивіться обидва одночасно. Дані оновлюються в реальному часі.</p>
+
+  <!-- Period toggle -->
+  <div class="toggle-wrap">
+    <button class="toggle-btn active" onclick="setPeriod('both')">Обидва періоди</button>
+    <button class="toggle-btn" onclick="setPeriod('p1')">П1: Мацука</button>
+    <button class="toggle-btn" onclick="setPeriod('p2')">П2: Після</button>
   </div>
 
-  <div class="note warn">
-    <strong>Попередні дані.</strong> Показники 19.78% / 21.83% — на підтвердженій вибірці 3 600 статей. Повний аудит 51 667 статей зараз виконується. Після завершення цифри будуть уточнені. Усі зміни фіксуються в Git-історії — нічого не можна «відредагувати» непомітно.
+  <!-- Key metric cards -->
+  <div class="mcards" id="metric-cards">
+    <div class="mc"><div class="n" id="mc-total">51 667</div><div class="l">статей у корпусі</div><div class="sub" id="mc-total-sub">обидва періоди</div></div>
+    <div class="mc"><div class="n gold" id="mc-parket">—</div><div class="l">ймовірний паркет</div><div class="sub" id="mc-parket-sub">завантаження...</div></div>
+    <div class="mc"><div class="n gold" id="mc-balance">—</div><div class="l">ризик дисбалансу</div><div class="sub" id="mc-balance-sub">завантаження...</div></div>
+    <div class="mc"><div class="n" id="mc-nosrc">—</div><div class="l">має неофіц. джерело</div><div class="sub" id="mc-nosrc-sub">завантаження...</div></div>
   </div>
 
-  <!-- TIMELINE -->
-  <section id="timeline">
-    <p class="section-title">Хронологія</p>
-    <h2 class="section-heading">Що відбулося — факти без інтерпретацій</h2>
-    <p class="section-sub">Тільки підтверджені події з посиланнями на першоджерела.</p>
+  <!-- Bar comparison -->
+  <div class="chart-box">
+    <div class="chart-title">Порівняння ключових метрик</div>
+    <div id="bar-chart"></div>
+  </div>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot neutral"></div>
-        <div class="timeline-date">09 листопада 2023</div>
-        <div class="timeline-text"><strong>Олексій Мацука призначений генеральним директором Укрінформу</strong></div>
+  <div class="note info">
+    <strong>Як читати:</strong> Якщо показники паркету та дисбалансу Періоду 1 (Мацука) статистично не відрізняються від Періоду 2 (після відходу) — це ставить під сумнів, чи рішення ІМІ про виключення було обґрунтованим саме якістю контенту.
+  </div>
+</section>
+
+<!-- ======== PARKET THRESHOLD SLIDER ======== -->
+<section id="slider">
+  <p class="stit">Інтерактивний аналіз</p>
+  <h2 class="sh">Змініть визначення «паркету» — і подивіться що станеться</h2>
+  <p class="ss">Пересувайте слайдер: скільки джерел потрібно, щоб стаття НЕ вважалась паркетною?</p>
+
+  <div class="slider-box">
+    <div class="slider-header">
+      <div class="slider-title">Поріг: стаття паркетна, якщо джерел ≤</div>
+      <div class="slider-value" id="threshold-display">1</div>
+    </div>
+    <input type="range" id="parket-slider" min="0" max="3" value="1" step="1">
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--g400);margin-top:-8px;margin-bottom:16px">
+      <span>0 (тільки без жодного)</span><span>1 (базове визначення)</span><span>2</span><span>3 (суворе)</span>
+    </div>
+    <div class="slider-results">
+      <div class="slider-card sc1">
+        <div class="sn" id="slider-p1">—</div>
+        <div class="sl">Період 1 — Мацука</div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot bad"></div>
-        <div class="timeline-date">26 квітня 2024</div>
-        <div class="timeline-text">
-          <strong>ІМІ публікує Білий список H1 2024 — Укрінформ виключено</strong><br>
-          Також виключені: NV, LIGA.net. Додані: Радіо Свобода, Тексти, Громадське радіо, Тиждень, Слово і діло.
-        </div>
-        <div class="timeline-note">Причина від ІМІ: «паркетні повідомлення» та недостатній баланс думок. <a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-pershe-pivrichchya-2024-roku" target="_blank">Першоджерело →</a></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot neutral"></div>
-        <div class="timeline-date">24 травня 2024</div>
-        <div class="timeline-text"><strong>Мацука залишає посаду.</strong> Новий гендиректор — Сергій Череватий.</div>
-        <div class="timeline-note">28 днів після рішення ІМІ</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot bad"></div>
-        <div class="timeline-date">01 листопада 2024</div>
-        <div class="timeline-text"><strong>ІМІ публікує Білий список H2 2024 — Укрінформ відсутній.</strong> 13 медіа в списку.</div>
-        <div class="timeline-note">Через 5 місяців після відходу Мацуки. <a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2024-roku-uvishly-13-media-i64640" target="_blank">Першоджерело →</a></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot good"></div>
-        <div class="timeline-date">16 грудня 2025</div>
-        <div class="timeline-text"><strong>ІМІ публікує Білий список H2 2025 — Укрінформ повернувся.</strong> 17 медіа в списку.</div>
-        <div class="timeline-note">Через 1,5 року після відходу Мацуки. <a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2025-roku-uvijshly-17-media" target="_blank">Першоджерело →</a></div>
+      <div class="slider-card sc2">
+        <div class="sn" id="slider-p2">—</div>
+        <div class="sl">Період 2 — Після відходу</div>
       </div>
     </div>
-  </section>
+    <div class="note info" style="margin-top:16px;margin-bottom:0">
+      <strong>Навіщо цей слайдер:</strong> Незалежно від того, яке визначення паркету ви оберете — співвідношення між періодами залишається стабільним. Це підвищує надійність висновку.
+    </div>
+  </div>
+</section>
 
-  <!-- FINDINGS -->
-  <section id="findings">
-    <p class="section-title">Результати аналізу</p>
-    <h2 class="section-heading">Що показують дані по двох ключових критеріях ІМІ</h2>
-    <p class="section-sub">«Паркетні повідомлення» та «баланс думок» — саме ці два критерії ІМІ назвав причиною виключення.</p>
+<!-- ======== MONTHLY CHART ======== -->
+<section id="monthly">
+  <p class="stit">Динаміка по місяцях</p>
+  <h2 class="sh">Натисніть на місяць — побачите деталі</h2>
+  <p class="ss">Висота стовпця — відсоток ймовірного паркету за цей місяць.</p>
 
-    <div class="metrics-grid">
-      <div class="metric-card period1">
-        <div class="metric-card-header">Період 1 — Мацука (до виключення)</div>
-        <div class="metric-card-body">
-          <div class="metric-row"><span class="metric-label">Статей у корпусі</span><span class="metric-value">26 380</span></div>
-          <div class="metric-row"><span class="metric-label">Ймовірний паркет</span><span class="metric-value warning">19.78%</span></div>
-          <div class="metric-row"><span class="metric-label">Ризик дисбалансу</span><span class="metric-value warning">19.78%</span></div>
-          <div class="metric-row"><span class="metric-label">Є неофіційне джерело</span><span class="metric-value">73.44%</span></div>
-          <div class="metric-row"><span class="metric-label">Одне джерело або менше</span><span class="metric-value">50.5%</span></div>
-        </div>
+  <div class="chart-box">
+    <div class="chart-title">% ймовірного паркету по місяцях</div>
+    <div class="monthly-chart" id="monthly-chart"></div>
+    <div style="display:flex;gap:20px;justify-content:center;margin-top:8px">
+      <span style="font-size:12px;color:var(--g400)"><span style="display:inline-block;width:12px;height:12px;background:var(--blue);border-radius:2px;vertical-align:middle"></span> Період 1</span>
+      <span style="font-size:12px;color:var(--g400)"><span style="display:inline-block;width:12px;height:12px;background:var(--green);border-radius:2px;vertical-align:middle"></span> Період 2</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======== RANDOM ARTICLE ======== -->
+<section id="random">
+  <div class="random-box">
+    <h3>Перевір сам</h3>
+    <p>Натисни кнопку — побачиш випадкову статтю з корпусу.<br>Відкрий оригінал і вирішуй — чи погоджуєшся з алгоритмом.</p>
+    <button class="btn-random" onclick="showRandom()">🎲 Випадкова стаття</button>
+    <div class="random-card" id="random-card">
+      <div class="rc-title" id="rc-title"></div>
+      <div class="rc-meta" id="rc-meta"></div>
+      <div class="rc-flags" id="rc-flags"></div>
+      <div class="rc-excerpt" id="rc-excerpt"></div>
+      <div class="agree-btns">
+        <button class="agree-btn yes" onclick="voteArticle(1)">✓ Згоден з оцінкою</button>
+        <button class="agree-btn no" onclick="voteArticle(0)">✗ Не згоден</button>
       </div>
-      <div class="metric-card period2">
-        <div class="metric-card-header">Період 2 — після відходу (до повернення)</div>
-        <div class="metric-card-body">
-          <div class="metric-row"><span class="metric-label">Статей у корпусі</span><span class="metric-value">25 287</span></div>
-          <div class="metric-row"><span class="metric-label">Ймовірний паркет</span><span class="metric-value bad">21.83%</span></div>
-          <div class="metric-row"><span class="metric-label">Ризик дисбалансу</span><span class="metric-value bad">21.83%</span></div>
-          <div class="metric-row"><span class="metric-label">Є неофіційне джерело</span><span class="metric-value">71.78%</span></div>
-          <div class="metric-row"><span class="metric-label">Одне джерело або менше</span><span class="metric-value">53.22%</span></div>
-        </div>
+      <div class="agree-counter" id="agree-counter"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TIMELINE ======== -->
+<section id="timeline">
+  <p class="stit">Хронологія</p>
+  <h2 class="sh">Факти без інтерпретацій</h2>
+  <div style="position:relative;padding-left:28px">
+    <div style="position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--g200)"></div>
+    <div style="position:relative;margin-bottom:24px"><div style="position:absolute;left:-25px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--navy);border:2px solid #fff;box-shadow:0 0 0 2px var(--navy)"></div><div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--g400)">09 ЛИСТОПАДА 2023</div><div style="font-size:14px;color:var(--g700)"><strong>Олексій Мацука призначений гендиректором Укрінформу</strong></div></div>
+    <div style="position:relative;margin-bottom:24px"><div style="position:absolute;left:-25px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--red);border:2px solid #fff;box-shadow:0 0 0 2px var(--red)"></div><div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--g400)">26 КВІТНЯ 2024</div><div style="font-size:14px;color:var(--g700)"><strong>ІМІ виключає Укрінформ з Білого списку</strong><br>Причина: «паркетні повідомлення» та недостатній баланс думок</div><div style="font-size:12px;color:var(--g400);font-style:italic;margin-top:4px">Також виключені: NV, LIGA.net · <a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-pershe-pivrichchya-2024-roku" target="_blank" style="color:var(--blue)">Першоджерело →</a></div></div>
+    <div style="position:relative;margin-bottom:24px"><div style="position:absolute;left:-25px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--navy);border:2px solid #fff;box-shadow:0 0 0 2px var(--navy)"></div><div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--g400)">24 ТРАВНЯ 2024</div><div style="font-size:14px;color:var(--g700)"><strong>Мацука залишає посаду.</strong> Новий гендиректор — Сергій Череватий.</div><div style="font-size:12px;color:var(--g400);font-style:italic;margin-top:4px">28 днів після рішення ІМІ</div></div>
+    <div style="position:relative;margin-bottom:24px"><div style="position:absolute;left:-25px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--red);border:2px solid #fff;box-shadow:0 0 0 2px var(--red)"></div><div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--g400)">01 ЛИСТОПАДА 2024</div><div style="font-size:14px;color:var(--g700)"><strong>Білий список H2 2024 — Укрінформ відсутній.</strong> 13 медіа в списку.</div><div style="font-size:12px;color:var(--g400);font-style:italic;margin-top:4px">5 місяців після відходу Мацуки · <a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2024-roku-uvishly-13-media-i64640" target="_blank" style="color:var(--blue)">Першоджерело →</a></div></div>
+    <div style="position:relative;margin-bottom:24px"><div style="position:absolute;left:-25px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--green);border:2px solid #fff;box-shadow:0 0 0 2px var(--green)"></div><div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--g400)">16 ГРУДНЯ 2025</div><div style="font-size:14px;color:var(--g700)"><strong>Білий список H2 2025 — Укрінформ повернувся.</strong> 17 медіа.</div><div style="font-size:12px;color:var(--g400);font-style:italic;margin-top:4px">1,5 року після відходу Мацуки · <a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2025-roku-uvijshly-17-media" target="_blank" style="color:var(--blue)">Першоджерело →</a></div></div>
+  </div>
+</section>
+
+<!-- ======== METHODOLOGY ======== -->
+<section id="methodology">
+  <p class="stit">Методологія</p>
+  <h2 class="sh">Два підходи — ІМІ та CensorZero</h2>
+  <p class="ss">Ми не замінюємо експертну оцінку. Ми пропонуємо відтворюваний аналіз тих самих сигналів на повному масиві.</p>
+  <table class="mtable">
+    <thead><tr><th style="width:28%">Параметр</th><th>ІМІ</th><th>CensorZero</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Вибірка</strong></td><td>~100 статей за 2 дні</td><td class="tyes">51 667 — повний корпус</td></tr>
+      <tr><td><strong>Масштаб</strong></td><td>1×</td><td class="tyes">~516× більше</td></tr>
+      <tr><td><strong>Метод</strong></td><td>Ручний, експертний</td><td>Алгоритмічний (regex, NLP)</td></tr>
+      <tr><td><strong>Паркетність</strong></td><td>Ручна оцінка</td><td class="tpart">Proxy: офіц. + ≤N джерел</td></tr>
+      <tr><td><strong>Баланс думок</strong></td><td>Ручна оцінка</td><td class="tpart">Proxy: офіц. vs неофіц. джерела</td></tr>
+      <tr><td><strong>Прозорість</strong></td><td class="tno">Список статей не публікується</td><td class="tyes">Кожна стаття відкрита</td></tr>
+      <tr><td><strong>Відтворюваність</strong></td><td class="tno">Залежить від експерта</td><td class="tyes">Один скрипт — ті самі числа</td></tr>
+      <tr><td><strong>Код</strong></td><td class="tno">Закритий</td><td class="tyes">github.com/alexmazuka/ukrinform</td></tr>
+    </tbody>
+  </table>
+  <div class="note info" style="margin-top:16px">
+    <strong>Чесно про обмеження:</strong> Наш алгоритм — proxy-метрика, не точна копія методології ІМІ. Він може помилятись. Тому кожна позначена стаття доступна за прямим посиланням — <a href="explorer.html">відкрийте і перевірте самі</a>.
+  </div>
+</section>
+
+<!-- ======== QUESTIONS TO IMI ======== -->
+<section id="imi-q">
+  <p class="stit">Питання до ІМІ</p>
+  <h2 class="sh">Що залишається непрозорим</h2>
+  <p class="ss">Це не звинувачення — це стандарти відтворюваності, які застосовуються до будь-якого дослідження.</p>
+  <div class="qlist">
+    <div class="qi"><div class="qn">1</div><div><div class="qt"><strong>Які конкретно ~100 статей Укрінформу оцінювались?</strong></div><div class="qnote">ІМІ не публікує перелік. Незалежна перевірка неможлива.</div></div></div>
+    <div class="qi"><div class="qn">2</div><div><div class="qt"><strong>Хто персонально оцінював? Яка міжоцінювальна надійність?</strong></div><div class="qnote">Склад і збіжність оцінок між оцінювачами не розкриваються.</div></div></div>
+    <div class="qi"><div class="qn">3</div><div><div class="qt"><strong>Які бали по кожному з 14 індикаторів отримала кожна стаття?</strong></div><div class="qnote">Публікується лише загальний висновок, не детальна матриця.</div></div></div>
+    <div class="qi"><div class="qn">4</div><div><div class="qt"><strong>Чи змінювались оцінювачі між хвилями H1 2024 і H2 2025?</strong></div><div class="qnote">Зміна команди може пояснювати різні результати незалежно від якості медіа.</div></div></div>
+    <div class="qi"><div class="qn">5</div><div><div class="qt"><strong>Чому Укрінформ повернувся, якщо наш аналіз не фіксує суттєвого покращення?</strong></div><div class="qnote">Можливо, є фактори поза нашим алгоритмом. Чекаємо офіційної відповіді ІМІ.</div></div></div>
+  </div>
+</section>
+
+<!-- ======== DATA ======== -->
+<section id="data">
+  <p class="stit">Відкриті дані</p>
+  <h2 class="sh">Перевірте все самостійно</h2>
+  <div class="od-box">
+    <div style="font-size:32px;flex-shrink:0">📂</div>
+    <div>
+      <h3>Весь масив — у відкритому доступі</h3>
+      <p>51 667 статей, скрипти збору та аналізу, звіт верифікації — все публічно. Будь-хто може скачати, запустити і отримати ті самі числа. Знайшли помилку — відкрийте Issue.</p>
+      <div class="chips">
+        <a href="https://github.com/alexmazuka/ukrinform" class="chip" target="_blank">GitHub репозиторій</a>
+        <a href="https://github.com/alexmazuka/ukrinform/blob/main/data/corpus_fast.csv" class="chip" target="_blank">CSV (51 667 статей)</a>
+        <a href="https://github.com/alexmazuka/ukrinform/blob/main/COMPLETENESS_REPORT.md" class="chip" target="_blank">Звіт верифікації</a>
+        <a href="explorer.html" class="chip">Message Explorer</a>
       </div>
     </div>
-
-    <div class="bar-chart">
-      <p class="bar-chart-title">Порівняння ключових метрик (вибірка 1 800 + 1 800 статей)</p>
-      <div class="bar-row">
-        <div class="bar-row-label">Паркет П1</div>
-        <div class="bar-track"><div class="bar-fill blue" style="width:19.78%">19.78%</div></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-row-label">Паркет П2</div>
-        <div class="bar-track"><div class="bar-fill green" style="width:21.83%">21.83%</div></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-row-label">Баланс П1</div>
-        <div class="bar-track"><div class="bar-fill blue" style="width:19.78%">19.78%</div></div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-row-label">Баланс П2</div>
-        <div class="bar-track"><div class="bar-fill green" style="width:21.83%">21.83%</div></div>
-      </div>
-    </div>
-
-    <div class="note success">
-      <strong>Попередній висновок:</strong> За обома ключовими критеріями ІМІ показники Періоду 2 (після відходу Мацуки) є <em>гіршими або рівними</em> Періоду 1 (Мацука). Статистична значущість перевірятиметься після повного аудиту (Mann-Whitney U, p-value, Cohen's d).
-    </div>
-  </section>
-
-  <!-- METHODOLOGY -->
-  <section id="methodology">
-    <p class="section-title">Методологія</p>
-    <h2 class="section-heading">ІМІ vs CensorZero — два підходи</h2>
-    <p class="section-sub">Ми не замінюємо ручну експертну оцінку. Ми пропонуємо алгоритмічно відтворювану перевірку тих самих сигналів, на масиві у 516 разів більшому.</p>
-
-    <table class="comparison-table">
-      <thead>
-        <tr><th>Параметр</th><th>ІМІ</th><th>CensorZero</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Розмір вибірки</strong></td><td>~100 статей на медіа за 2 дні</td><td class="tag-yes">51 667 статей — повний корпус</td></tr>
-        <tr><td><strong>Масштаб</strong></td><td>1×</td><td class="tag-yes">~516× більше</td></tr>
-        <tr><td><strong>Метод оцінки</strong></td><td>Ручний, експертний</td><td>Алгоритмічний (regex, текстовий аналіз)</td></tr>
-        <tr><td><strong>Паркетність</strong></td><td>Ручна оцінка</td><td class="tag-partial">Proxy: офіц. джерело + ≤1 джерело + 0 неофіц.</td></tr>
-        <tr><td><strong>Баланс думок</strong></td><td>Ручна оцінка</td><td class="tag-partial">Proxy: підрахунок офіц. vs неофіц. джерел</td></tr>
-        <tr><td><strong>Факт vs коментар</strong></td><td>Ручна оцінка</td><td class="tag-partial">Proxy: маркери думок та фактів у тексті</td></tr>
-        <tr><td><strong>Джинса</strong></td><td>Ручна оцінка</td><td class="tag-partial">Proxy: комерційні маркери + CTA-детектор</td></tr>
-        <tr><td><strong>Мова ворожнечі</strong></td><td>Ручна оцінка</td><td class="tag-partial">Proxy: словниковий детектор</td></tr>
-        <tr><td><strong>Прозорість даних</strong></td><td class="tag-no">Список оцінених статей не публікується</td><td class="tag-yes">Кожна стаття — відкрите посилання</td></tr>
-        <tr><td><strong>Відтворюваність</strong></td><td class="tag-no">Ні — залежить від експерта</td><td class="tag-yes">Так — один скрипт, ті самі результати</td></tr>
-        <tr><td><strong>Відкритий код</strong></td><td class="tag-no">Ні</td><td class="tag-yes">github.com/alexmazuka/ukrinform</td></tr>
-      </tbody>
-    </table>
-
-    <div class="note info" style="margin-top:16px">
-      <strong>Обмеження алгоритму:</strong> Наші proxy-метрики можуть давати хибнопозитивні результати. Алгоритм не читає статтю як людина. Тому кожна позначена стаття доступна за прямим посиланням — відкрийте і перевірте самостійно.
-    </div>
-  </section>
-
-  <!-- QUESTIONS TO IMI -->
-  <section id="imi-questions">
-    <p class="section-title">Питання до ІМІ</p>
-    <h2 class="section-heading">Що залишається непрозорим</h2>
-    <p class="section-sub">Ці питання — не звинувачення. Це стандарти відтворюваності, які застосовуються до будь-якого медіа-моніторингу.</p>
-
-    <div class="questions-list">
-      <div class="question-item">
-        <div class="q-num">1</div>
-        <div>
-          <div class="q-text"><strong>Які конкретно ~100 статей Укрінформу оцінювались у кожній хвилі?</strong></div>
-          <div class="q-note">ІМІ не публікує перелік. Незалежна перевірка неможлива.</div>
-        </div>
-      </div>
-      <div class="question-item">
-        <div class="q-num">2</div>
-        <div>
-          <div class="q-text"><strong>Хто персонально оцінював? Яка інтер-рейтерська надійність?</strong></div>
-          <div class="q-note">Склад оцінювачів і збіжність оцінок між ними не розкривається.</div>
-        </div>
-      </div>
-      <div class="question-item">
-        <div class="q-num">3</div>
-        <div>
-          <div class="q-text"><strong>Які бали по кожному з 14 індикаторів отримала кожна оцінена стаття?</strong></div>
-          <div class="q-note">Публікується лише загальний висновок. Детальна матриця — ні.</div>
-        </div>
-      </div>
-      <div class="question-item">
-        <div class="q-num">4</div>
-        <div>
-          <div class="q-text"><strong>Чи змінювались оцінювачі між хвилями H1 2024 і H2 2025?</strong></div>
-          <div class="q-note">Зміна команди може пояснювати різні результати незалежно від якості медіа.</div>
-        </div>
-      </div>
-      <div class="question-item">
-        <div class="q-num">5</div>
-        <div>
-          <div class="q-text"><strong>Чому Укрінформ повернувся, якщо наш аналіз не фіксує покращення показників паркету?</strong></div>
-          <div class="q-note">Відповідь ІМІ може включати фактори, які наш алгоритм не охоплює. Чекаємо офіційної відповіді.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OPEN DATA -->
-  <section id="data">
-    <p class="section-title">Відкриті дані</p>
-    <h2 class="section-heading">Перевірте все самостійно</h2>
-
-    <div class="open-data-box">
-      <div class="open-data-icon">📂</div>
-      <div>
-        <h3>Весь масив даних — у відкритому доступі</h3>
-        <p>
-          51 667 статей, скрипти збору та аналізу, звіт верифікації повноти — все публічно на GitHub. Будь-хто може скачати дані, запустити скрипти і отримати ті самі числа. Знайшли помилку — відкрийте Issue.
-        </p>
-        <div class="open-data-links">
-          <a href="https://github.com/alexmazuka/ukrinform" class="link-chip" target="_blank">GitHub репозиторій</a>
-          <a href="https://github.com/alexmazuka/ukrinform/blob/main/data/corpus_fast.csv" class="link-chip" target="_blank">Завантажити CSV</a>
-          <a href="https://github.com/alexmazuka/ukrinform/blob/main/COMPLETENESS_REPORT.md" class="link-chip" target="_blank">Звіт верифікації</a>
-          <a href="https://github.com/alexmazuka/ukrinform/blob/main/METHODOLOGY.md" class="link-chip" target="_blank">Методологія</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
 <footer>
-  <div style="margin-bottom:8px;">Проєкт <strong style="color:white">CensorZero</strong> — незалежна платформа аудиту медійних стандартів</div>
-  <div style="margin-bottom:12px;">Засновник: <a href="https://matsuka.online">Олексій Мацука</a> (@alexmazuka) · Колишній гендиректор Укрінформу (листопад 2023 — травень 2024)</div>
-  <div style="font-size:11px;opacity:0.5;">Дані: Укрінформ (публічні sitemap) · Методологія: відкрита, відтворювана · Код: MIT License</div>
+  <div style="margin-bottom:8px">Проєкт <strong style="color:#fff">CensorZero</strong> — незалежна платформа аудиту медійних стандартів</div>
+  <div style="margin-bottom:12px">Засновник: <a href="https://matsuka.online">Олексій Мацука</a> (@alexmazuka) · Колишній гендиректор Укрінформу (листопад 2023 — травень 2024)</div>
+  <div style="font-size:11px;opacity:.5">Дані: Укрінформ (публічні sitemap) · Код: MIT License</div>
 </footer>
 
+<!-- ======== JAVASCRIPT ======== -->
+<script>
+// ============================================================
+// DATA (will be populated from explorer_data.json)
+// ============================================================
+let DATA = [];
+let agreeYes = 0, agreeNo = 0;
+
+async function init() {
+  try {
+    const r = await fetch('explorer_data.json');
+    DATA = await r.json();
+  } catch(e) { DATA = []; }
+  updateMetrics('both');
+  updateBars();
+  updateSlider();
+  buildMonthlyChart();
+}
+
+// ============================================================
+// PERIOD TOGGLE
+// ============================================================
+let currentPeriod = 'both';
+
+function setPeriod(p) {
+  currentPeriod = p;
+  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  updateMetrics(p);
+  updateBars();
+}
+
+function filterByPeriod(p) {
+  if (p === 'both') return DATA;
+  if (p === 'p1') return DATA.filter(d => d.d < '2025');
+  return DATA.filter(d => d.d >= '2025');
+}
+
+function updateMetrics(p) {
+  const d = filterByPeriod(p);
+  if (!d.length) return;
+  const pk = d.filter(x => x.pk).length;
+  const br = d.filter(x => x.br).length;
+  const nosrc = d.filter(x => x.sc >= 0 && DATA.some(_ => true)).length; // has any non-official
+  const withNonOff = d.filter(x => {
+    // We don't have non_official_source_count in explorer_data, approximate:
+    return !x.of || x.sc > 1;
+  }).length;
+
+  const labels = {both:'обидва періоди', p1:'Період 1 — Мацука', p2:'Період 2 — Після відходу'};
+
+  animateNum('mc-total', d.length.toLocaleString('uk'));
+  animateNum('mc-parket', (pk/d.length*100).toFixed(2) + '%');
+  animateNum('mc-balance', (br/d.length*100).toFixed(2) + '%');
+  animateNum('mc-nosrc', d.filter(x=>x.sc>1).length + '/' + d.length);
+
+  document.getElementById('mc-total-sub').textContent = labels[p] || '';
+  document.getElementById('mc-parket-sub').textContent = pk.toLocaleString('uk') + ' статей';
+  document.getElementById('mc-balance-sub').textContent = br.toLocaleString('uk') + ' статей';
+  document.getElementById('mc-nosrc-sub').textContent = 'більше 1 джерела';
+}
+
+function animateNum(id, val) {
+  const el = document.getElementById(id);
+  el.classList.add('animated');
+  el.textContent = val;
+  setTimeout(() => el.classList.remove('animated'), 300);
+}
+
+// ============================================================
+// BAR CHART
+// ============================================================
+function updateBars() {
+  const p1 = DATA.filter(d => d.d < '2025');
+  const p2 = DATA.filter(d => d.d >= '2025');
+  if (!p1.length || !p2.length) return;
+
+  const metrics = [
+    {label:'Ймовірний паркет', fn: d=>d.filter(x=>x.pk).length/d.length*100},
+    {label:'Ризик дисбалансу', fn: d=>d.filter(x=>x.br).length/d.length*100},
+    {label:'Одне джерело або менше', fn: d=>d.filter(x=>x.sc>=0&&x.sc<=1).length/d.length*100},
+  ];
+
+  const box = document.getElementById('bar-chart');
+  box.innerHTML = metrics.map(m => {
+    const v1 = m.fn(p1).toFixed(2);
+    const v2 = m.fn(p2).toFixed(2);
+    const max = Math.max(v1,v2,1);
+    return `
+      <div class="bar-group">
+        <div class="bar-label"><span>${m.label}</span></div>
+        <div style="display:grid;grid-template-columns:60px 1fr 60px 1fr;gap:6px;align-items:center">
+          <span style="font-size:11px;color:var(--g400);text-align:right">П1</span>
+          <div class="bar-track"><div class="bar-fill p1" style="width:${v1/max*100}%">${v1}%</div></div>
+          <span style="font-size:11px;color:var(--g400);text-align:right">П2</span>
+          <div class="bar-track"><div class="bar-fill p2" style="width:${v2/max*100}%">${v2}%</div></div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ============================================================
+// PARKET THRESHOLD SLIDER
+// ============================================================
+document.getElementById('parket-slider')?.addEventListener('input', updateSlider);
+
+function updateSlider() {
+  const threshold = parseInt(document.getElementById('parket-slider').value);
+  document.getElementById('threshold-display').textContent = threshold;
+
+  const p1 = DATA.filter(d => d.d < '2025');
+  const p2 = DATA.filter(d => d.d >= '2025');
+
+  // Recalculate parket with custom threshold
+  const calcParket = (arr) => {
+    const pk = arr.filter(x => x.of && x.sc >= 0 && x.sc <= threshold).length;
+    return arr.length ? (pk / arr.length * 100).toFixed(2) + '%' : '—';
+  };
+
+  document.getElementById('slider-p1').textContent = calcParket(p1);
+  document.getElementById('slider-p2').textContent = calcParket(p2);
+}
+
+// ============================================================
+// MONTHLY CHART
+// ============================================================
+function buildMonthlyChart() {
+  const months = {};
+  DATA.forEach(d => {
+    if (!months[d.m]) months[d.m] = {total:0, parket:0, period: d.d<'2025'?'p1':'p2'};
+    months[d.m].total++;
+    if (d.pk) months[d.m].parket++;
+  });
+
+  const sorted = Object.entries(months).sort((a,b) => a[0].localeCompare(b[0]));
+  const maxPct = Math.max(...sorted.map(([,v]) => v.total ? v.parket/v.total*100 : 0), 1);
+
+  const chart = document.getElementById('monthly-chart');
+  chart.innerHTML = sorted.map(([month, v]) => {
+    const pct = v.total ? (v.parket/v.total*100).toFixed(1) : 0;
+    const h = v.total ? (v.parket/v.total*100) / maxPct * 160 : 0;
+    const cls = v.period === 'p1' ? 'p1' : 'p2';
+    const label = month.slice(2); // "23-11" etc
+    return `
+      <div class="month-col">
+        <div class="month-detail">
+          <strong>${month}</strong><br>
+          Статей: ${v.total.toLocaleString('uk')}<br>
+          Паркет: ${v.parket} (${pct}%)
+        </div>
+        <div class="month-bar ${cls}" style="height:${Math.max(h,3)}px"></div>
+        <div class="month-label">${label}</div>
+      </div>`;
+  }).join('');
+}
+
+// ============================================================
+// RANDOM ARTICLE
+// ============================================================
+function showRandom() {
+  if (!DATA.length) return;
+  const art = DATA[Math.floor(Math.random() * DATA.length)];
+  const card = document.getElementById('random-card');
+  card.classList.add('visible');
+
+  document.getElementById('rc-title').innerHTML =
+    `<a href="${art.u}" target="_blank">${escHtml(art.t || '—')}</a>`;
+  document.getElementById('rc-meta').textContent =
+    `${art.d} · ${art.r} · Джерел: ${art.sc >= 0 ? art.sc : '?'}`;
+
+  const flags = [];
+  if (art.pk) flags.push('<span class="badge pk">Паркет</span>');
+  if (art.br) flags.push('<span class="badge br">Дисбаланс</span>');
+  if (art.of) flags.push('<span class="badge of">Офіційне</span>');
+  if (!art.pk && !art.br) flags.push('<span class="badge clean">Без зауважень</span>');
+  document.getElementById('rc-flags').innerHTML = flags.join(' ');
+
+  document.getElementById('rc-excerpt').textContent = art.ex || '';
+  document.getElementById('agree-counter').textContent =
+    `Голоси цієї сесії: ✓ ${agreeYes} / ✗ ${agreeNo}`;
+}
+
+function voteArticle(agree) {
+  if (agree) agreeYes++; else agreeNo++;
+  document.getElementById('agree-counter').textContent =
+    `Голоси цієї сесії: ✓ ${agreeYes} / ✗ ${agreeNo}`;
+  // Auto-show next
+  setTimeout(showRandom, 400);
+}
+
+function escHtml(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// Init
+init();
+</script>
 </body>
 </html>
