@@ -205,7 +205,7 @@ let currentPage = 1;
 async function loadData() {
   try {
     // Try to load from data file
-    const resp = await fetch('../data/explorer_data.json');
+    const resp = await fetch('explorer_data.json');
     if (!resp.ok) throw new Error('data not ready');
     allData = await resp.json();
   } catch(e) {
