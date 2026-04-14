@@ -11,9 +11,11 @@
 
 | Metric | Value |
 |--------|-------|
-| Total records in corpus | **51,667** |
-| Period 1 (Matsuka era) | **26,380** (2023-11-09 → 2024-04-25) |
-| Period 2 (before reinclusion) | **25,287** (2025-07-01 → 2025-12-15) |
+| Total records in corpus (CSV) | **51,667** |
+| Successfully audited (HTML parsed) | **51,589** (78 failed to fetch = 0.15%) |
+| Period 1 in CSV / audited | **26,380** / **26,342** (2023-11-09 → 2024-04-25) |
+| Period 2 in CSV / audited | **25,287** / **25,247** (2025-07-01 → 2025-12-15) |
+| Analysis without ATO rubric | **39,230** (P1: 18,375 + P2: 20,855) |
 | Sitemaps checked | **50 weekly files** (25 + 25) |
 | Sitemaps with errors | **0** |
 | Months with data gaps | **0** (after recovery) |
