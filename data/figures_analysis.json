@@ -1,0 +1,110 @@
+{
+  "Зеленський": {
+    "p1_count": 2864,
+    "p1_pct": 10.87,
+    "p1_parket_pct": 7.54,
+    "p2_count": 3224,
+    "p2_pct": 12.77,
+    "p2_parket_pct": 7.17,
+    "diff_pp": 1.9
+  },
+  "Шмигаль": {
+    "p1_count": 485,
+    "p1_pct": 1.84,
+    "p1_parket_pct": 1.44,
+    "p2_count": 311,
+    "p2_pct": 1.23,
+    "p2_parket_pct": 1.29,
+    "diff_pp": -0.61
+  },
+  "Єрмак": {
+    "p1_count": 351,
+    "p1_pct": 1.33,
+    "p1_parket_pct": 5.7,
+    "p2_count": 247,
+    "p2_pct": 0.98,
+    "p2_parket_pct": 5.26,
+    "diff_pp": -0.35
+  },
+  "Умєров": {
+    "p1_count": 608,
+    "p1_pct": 2.31,
+    "p1_parket_pct": 14.47,
+    "p2_count": 457,
+    "p2_pct": 1.81,
+    "p2_parket_pct": 14.88,
+    "diff_pp": -0.5
+  },
+  "Сирський": {
+    "p1_count": 272,
+    "p1_pct": 1.03,
+    "p1_parket_pct": 5.88,
+    "p2_count": 200,
+    "p2_pct": 0.79,
+    "p2_parket_pct": 4.0,
+    "diff_pp": -0.24
+  },
+  "Залужний": {
+    "p1_count": 123,
+    "p1_pct": 0.47,
+    "p1_parket_pct": 5.69,
+    "p2_count": 13,
+    "p2_pct": 0.05,
+    "p2_parket_pct": 0.0,
+    "diff_pp": -0.42
+  },
+  "Кулеба": {
+    "p1_count": 711,
+    "p1_pct": 2.7,
+    "p1_parket_pct": 6.61,
+    "p2_count": 616,
+    "p2_pct": 2.44,
+    "p2_parket_pct": 8.28,
+    "diff_pp": -0.26
+  },
+  "Стефанчук": {
+    "p1_count": 143,
+    "p1_pct": 0.54,
+    "p1_parket_pct": 2.1,
+    "p2_count": 119,
+    "p2_pct": 0.47,
+    "p2_parket_pct": 1.68,
+    "diff_pp": -0.07
+  },
+  "Череватий": {
+    "p1_count": 1,
+    "p1_pct": 0.0,
+    "p1_parket_pct": 0.0,
+    "p2_count": 4,
+    "p2_pct": 0.02,
+    "p2_parket_pct": 0.0,
+    "diff_pp": 0.01
+  },
+  "ЗСУ / Генштаб": {
+    "p1_count": 2355,
+    "p1_pct": 8.94,
+    "p1_parket_pct": 14.86,
+    "p2_count": 1474,
+    "p2_pct": 5.84,
+    "p2_parket_pct": 14.31,
+    "diff_pp": -3.1
+  },
+  "Кабмін": {
+    "p1_count": 1371,
+    "p1_pct": 5.2,
+    "p1_parket_pct": 5.54,
+    "p2_count": 1109,
+    "p2_pct": 4.39,
+    "p2_parket_pct": 7.21,
+    "diff_pp": -0.81
+  },
+  "Верховна Рада": {
+    "p1_count": 569,
+    "p1_pct": 2.16,
+    "p1_parket_pct": 4.92,
+    "p2_count": 389,
+    "p2_pct": 1.54,
+    "p2_parket_pct": 13.37,
+    "diff_pp": -0.62
+  }
+}
