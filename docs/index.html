@@ -241,6 +241,12 @@ footer a{color:var(--gold)}
       <div class="scale-bottom">ІМІ бере <strong>~100 статей за 2 дні</strong>. Ми зібрали <strong>весь публічний масив за 12 місяців</strong>.</div>
     </div>
   </div>
+
+  <!-- Audit complete banner -->
+  <div style="background:rgba(34,197,94,.12);border-bottom:2px solid #22c55e;padding:12px 32px;display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.9)">
+    <div style="width:8px;height:8px;background:#22c55e;border-radius:50%"></div>
+    <span><strong>Аудит завершено:</strong> 51 589 статей проаналізовано. Різниця між періодами — <strong>статистично незначуща</strong> (p=0.678, Cohen's d=0.003). Усі дані відкриті.</span>
+  </div>
 </header>
 
 <!-- NAV -->
@@ -297,8 +303,54 @@ footer a{color:var(--gold)}
     <div id="bar-chart"></div>
   </div>
 
-  <div class="note info">
-    <strong>Як читати:</strong> Якщо показники паркету та дисбалансу Періоду 1 (Мацука) статистично не відрізняються від Періоду 2 (після відходу) — це ставить під сумнів, чи рішення ІМІ про виключення було обґрунтованим саме якістю контенту.
+  <!-- STATISTICAL TESTS -->
+  <div style="background:#fff;border:1px solid var(--g200);border-radius:12px;padding:24px;margin-bottom:20px">
+    <div style="font-size:14px;font-weight:700;color:var(--g800);margin-bottom:14px">Статистичні тести (повний корпус: 51 589 статей)</div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead>
+        <tr style="border-bottom:2px solid var(--g200)">
+          <th style="text-align:left;padding:8px 12px;color:var(--g600)">Метрика</th>
+          <th style="text-align:right;padding:8px 12px;color:#1e40af">П1 (Мацука)</th>
+          <th style="text-align:right;padding:8px 12px;color:#166534">П2 (після)</th>
+          <th style="text-align:right;padding:8px 12px;color:var(--g600)">Різниця</th>
+          <th style="text-align:right;padding:8px 12px;color:var(--g600)">p-value</th>
+          <th style="text-align:right;padding:8px 12px;color:var(--g600)">Cohen's d</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--g100)">
+          <td style="padding:10px 12px;font-weight:600">Ймовірний паркет</td>
+          <td style="text-align:right;padding:10px 12px">6.51%</td>
+          <td style="text-align:right;padding:10px 12px">6.42%</td>
+          <td style="text-align:right;padding:10px 12px;color:var(--g400)">+0.08пп</td>
+          <td style="text-align:right;padding:10px 12px;font-weight:700;color:#16a34a">0.678</td>
+          <td style="text-align:right;padding:10px 12px;color:var(--g400)">0.003</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--g100)">
+          <td style="padding:10px 12px;font-weight:600">Ризик дисбалансу</td>
+          <td style="text-align:right;padding:10px 12px">7.86%</td>
+          <td style="text-align:right;padding:10px 12px">7.98%</td>
+          <td style="text-align:right;padding:10px 12px;color:var(--g400)">−0.12пп</td>
+          <td style="text-align:right;padding:10px 12px;font-weight:700;color:#16a34a">0.606</td>
+          <td style="text-align:right;padding:10px 12px;color:var(--g400)">0.005</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 12px;font-weight:600">Середнє джерел</td>
+          <td style="text-align:right;padding:10px 12px">1.69</td>
+          <td style="text-align:right;padding:10px 12px">1.72</td>
+          <td style="text-align:right;padding:10px 12px;color:var(--g400)">−0.02</td>
+          <td style="text-align:right;padding:10px 12px;font-weight:700;color:#16a34a">0.359</td>
+          <td style="text-align:right;padding:10px 12px;color:var(--g400)">0.013</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px;font-size:12px;color:var(--g400);line-height:1.5">
+      p-value &gt; 0.05 = різниця статистично НЕ значуща · Cohen's d &lt; 0.2 = розмір ефекту мізерний · Тести: Mann-Whitney U, Chi-square, Cohen's d
+    </div>
+  </div>
+
+  <div class="note ok">
+    <strong>Висновок на повному масиві:</strong> За жодним із трьох ключових показників різниця між Періодом 1 (Мацука) та Періодом 2 (після відходу) не є статистично значущою. Дані не підтверджують, що якість контенту Укрінформу змінилась зі зміною керівництва — за тими ж критеріями, які ІМІ назвав причиною виключення.
   </div>
 </section>
 
