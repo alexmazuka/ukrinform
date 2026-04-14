@@ -1,0 +1,77 @@
+{
+  "parket": {
+    "mann_whitney": {
+      "U": 332254920,
+      "z": 0.1616,
+      "p_value": 0.8715904113227328,
+      "n1": 26342,
+      "n2": 25247
+    },
+    "cohens_d": {
+      "cohens_d": 0.0033,
+      "mean_p1": 0.0651,
+      "mean_p2": 0.0642,
+      "std_pooled": 0.2459,
+      "interpretation": "negligible (< 0.2)"
+    },
+    "chi_square": {
+      "chi_square": 0.144,
+      "p_value": 0.6784456279519665,
+      "p1_rate": 6.51,
+      "p2_rate": 6.42,
+      "difference_pp": 0.08
+    }
+  },
+  "balance": {
+    "mann_whitney": {
+      "U": 332119317,
+      "z": -0.2418,
+      "p_value": 0.80890896977365,
+      "n1": 26342,
+      "n2": 25247
+    },
+    "cohens_d": {
+      "cohens_d": -0.0046,
+      "mean_p1": 0.0786,
+      "mean_p2": 0.0798,
+      "std_pooled": 0.27,
+      "interpretation": "negligible (< 0.2)"
+    },
+    "chi_square": {
+      "chi_square": 0.2674,
+      "p_value": 0.605935310936,
+      "p1_rate": 7.86,
+      "p2_rate": 7.98,
+      "difference_pp": -0.12
+    }
+  },
+  "sources": {
+    "mann_whitney": {
+      "U": 330977499,
+      "z": -0.9171,
+      "p_value": 0.3590898736365018,
+      "n1": 26342,
+      "n2": 25247
+    },
+    "cohens_d": {
+      "cohens_d": -0.0134,
+      "mean_p1": 1.6945,
+      "mean_p2": 1.7183,
+      "std_pooled": 1.7763,
+      "interpretation": "negligible (< 0.2)"
+    }
+  },
+  "summary": {
+    "total_audited": 51589,
+    "p1_total": 26342,
+    "p2_total": 25247,
+    "p1_parket": 1714,
+    "p2_parket": 1622,
+    "p1_parket_pct": 6.51,
+    "p2_parket_pct": 6.42,
+    "p1_balance": 2070,
+    "p2_balance": 2015,
+    "p1_balance_pct": 7.86,
+    "p2_balance_pct": 7.98
+  }
+}
