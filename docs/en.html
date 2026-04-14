@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CensorZero: Independent Audit of IMI's Assessment of Ukrinform</title>
+<meta name="description" content="51,589 Ukrinform articles. Two periods. One question. Open data, open code.">
+<meta property="og:title" content="CensorZero: 51,589 Ukrinform articles — independent audit">
+<meta property="og:description" content="IMI evaluated ~100 articles in 2 days. We collected 51,589 and checked the same criteria. The difference is negligible. Verify yourself.">
+<meta property="og:image" content="https://alexmazuka.github.io/ukrinform/og-image.svg">
+<meta property="og:url" content="https://alexmazuka.github.io/ukrinform/en.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root {
+  --navy:#1a365d;--gold:#f6ad55;--gold-l:#fbd38d;--gold-d:#d97706;
+  --g50:#f8fafc;--g100:#f1f5f9;--g200:#e2e8f0;--g300:#cbd5e1;--g400:#94a3b8;
+  --g600:#475569;--g700:#334155;--g800:#1e293b;
+  --green:#22c55e;--red:#ef4444;--blue:#3b82f6;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height:1.7}
+a{color:var(--navy)}
+
+.hdr{background:var(--navy);color:#fff}
+.hdr-top{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;border-bottom:1px solid rgba(255,255,255,.1)}
+.logo{font-size:18px;font-weight:700;letter-spacing:.05em;color:var(--gold);text-decoration:none}
+.logo span{color:#fff;font-weight:300}
+.hdr-links{display:flex;gap:20px}
+.hdr-links a{color:rgba(255,255,255,.65);font-size:13px;text-decoration:none}
+.hdr-links a:hover{color:#fff}
+
+main{max-width:800px;margin:0 auto;padding:40px 24px 80px}
+section{margin-bottom:56px}
+h1{font-size:32px;font-weight:800;color:var(--g800);line-height:1.25;margin-bottom:12px}
+h2{font-size:22px;font-weight:700;color:var(--g800);margin-bottom:10px}
+h3{font-size:17px;font-weight:700;color:var(--g800);margin-bottom:8px}
+.sub{font-size:15px;color:var(--g600);margin-bottom:24px}
+.tag{display:inline-block;background:rgba(246,173,85,.15);color:var(--gold-d);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:16px}
+
+.card{background:#fff;border:1px solid var(--g200);border-radius:12px;padding:28px;margin-bottom:24px}
+.card-navy{background:var(--navy);border:none;color:#fff}
+.card-navy h2{color:var(--gold)}
+.card-navy p{color:rgba(255,255,255,.85)}
+.card-navy a{color:var(--gold)}
+
+.note{padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;line-height:1.6;margin-bottom:20px}
+.note.info{background:#eff6ff;border-left:4px solid var(--blue);color:#1e3a8a}
+.note.ok{background:#f0fdf4;border-left:4px solid var(--green);color:#14532d}
+.note.warn{background:#fefce8;border-left:4px solid #eab308;color:#713f12}
+
+table{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:20px}
+th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid var(--g100)}
+tr:last-child td{border-bottom:none}
+.tyes{color:#16a34a;font-weight:600}
+.tno{color:var(--red);font-weight:600}
+
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:7px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s}
+.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:var(--gold-l)}
+.btn-ghost{border:1px solid var(--g300);color:var(--g700)}.btn-ghost:hover{border-color:var(--navy)}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+
+.letter{font-size:15px;color:var(--g700);line-height:1.8}
+.letter p{margin-bottom:16px}
+.signature{margin-top:32px;padding-top:20px;border-top:1px solid var(--g200)}
+.signature .name{font-size:17px;font-weight:700;color:var(--g800)}
+.signature .role{font-size:13px;color:var(--g600)}
+
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:32px;font-size:13px;text-align:center}
+footer a{color:var(--gold);text-decoration:none}
+
+@media(max-width:600px){main{padding:24px 16px}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-top">
+    <a href="index.html" class="logo">CENSOR<span>ZERO</span></a>
+    <nav class="hdr-links">
+      <a href="index.html">🇺🇦 Українська</a>
+      <a href="explorer.html">All Articles</a>
+      <a href="https://github.com/alexmazuka/ukrinform" target="_blank">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ======== OPEN LETTER ======== -->
+<section>
+  <div class="tag">Open Letter</div>
+  <h1>Why I Built This: An Open Letter from the Former Director General of Ukrinform</h1>
+  <p class="sub">Oleksiy Matsuka · Founder, CensorZero · April 2026</p>
+
+  <div class="card">
+    <div class="letter">
+      <p>Dear colleagues in international media organizations, press freedom advocates, and donor communities,</p>
+
+      <p>In November 2023, I was appointed Director General of Ukrinform — Ukraine's national news agency, established in 1918. I came with a reform plan: modernize editorial standards, increase source diversity, strengthen the separation between news and government messaging, and bring Ukrinform closer to the standards expected of a European public broadcaster.</p>
+
+      <p>These reforms were met with resistance from parts of the existing staff who had worked under the old model for years. Institutional change is always difficult — especially during wartime, especially at a state-owned media outlet where editorial habits are deeply entrenched.</p>
+
+      <p>During my tenure, I received a letter from a government official containing a list of suggested speakers and topics — a routine occurrence for any state news agency. The automated distribution system I had implemented at Ukrinform routed this letter to one of my deputies according to standard workflow. This letter was subsequently used against me internally — as supposed evidence that I was attempting to "introduce censorship." This accusation was factually false: the system I built was designed precisely to make editorial processes transparent and accountable, not to centralize control.</p>
+
+      <p>In April 2024, the Institute of Mass Information (IMI) — Ukraine's most prominent media monitoring organization — excluded Ukrinform from its "White List" of transparent and responsible media. The stated reason: "parket messages" (uncritical official coverage) and "insufficient balance of opinions." The timing aligned with the internal campaign against my reform efforts. I left the position one month later.</p>
+
+      <p><strong>What troubled me was not the criticism itself — media monitoring is essential for a healthy democracy. What troubled me was that IMI's assessment appeared to align with an internal political campaign rather than being based on verifiable data.</strong></p>
+
+      <p>IMI evaluated approximately 100 articles over 2 days. They did not publish which articles were assessed, who assessed them, or how individual scores were assigned. Their methodology cannot be independently verified or reproduced.</p>
+
+      <p>So I decided to do what any journalist would do: check the data myself.</p>
+
+      <p>Using Claude Code — an AI development tool by Anthropic — I collected <strong>51,589 Ukrinform articles</strong> across both periods (my tenure and the period before Ukrinform's return to the White List in December 2025). I applied algorithmic analysis to the same criteria IMI cited: source balance and "parket" content.</p>
+
+      <p>The results are clear:</p>
+
+      <ul style="margin:16px 0 16px 20px">
+        <li>The "parket" rate under my leadership: <strong>6.61%</strong></li>
+        <li>The "parket" rate after my departure: <strong>6.01%</strong></li>
+        <li>Statistical significance: p = 0.007, but effect size Cohen's d = 0.025 — <strong>negligible</strong></li>
+        <li>Including military bulletins: 6.51% vs 6.42% — <strong>virtually identical</strong></li>
+      </ul>
+
+      <p>The structure of Ukrinform's content — which officials were covered, how many sources per article, how opposition voices were represented — remained stable across both periods. The data does not support the conclusion that content quality changed with the change of management.</p>
+
+      <p><strong>I am not claiming IMI acted in bad faith.</strong> I am saying their methodology lacks the transparency required for such consequential assessments. When a monitoring organization's decision can influence the career of a media leader and the reputation of a national news agency — that decision must be verifiable.</p>
+
+      <p>This research is fully open:</p>
+      <ul style="margin:16px 0 16px 20px">
+        <li>Every article is available for inspection: <a href="explorer.html">Message Explorer</a></li>
+        <li>Every script is open source: <a href="https://github.com/alexmazuka/ukrinform" target="_blank">GitHub</a></li>
+        <li>Every change is tracked in Git history — nothing can be quietly edited</li>
+      </ul>
+
+      <p>I hope this work contributes to a broader conversation about accountability in media monitoring — not just in Ukraine, but globally. Monitoring organizations hold significant power over media reputations. That power must come with transparency.</p>
+
+      <p>If you find errors in our analysis, please open an issue on GitHub. If you have questions, I am available to discuss this research openly.</p>
+
+      <div class="signature">
+        <div class="name">Oleksiy Matsuka</div>
+        <div class="role">
+          Founder, CensorZero (censorzero.com)<br>
+          Former Director General, Ukrinform (November 2023 — May 2024)<br>
+          @alexmazuka · matsuka.online
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== KEY FINDINGS ======== -->
+<section>
+  <div class="tag">Research Findings</div>
+  <h2>What 51,589 Articles Show</h2>
+  <p class="sub">Three independent data cuts — all pointing to the same conclusion.</p>
+
+  <div class="card">
+    <h3>Statistical Tests</h3>
+    <table>
+      <thead><tr><th>Metric</th><th style="text-align:right">P1 (Matsuka)</th><th style="text-align:right">P2 (After)</th><th style="text-align:right">p-value</th><th style="text-align:right">Effect</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Without military bulletins (39,230 articles)</strong></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Likely parket</td><td style="text-align:right">6.61%</td><td style="text-align:right">6.01%</td><td style="text-align:right;color:#d97706;font-weight:600">0.007</td><td style="text-align:right;color:var(--g400)">d=0.025</td></tr>
+        <tr><td>Balance risk</td><td style="text-align:right">7.98%</td><td style="text-align:right">7.55%</td><td style="text-align:right;color:#16a34a">0.100</td><td style="text-align:right;color:var(--g400)">d=0.016</td></tr>
+        <tr><td><strong>With military bulletins (51,589 articles)</strong></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Likely parket</td><td style="text-align:right">6.51%</td><td style="text-align:right">6.42%</td><td style="text-align:right;color:#16a34a">0.678</td><td style="text-align:right;color:var(--g400)">d=0.003</td></tr>
+        <tr><td>Balance risk</td><td style="text-align:right">7.86%</td><td style="text-align:right">7.98%</td><td style="text-align:right;color:#16a34a">0.606</td><td style="text-align:right;color:var(--g400)">d=0.005</td></tr>
+      </tbody>
+    </table>
+    <div class="note ok">
+      <strong>In both scenarios</strong>, the difference between periods is negligible (Cohen's d &lt; 0.03). The data does not support the conclusion that content quality deteriorated under Matsuka's leadership.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Scale Comparison</h3>
+    <table>
+      <thead><tr><th>Parameter</th><th>IMI</th><th>CensorZero</th></tr></thead>
+      <tbody>
+        <tr><td>Sample size</td><td>~100 articles in 2 days</td><td class="tyes">51,589 articles over 12 months</td></tr>
+        <tr><td>Scale</td><td>1×</td><td class="tyes">~516× larger</td></tr>
+        <tr><td>Method</td><td>Manual (experts)</td><td>Algorithmic (reproducible)</td></tr>
+        <tr><td>Transparency</td><td class="tno">Assessed articles not published</td><td class="tyes">Every article accessible</td></tr>
+        <tr><td>Reproducibility</td><td class="tno">Depends on evaluator</td><td class="tyes">One script → same results</td></tr>
+        <tr><td>Open source</td><td class="tno">No</td><td class="tyes">github.com/alexmazuka/ukrinform</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ======== TIMELINE ======== -->
+<section>
+  <div class="tag">Timeline</div>
+  <h2>What Happened — Verified Facts</h2>
+  <div class="card">
+    <div style="font-size:14px;color:var(--g700);line-height:1.8">
+      <p><strong style="color:var(--navy)">November 9, 2023</strong> — Oleksiy Matsuka appointed Director General of Ukrinform</p>
+      <p><strong style="color:var(--red)">April 26, 2024</strong> — IMI publishes White List for H1 2024 — <strong>Ukrinform excluded</strong>. Reason: "parket messages" and insufficient balance. Also excluded: NV, LIGA.net. (<a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-pershe-pivrichchya-2024-roku" target="_blank">Source</a>)</p>
+      <p><strong style="color:var(--navy)">May 24, 2024</strong> — Matsuka leaves position. New Director General: Serhiy Cherevaty. (28 days after IMI decision)</p>
+      <p><strong style="color:var(--red)">November 1, 2024</strong> — IMI White List H2 2024 — <strong>Ukrinform still absent</strong>. 5 months after Matsuka's departure. (<a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2024-roku-uvishly-13-media-i64640" target="_blank">Source</a>)</p>
+      <p><strong style="color:var(--green)">December 16, 2025</strong> — IMI White List H2 2025 — <strong>Ukrinform returned</strong>. 1.5 years after Matsuka's departure. (<a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2025-roku-uvijshly-17-media" target="_blank">Source</a>)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== QUESTIONS TO IMI ======== -->
+<section>
+  <div class="tag">Transparency Questions</div>
+  <h2>What IMI Has Not Disclosed</h2>
+  <p class="sub">These are standard reproducibility requirements for any research methodology.</p>
+  <div class="card">
+    <ol style="font-size:14px;color:var(--g700);line-height:1.8;padding-left:20px">
+      <li style="margin-bottom:12px"><strong>Which ~100 Ukrinform articles were assessed in each wave?</strong><br><span style="color:var(--g400)">IMI does not publish the list. Independent verification is impossible.</span></li>
+      <li style="margin-bottom:12px"><strong>Who personally assessed the articles? What is the inter-rater reliability?</strong><br><span style="color:var(--g400)">Evaluator composition and agreement rates are not disclosed.</span></li>
+      <li style="margin-bottom:12px"><strong>What scores did each article receive on each of the 14 indicators?</strong><br><span style="color:var(--g400)">Only the aggregate conclusion is published, not the scoring matrix.</span></li>
+      <li style="margin-bottom:12px"><strong>Did the evaluators change between the H1 2024 and H2 2025 waves?</strong><br><span style="color:var(--g400)">A change in evaluators could explain different outcomes regardless of media quality.</span></li>
+      <li><strong>Why was Ukrinform returned to the White List if our analysis shows no improvement in parket metrics?</strong><br><span style="color:var(--g400)">IMI may have factors beyond our algorithm. We await their official response.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ======== OPEN DATA ======== -->
+<section>
+  <h2>Verify Everything Yourself</h2>
+  <div class="card">
+    <p style="font-size:15px;color:var(--g600);margin-bottom:20px">
+      51,589 articles, collection and analysis scripts, completeness verification report — all publicly available on GitHub. Anyone can download the data, run the scripts, and get the same numbers. Found an error? Open an Issue.
+    </p>
+    <div class="btns">
+      <a href="https://github.com/alexmazuka/ukrinform" class="btn btn-gold" target="_blank">GitHub Repository</a>
+      <a href="explorer.html" class="btn btn-ghost">Message Explorer (51,589 articles)</a>
+      <a href="https://github.com/alexmazuka/ukrinform/blob/main/COMPLETENESS_REPORT.md" class="btn btn-ghost" target="_blank">Verification Report</a>
+      <a href="index.html" class="btn btn-ghost">🇺🇦 Ukrainian Dashboard</a>
+    </div>
+  </div>
+
+  <div class="note info" style="margin-top:24px">
+    <strong>How to cite this research:</strong><br>
+    Matsuka, O. (2026). <em>CensorZero: Independent Audit of IMI's Assessment of Ukrinform.</em> 51,589 articles, algorithmic analysis. Available at: <a href="https://alexmazuka.github.io/ukrinform/en.html">alexmazuka.github.io/ukrinform</a>. Data & code: <a href="https://github.com/alexmazuka/ukrinform">github.com/alexmazuka/ukrinform</a>.
+  </div>
+</section>
+
+<!-- ======== CONSTRUCTIVE MESSAGE ======== -->
+<section>
+  <div class="card card-navy">
+    <h2>Why This Research Matters</h2>
+    <p style="margin-bottom:14px">Media monitoring is essential for democracy — especially in a country at war. IMI plays an important role in Ukraine's media ecosystem. But monitoring power must come with accountability.</p>
+    <p style="margin-bottom:14px">We don't know exactly what IMI measured, which articles they evaluated, or who assigned the scores. It is a closed process. This research — built with Claude Code by Anthropic — is fully open: every article, every script, every Git commit is public and verifiable.</p>
+    <p><strong style="color:var(--gold)">We hope this work helps IMI become more effective, more transparent, and focused on its mission — not on political games.</strong></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div style="margin-bottom:8px"><strong style="color:#fff">CensorZero</strong> — Independent media accountability platform</div>
+  <div style="margin-bottom:12px">Founded by <a href="https://matsuka.online">Oleksiy Matsuka</a> (@alexmazuka) · Former Director General of Ukrinform (Nov 2023 — May 2024)</div>
+  <div style="font-size:11px;opacity:.5">Data: Ukrinform (public sitemaps) · Code: MIT License · Built with Claude Code</div>
+</footer>
+
+</body>
+</html>
