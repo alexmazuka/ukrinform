@@ -245,7 +245,7 @@ footer a{color:var(--gold)}
   <!-- Audit complete banner -->
   <div style="background:rgba(34,197,94,.12);border-bottom:2px solid #22c55e;padding:12px 32px;display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.9)">
     <div style="width:8px;height:8px;background:#22c55e;border-radius:50%"></div>
-    <span><strong>Аудит завершено:</strong> 39 230 статей проаналізовано (без воєнних зведень). Паркет за Мацуки <strong>вищий</strong> (6.61% vs 6.01%, p=0.007). Усі дані відкриті.</span>
+    <span><strong>Аудит завершено:</strong> 39 230 статей (без воєнних зведень) + 51 589 (з ними). В обох сценаріях різниця між періодами — <strong>мізерна</strong>. Усі дані відкриті.</span>
   </div>
 </header>
 
@@ -281,13 +281,13 @@ footer a{color:var(--gold)}
       </div>
       <div style="padding:18px">
         <div style="text-align:center;margin-bottom:12px">
-          <div style="font-size:42px;font-weight:800;color:#d97706">p = 0.007</div>
-          <div style="font-size:12px;color:var(--g400)">різниця значуща — але в ЗВОРОТНОМУ напрямку</div>
+          <div style="font-size:36px;font-weight:800;color:var(--gold-d)">≈ 0%</div>
+          <div style="font-size:12px;color:var(--g400)">практична різниця між періодами</div>
         </div>
         <div style="font-size:13px;color:var(--g600);line-height:1.6">
-          Паркет: <strong>6.61%</strong> (Мацука) vs <strong>6.01%</strong> (після)<br>
-          За Мацуки паркету БІЛЬШЕ — не менше<br>
-          Cohen's d = 0.025 — <strong>мізерний</strong> ефект
+          Без АТО: 6.61% vs 6.01% (p=0.007)<br>
+          З АТО: 6.51% vs 6.42% (p=0.678)<br>
+          Cohen's d &lt; 0.03 — <strong>мізерний</strong> ефект
         </div>
       </div>
     </div>
@@ -446,53 +446,65 @@ footer a{color:var(--gold)}
 
   <!-- STATISTICAL TESTS -->
   <div style="background:#fff;border:1px solid var(--g200);border-radius:12px;padding:24px;margin-bottom:20px">
-    <div style="font-size:14px;font-weight:700;color:var(--g800);margin-bottom:4px">Статистичні тести (39 230 статей, без воєнних зведень)</div>
-    <div style="font-size:12px;color:var(--g400);margin-bottom:14px">Рубрика АТО/Оборона виключена: воєнні зведення за визначенням мають одне офіційне джерело (Генштаб) і спотворюють аналіз журналістських стандартів.</div>
-    <table style="width:100%;border-collapse:collapse;font-size:13px">
-      <thead>
-        <tr style="border-bottom:2px solid var(--g200)">
+    <div style="font-size:14px;font-weight:700;color:var(--g800);margin-bottom:14px">Статистичні тести — два сценарії</div>
+
+    <!-- Scenario toggle -->
+    <div style="display:flex;gap:0;margin-bottom:16px;background:var(--g100);border-radius:8px;padding:3px;max-width:460px">
+      <button onclick="showScenario('noato')" id="btn-noato" style="flex:1;padding:8px;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font);background:#fff;color:var(--navy);box-shadow:0 1px 2px rgba(0,0,0,.1)">Без АТО (39 230 статей)</button>
+      <button onclick="showScenario('withato')" id="btn-withato" style="flex:1;padding:8px;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font);background:none;color:var(--g600)">З АТО (51 589 статей)</button>
+    </div>
+
+    <!-- Scenario: without ATO -->
+    <div id="scenario-noato">
+      <div style="font-size:12px;color:var(--g600);margin-bottom:12px;padding:8px 12px;background:#fefce8;border-radius:6px">
+        <strong>Чому без АТО:</strong> Воєнні зведення (рубрика АТО/Оборона) за визначенням мають одне офіційне джерело — Генштаб. Це не питання журналістської якості, а природа воєнної комунікації.
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="border-bottom:2px solid var(--g200)">
           <th style="text-align:left;padding:8px 12px;color:var(--g600)">Метрика</th>
-          <th style="text-align:right;padding:8px 12px;color:#1e40af">П1 (Мацука)</th>
-          <th style="text-align:right;padding:8px 12px;color:#166534">П2 (після)</th>
-          <th style="text-align:right;padding:8px 12px;color:var(--g600)">Різниця</th>
+          <th style="text-align:right;padding:8px 12px;color:#1e40af">П1</th>
+          <th style="text-align:right;padding:8px 12px;color:#166534">П2</th>
+          <th style="text-align:right;padding:8px 12px;color:var(--g600)">Δ</th>
           <th style="text-align:right;padding:8px 12px;color:var(--g600)">p-value</th>
           <th style="text-align:right;padding:8px 12px;color:var(--g600)">Cohen's d</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--g100)">
-          <td style="padding:10px 12px;font-weight:600">Ймовірний паркет</td>
-          <td style="text-align:right;padding:10px 12px;font-weight:700">6.61%</td>
-          <td style="text-align:right;padding:10px 12px;font-weight:700">6.01%</td>
-          <td style="text-align:right;padding:10px 12px;color:#d97706;font-weight:600">+0.60пп</td>
-          <td style="text-align:right;padding:10px 12px;font-weight:700;color:#d97706">0.007</td>
-          <td style="text-align:right;padding:10px 12px;color:var(--g400)">0.025</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--g100)">
-          <td style="padding:10px 12px;font-weight:600">Ризик дисбалансу</td>
-          <td style="text-align:right;padding:10px 12px">7.98%</td>
-          <td style="text-align:right;padding:10px 12px">7.55%</td>
-          <td style="text-align:right;padding:10px 12px;color:var(--g400)">+0.43пп</td>
-          <td style="text-align:right;padding:10px 12px;font-weight:700;color:#16a34a">0.100</td>
-          <td style="text-align:right;padding:10px 12px;color:var(--g400)">0.016</td>
-        </tr>
-        <tr>
-          <td style="padding:10px 12px;font-weight:600">Середнє джерел</td>
-          <td style="text-align:right;padding:10px 12px">1.71</td>
-          <td style="text-align:right;padding:10px 12px">1.75</td>
-          <td style="text-align:right;padding:10px 12px;color:var(--g400)">−0.04</td>
-          <td style="text-align:right;padding:10px 12px;font-weight:700;color:#16a34a">0.183</td>
-          <td style="text-align:right;padding:10px 12px;color:var(--g400)">0.021</td>
-        </tr>
-      </tbody>
-    </table>
+        </tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--g100)"><td style="padding:8px 12px;font-weight:600">Паркет</td><td style="text-align:right;padding:8px 12px;font-weight:700">6.61%</td><td style="text-align:right;padding:8px 12px;font-weight:700">6.01%</td><td style="text-align:right;padding:8px 12px;color:#d97706">+0.60пп</td><td style="text-align:right;padding:8px 12px;font-weight:700;color:#d97706">0.007</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">0.025</td></tr>
+          <tr style="border-bottom:1px solid var(--g100)"><td style="padding:8px 12px;font-weight:600">Дисбаланс</td><td style="text-align:right;padding:8px 12px">7.98%</td><td style="text-align:right;padding:8px 12px">7.55%</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">+0.43пп</td><td style="text-align:right;padding:8px 12px;color:#16a34a">0.100</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">0.016</td></tr>
+          <tr><td style="padding:8px 12px;font-weight:600">Сер. джерел</td><td style="text-align:right;padding:8px 12px">1.71</td><td style="text-align:right;padding:8px 12px">1.75</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">−0.04</td><td style="text-align:right;padding:8px 12px;color:#16a34a">0.183</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">0.021</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Scenario: with ATO -->
+    <div id="scenario-withato" style="display:none">
+      <div style="font-size:12px;color:var(--g600);margin-bottom:12px;padding:8px 12px;background:#eff6ff;border-radius:6px">
+        <strong>З АТО:</strong> Включено воєнні зведення. Різниця стає ще менш значущою — обидва періоди мають практично однаковий рівень паркету.
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="border-bottom:2px solid var(--g200)">
+          <th style="text-align:left;padding:8px 12px;color:var(--g600)">Метрика</th>
+          <th style="text-align:right;padding:8px 12px;color:#1e40af">П1</th>
+          <th style="text-align:right;padding:8px 12px;color:#166534">П2</th>
+          <th style="text-align:right;padding:8px 12px;color:var(--g600)">Δ</th>
+          <th style="text-align:right;padding:8px 12px;color:var(--g600)">p-value</th>
+          <th style="text-align:right;padding:8px 12px;color:var(--g600)">Cohen's d</th>
+        </tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--g100)"><td style="padding:8px 12px;font-weight:600">Паркет</td><td style="text-align:right;padding:8px 12px;font-weight:700">6.51%</td><td style="text-align:right;padding:8px 12px;font-weight:700">6.42%</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">+0.08пп</td><td style="text-align:right;padding:8px 12px;font-weight:700;color:#16a34a">0.678</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">0.003</td></tr>
+          <tr style="border-bottom:1px solid var(--g100)"><td style="padding:8px 12px;font-weight:600">Дисбаланс</td><td style="text-align:right;padding:8px 12px">7.86%</td><td style="text-align:right;padding:8px 12px">7.98%</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">−0.12пп</td><td style="text-align:right;padding:8px 12px;color:#16a34a">0.606</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">0.005</td></tr>
+          <tr><td style="padding:8px 12px;font-weight:600">Сер. джерел</td><td style="text-align:right;padding:8px 12px">1.69</td><td style="text-align:right;padding:8px 12px">1.72</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">−0.02</td><td style="text-align:right;padding:8px 12px;color:#16a34a">0.359</td><td style="text-align:right;padding:8px 12px;color:var(--g400)">0.013</td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <div style="margin-top:14px;font-size:12px;color:var(--g400);line-height:1.5">
-      p &lt; 0.05 = різниця статистично значуща · Cohen's d &lt; 0.2 = мізерний ефект · Тести: Chi-square, Cohen's d
+      p &lt; 0.05 = різниця значуща · Cohen's d &lt; 0.2 = мізерний ефект · Перемикайте сценарії, щоб побачити обидва варіанти
     </div>
   </div>
 
   <div class="note ok">
-    <strong>Висновок:</strong> Різниця за паркетністю статистично значуща (p=0.007) — але у <strong>зворотному напрямку</strong>: за Мацуки паркету більше (6.61%), ніж після його відходу (6.01%). При цьому розмір ефекту мізерний (Cohen's d=0.025). Дисбаланс та кількість джерел — без значущих відмінностей. Дані не підтверджують, що якість погіршилась за Мацуки — навпаки.
+    <strong>Висновок:</strong> В обох сценаріях (з АТО і без) різниця між періодами — мізерна (Cohen's d &lt; 0.03). Без АТО паркету за Мацуки навіть дещо більше (6.61% vs 6.01%). З АТО — практично ідентично (6.51% vs 6.42%). <strong>Ні в одному зі сценаріїв дані не підтверджують, що якість контенту погіршилась за Мацуки.</strong>
   </div>
 </section>
 
@@ -630,6 +642,25 @@ footer a{color:var(--gold)}
         <a href="explorer.html" class="chip">Message Explorer</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ======== CONSTRUCTIVE MESSAGE ======== -->
+<section style="margin-bottom:0">
+  <div style="background:var(--navy);border-radius:12px;padding:32px;color:#fff">
+    <h2 style="font-size:20px;color:var(--gold);margin-bottom:14px">Навіщо це дослідження</h2>
+    <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:16px">
+      Ми не знаємо точно, що саме рахували в ІМІ — яких 100 статей, хто їх оцінював, за якими критеріями виставлялись бали. Це закрита структура. І саме тому це дослідження має значення.
+    </p>
+    <p style="font-size:15px;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:16px">
+      Цей аналіз зроблено за допомогою Claude Code — AI-інструменту від Anthropic. Весь код відкритий, кожна стаття доступна для перевірки, кожен крок задокументований в Git-історії. Ми показуємо обидва сценарії — з рубрикою АТО і без неї. В обох випадках різниця між періодами мізерна.
+    </p>
+    <p style="font-size:15px;color:rgba(255,255,255,.95);line-height:1.8;margin-bottom:16px">
+      <strong>Ми сподіваємось, що це дослідження допоможе ІМІ бути більш ефективним, прозорим — і не грати в політичні ігри.</strong>
+    </p>
+    <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.6">
+      Медіамоніторинг важливий для України. Але він працює тільки тоді, коли його можна перевірити. Відтворюваність — це не загроза для ІМІ, а можливість стати сильнішими.
+    </p>
   </div>
 </section>
 
@@ -905,6 +936,25 @@ function buildOppositionTable() {
       <td style="text-align:right;padding:8px;color:${dColor}">${r.d}пп</td>
     </tr>`;
   }).join('');
+}
+
+// ============================================================
+// SCENARIO TOGGLE (with/without ATO)
+// ============================================================
+function showScenario(which) {
+  const noato = document.getElementById('scenario-noato');
+  const withato = document.getElementById('scenario-withato');
+  const btnNoato = document.getElementById('btn-noato');
+  const btnWithato = document.getElementById('btn-withato');
+  if (which === 'noato') {
+    noato.style.display = 'block'; withato.style.display = 'none';
+    btnNoato.style.background = '#fff'; btnNoato.style.color = 'var(--navy)'; btnNoato.style.boxShadow = '0 1px 2px rgba(0,0,0,.1)';
+    btnWithato.style.background = 'none'; btnWithato.style.color = 'var(--g600)'; btnWithato.style.boxShadow = 'none';
+  } else {
+    noato.style.display = 'none'; withato.style.display = 'block';
+    btnWithato.style.background = '#fff'; btnWithato.style.color = 'var(--navy)'; btnWithato.style.boxShadow = '0 1px 2px rgba(0,0,0,.1)';
+    btnNoato.style.background = 'none'; btnNoato.style.color = 'var(--g600)'; btnNoato.style.boxShadow = 'none';
+  }
 }
 
 // Init
