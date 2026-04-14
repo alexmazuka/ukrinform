@@ -42,14 +42,19 @@ a{color:var(--navy);text-decoration:none}
 .btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff;background:none}.btn-ghost:hover{border-color:#fff}
 
 /* ---- SCALE BAR ---- */
-.scale-section{background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:28px 32px}
-.scale-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;gap:20px}
-.scale-label{font-size:12px;color:rgba(255,255,255,.5);white-space:nowrap;min-width:60px;text-align:right}
-.scale-tracks{flex:1;display:flex;flex-direction:column;gap:6px}
-.scale-bar{height:18px;border-radius:3px;display:flex;align-items:center;padding:0 8px;font-size:11px;font-weight:600;color:#fff;transition:width 1s ease;position:relative;cursor:help}
-.scale-imi{background:var(--g600);width:2px;min-width:2px}
-.scale-cz{background:var(--gold);width:100%}
-.scale-caption{font-size:11px;color:rgba(255,255,255,.4);text-align:center;margin-top:4px}
+.scale-section{background:rgba(0,0,0,.15);border-top:1px solid rgba(255,255,255,.06);padding:36px 32px}
+.scale-inner{max-width:700px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
+.scale-compare{display:flex;align-items:flex-end;gap:32px;justify-content:center}
+.scale-col{display:flex;flex-direction:column;align-items:center;gap:6px}
+.scale-block{border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;transition:transform .3s}
+.scale-block:hover{transform:scale(1.05)}
+.scale-imi-block{width:24px;height:24px;background:var(--g600);font-size:0}
+.scale-cz-block{width:180px;height:180px;background:linear-gradient(135deg,var(--gold),#f59e0b);font-size:32px;box-shadow:0 8px 32px rgba(246,173,85,.3)}
+.scale-num{font-size:13px;font-weight:700;color:rgba(255,255,255,.85)}
+.scale-label-text{font-size:11px;color:rgba(255,255,255,.45);text-align:center}
+.scale-vs{font-size:28px;color:rgba(255,255,255,.2);font-weight:300;align-self:center;margin-bottom:30px}
+.scale-bottom{font-size:13px;color:rgba(255,255,255,.5);text-align:center;margin-top:4px}
+.scale-bottom strong{color:var(--gold-l)}
 
 /* ---- NAV ---- */
 .nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--g200);z-index:100;padding:0 32px;display:flex;gap:0;overflow-x:auto}
@@ -183,7 +188,9 @@ footer a{color:var(--gold)}
 
 @media(max-width:600px){
   .hero{padding:40px 20px 36px}
-  .scale-inner{flex-direction:column;gap:8px}
+  .scale-compare{flex-direction:column;align-items:center}
+  .scale-vs{margin-bottom:10px;transform:rotate(90deg)}
+  .scale-cz-block{width:140px;height:140px;font-size:26px}
   .slider-results{grid-template-columns:1fr}
   .od-box{flex-direction:column}
 }
@@ -218,12 +225,20 @@ footer a{color:var(--gold)}
   <!-- Scale comparison bar -->
   <div class="scale-section">
     <div class="scale-inner">
-      <div class="scale-label">ІМІ<br>~100</div>
-      <div class="scale-tracks">
-        <div class="scale-bar scale-imi" title="~100 статей ІМІ">&nbsp;</div>
-        <div class="scale-bar scale-cz" title="51 667 статей CensorZero">51 667 статей — у 516 разів більше</div>
-        <div class="scale-caption">Масштаб вибірки: ІМІ vs CensorZero</div>
+      <div class="scale-compare">
+        <div class="scale-col">
+          <div class="scale-block scale-imi-block"></div>
+          <div class="scale-num">~100</div>
+          <div class="scale-label-text">статей<br>оцінив ІМІ</div>
+        </div>
+        <div class="scale-vs">vs</div>
+        <div class="scale-col">
+          <div class="scale-block scale-cz-block">516×</div>
+          <div class="scale-num">51 667</div>
+          <div class="scale-label-text">статей<br>зібрав CensorZero</div>
+        </div>
       </div>
+      <div class="scale-bottom">ІМІ бере <strong>~100 статей за 2 дні</strong>. Ми зібрали <strong>весь публічний масив за 12 місяців</strong>.</div>
     </div>
   </div>
 </header>
@@ -237,6 +252,7 @@ footer a{color:var(--gold)}
   <a href="#random">Перевір сам</a>
   <a href="#methodology">Методологія</a>
   <a href="#imi-q">Питання до ІМІ</a>
+  <a href="graph.html">Граф</a>
   <a href="#data">Дані</a>
 </nav>
 

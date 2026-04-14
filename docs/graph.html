@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Граф паркетності — CensorZero</title>
+<style>
+:root {
+  --navy:#1a365d;--gold:#f6ad55;--g50:#f8fafc;--g100:#f1f5f9;--g200:#e2e8f0;
+  --g400:#94a3b8;--g600:#475569;--g800:#1e293b;--blue:#3b82f6;--green:#22c55e;
+  --font:'Inter',-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--g50);color:var(--g800)}
+
+.top{background:var(--navy);color:#fff;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.top a{color:var(--gold);text-decoration:none;font-size:16px;font-weight:700}
+.top .back{font-size:13px;color:rgba(255,255,255,.7);text-decoration:none}
+.top .back:hover{color:#fff}
+
+main{max-width:1100px;margin:0 auto;padding:32px 24px 80px}
+h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.sub{font-size:14px;color:var(--g600);margin-bottom:32px}
+
+.tabs{display:flex;gap:0;margin-bottom:28px;background:var(--g100);border-radius:10px;padding:4px;max-width:400px}
+.tab{flex:1;padding:10px;text-align:center;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);background:none;color:var(--g600);transition:all .2s}
+.tab.active{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+
+.viz-container{background:#fff;border:1px solid var(--g200);border-radius:12px;padding:24px;min-height:400px}
+.viz-title{font-size:15px;font-weight:700;color:var(--g800);margin-bottom:4px}
+.viz-sub{font-size:12px;color:var(--g400);margin-bottom:20px}
+
+/* Heatmap */
+#heatmap-container{overflow-x:auto}
+.heatmap{border-collapse:collapse;width:100%}
+.heatmap th{padding:8px 6px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--g600);white-space:nowrap}
+.heatmap th.rubric-header{text-align:right;padding-right:12px;min-width:100px}
+.heatmap td{padding:0;text-align:center;position:relative}
+.heat-cell{width:100%;height:48px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;cursor:pointer;transition:transform .15s,box-shadow .15s;border-radius:4px;margin:2px}
+.heat-cell:hover{transform:scale(1.08);box-shadow:0 2px 8px rgba(0,0,0,.2);z-index:5;position:relative}
+.heat-tooltip{display:none;position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--g800);color:#fff;padding:10px 14px;border-radius:8px;font-size:12px;white-space:nowrap;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,.3);pointer-events:none;line-height:1.5}
+.heat-cell:hover + .heat-tooltip,.heat-cell:hover ~ .heat-tooltip{display:block}
+td:hover .heat-tooltip{display:block}
+
+/* Bubble */
+#bubble-container{position:relative}
+.bubble-svg{width:100%;height:500px}
+.bubble-group{cursor:pointer}
+.bubble-group:hover circle{stroke:#fff;stroke-width:2}
+.bubble-label{font-size:11px;font-weight:600;fill:rgba(0,0,0,.7);pointer-events:none;text-anchor:middle}
+.bubble-pct{font-size:10px;fill:rgba(0,0,0,.5);pointer-events:none;text-anchor:middle}
+
+/* Legend */
+.legend{display:flex;align-items:center;gap:16px;margin-top:16px;padding-top:16px;border-top:1px solid var(--g200)}
+.legend-title{font-size:12px;font-weight:600;color:var(--g600)}
+.legend-scale{display:flex;align-items:center;gap:2px}
+.legend-block{width:24px;height:16px;border-radius:2px}
+.legend-label{font-size:10px;color:var(--g400)}
+
+/* Period separator */
+.period-sep{background:var(--g800);color:#fff;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px}
+.p1-header{color:var(--blue)}
+.p2-header{color:var(--green)}
+
+/* Detail panel */
+.detail-panel{display:none;background:var(--g50);border:1px solid var(--g200);border-radius:10px;padding:20px;margin-top:20px}
+.detail-panel.visible{display:block}
+.detail-panel h3{font-size:16px;font-weight:700;margin-bottom:12px}
+.detail-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+.detail-stat{background:#fff;border:1px solid var(--g200);border-radius:8px;padding:12px;text-align:center}
+.detail-stat .dn{font-size:24px;font-weight:700;color:var(--navy)}
+.detail-stat .dl{font-size:11px;color:var(--g600);margin-top:2px}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div style="display:flex;align-items:center;gap:16px">
+    <a href="index.html">CENSOR<span style="color:rgba(255,255,255,.7);font-weight:300">ZERO</span></a>
+    <span style="font-size:13px;color:rgba(255,255,255,.5)">Граф паркетності</span>
+  </div>
+  <a href="index.html" class="back">← Дашборд</a>
+</div>
+
+<main>
+  <h1>Візуалізація паркетності</h1>
+  <p class="sub">Два способи побачити одні й ті самі дані. Натискайте на елементи для деталей.</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showViz('bubble')">🔵 Bubble Map</button>
+    <button class="tab" onclick="showViz('heatmap')">🟧 Heatmap</button>
+  </div>
+
+  <!-- BUBBLE MAP -->
+  <div class="viz-container" id="viz-bubble">
+    <div class="viz-title">Bubble Map: рубрики × місяці × паркетність</div>
+    <div class="viz-sub">Розмір кола = кількість статей. Колір = % паркету (світлий → темний). Натисніть для деталей.</div>
+    <div id="bubble-container"><svg id="bubble-svg" class="bubble-svg"></svg></div>
+    <div class="legend">
+      <span class="legend-title">% паркету:</span>
+      <div class="legend-scale">
+        <div class="legend-block" style="background:#dcfce7"></div>
+        <div class="legend-block" style="background:#86efac"></div>
+        <div class="legend-block" style="background:#fde68a"></div>
+        <div class="legend-block" style="background:#fbbf24"></div>
+        <div class="legend-block" style="background:#f97316"></div>
+        <div class="legend-block" style="background:#ef4444"></div>
+      </div>
+      <span class="legend-label">0%</span>
+      <span class="legend-label">→</span>
+      <span class="legend-label">15%+</span>
+      <span style="margin-left:auto;font-size:12px;color:var(--g400)">
+        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--blue);vertical-align:middle"></span> П1
+        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--green);vertical-align:middle;margin-left:8px"></span> П2
+      </span>
+    </div>
+  </div>
+
+  <!-- HEATMAP -->
+  <div class="viz-container" id="viz-heatmap" style="display:none">
+    <div class="viz-title">Heatmap: % паркету по місяцях та рубриках</div>
+    <div class="viz-sub">Рядки = рубрики, колонки = місяці. Темніший колір = більше паркету. Натисніть для деталей.</div>
+    <div id="heatmap-container"></div>
+    <div class="legend">
+      <span class="legend-title">% паркету:</span>
+      <div class="legend-scale">
+        <div class="legend-block" style="background:#f0fdf4"></div>
+        <div class="legend-block" style="background:#bbf7d0"></div>
+        <div class="legend-block" style="background:#fef9c3"></div>
+        <div class="legend-block" style="background:#fde68a"></div>
+        <div class="legend-block" style="background:#fdba74"></div>
+        <div class="legend-block" style="background:#f87171"></div>
+        <div class="legend-block" style="background:#dc2626"></div>
+      </div>
+      <span class="legend-label">0%</span>
+      <span class="legend-label">→</span>
+      <span class="legend-label">20%+</span>
+    </div>
+  </div>
+
+  <!-- DETAIL PANEL -->
+  <div class="detail-panel" id="detail-panel">
+    <h3 id="detail-title"></h3>
+    <div class="detail-stats" id="detail-stats"></div>
+    <a id="detail-link" href="explorer.html" style="font-size:13px;color:var(--blue);font-weight:600">Переглянути всі статті цієї клітинки в Explorer →</a>
+  </div>
+</main>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+let GRAPH_DATA = [];
+const RUBRIC_LABELS = {
+  'ato':'АТО / Оборона','polytics':'Політика','economy':'Економіка',
+  'society':'Суспільство','regions':'Регіони',
+  'tymchasovo-okupovani':'Окуповані','vidbudova':'Відбудова'
+};
+const MONTH_SHORT = m => {
+  const [y,mm] = m.split('-');
+  const names = ['Січ','Лют','Бер','Кві','Тра','Чер','Лип','Сер','Вер','Жов','Лис','Гру'];
+  return names[parseInt(mm)-1] + ' ' + y.slice(2);
+};
+
+async function init() {
+  const r = await fetch('graph_data.json');
+  GRAPH_DATA = await r.json();
+  buildBubble();
+  buildHeatmap();
+}
+
+// ============================================================
+// TAB SWITCH
+// ============================================================
+function showViz(which) {
+  document.getElementById('viz-bubble').style.display = which==='bubble'?'block':'none';
+  document.getElementById('viz-heatmap').style.display = which==='heatmap'?'block':'none';
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('detail-panel').classList.remove('visible');
+}
+
+// ============================================================
+// COLOR SCALE
+// ============================================================
+function parketColor(pct) {
+  if (pct <= 2) return '#dcfce7';
+  if (pct <= 4) return '#bbf7d0';
+  if (pct <= 6) return '#fef9c3';
+  if (pct <= 8) return '#fde68a';
+  if (pct <= 10) return '#fdba74';
+  if (pct <= 15) return '#f87171';
+  return '#dc2626';
+}
+
+function periodBorder(period) {
+  return period === 'p1' ? '#3b82f6' : '#22c55e';
+}
+
+// ============================================================
+// BUBBLE MAP (using SVG, no D3 dependency)
+// ============================================================
+function buildBubble() {
+  const svg = document.getElementById('bubble-svg');
+  const W = svg.clientWidth || 800;
+  const H = 500;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  // Group by rubric
+  const rubrics = {};
+  GRAPH_DATA.forEach(d => {
+    if (!rubrics[d.rubric]) rubrics[d.rubric] = [];
+    rubrics[d.rubric].push(d);
+  });
+
+  const rubricKeys = Object.keys(rubrics).sort();
+  const nRubrics = rubricKeys.length;
+
+  // Layout: rubrics in a row, months as circles inside
+  const rubricW = W / nRubrics;
+  let html = '';
+
+  rubricKeys.forEach((rub, ri) => {
+    const cx = rubricW * ri + rubricW/2;
+    const items = rubrics[rub].sort((a,b) => a.month.localeCompare(b.month));
+    const maxTotal = Math.max(...items.map(d=>d.total), 1);
+
+    // Big rubric label
+    html += `<text x="${cx}" y="28" text-anchor="middle" font-size="12" font-weight="700" fill="#1e293b">${RUBRIC_LABELS[rub]||rub}</text>`;
+
+    // Position months in a grid within this rubric column
+    const cols = 3;
+    const rows = Math.ceil(items.length / cols);
+    const cellW = (rubricW - 16) / cols;
+    const cellH = (H - 60) / rows;
+
+    items.forEach((d, di) => {
+      const col = di % cols;
+      const row = Math.floor(di / cols);
+      const x = cx - (rubricW-16)/2 + col * cellW + cellW/2;
+      const y = 50 + row * cellH + cellH/2;
+      const r = Math.sqrt(d.total / maxTotal) * Math.min(cellW, cellH) / 2.2;
+      const color = parketColor(d.parket_pct);
+      const border = periodBorder(d.period);
+      const label = MONTH_SHORT(d.month);
+
+      html += `<g class="bubble-group" onclick="showDetail('${d.month}','${d.rubric}')">
+        <circle cx="${x}" cy="${y}" r="${Math.max(r,12)}" fill="${color}" stroke="${border}" stroke-width="2" opacity="0.85"/>
+        <text class="bubble-label" x="${x}" y="${y-2}">${label}</text>
+        <text class="bubble-pct" x="${x}" y="${y+11}">${d.parket_pct}%</text>
+      </g>`;
+    });
+  });
+
+  svg.innerHTML = html;
+}
+
+// ============================================================
+// HEATMAP
+// ============================================================
+function buildHeatmap() {
+  const rubrics = [...new Set(GRAPH_DATA.map(d=>d.rubric))].sort();
+  const months = [...new Set(GRAPH_DATA.map(d=>d.month))].sort();
+  const lookup = {};
+  GRAPH_DATA.forEach(d => { lookup[d.month+'|'+d.rubric] = d; });
+
+  // Find gap between periods
+  const p1months = months.filter(m => m < '2025');
+  const p2months = months.filter(m => m >= '2025');
+
+  let html = '<table class="heatmap"><thead><tr><th class="rubric-header"></th>';
+
+  // P1 headers
+  p1months.forEach(m => {
+    html += `<th class="p1-header">${MONTH_SHORT(m)}</th>`;
+  });
+  html += `<th style="width:20px"></th>`; // Gap
+  p2months.forEach(m => {
+    html += `<th class="p2-header">${MONTH_SHORT(m)}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+
+  rubrics.forEach(rub => {
+    html += `<tr><th class="rubric-header">${RUBRIC_LABELS[rub]||rub}</th>`;
+
+    p1months.forEach(m => {
+      const d = lookup[m+'|'+rub];
+      html += renderHeatCell(d, m, rub);
+    });
+    html += `<td style="background:var(--g800);width:4px;padding:0"></td>`;
+    p2months.forEach(m => {
+      const d = lookup[m+'|'+rub];
+      html += renderHeatCell(d, m, rub);
+    });
+    html += '</tr>';
+  });
+
+  html += '</tbody></table>';
+  document.getElementById('heatmap-container').innerHTML = html;
+}
+
+function renderHeatCell(d, month, rubric) {
+  if (!d) return '<td><div class="heat-cell" style="background:var(--g100);color:var(--g300)">—</div></td>';
+  const bg = parketColor(d.parket_pct);
+  const textColor = d.parket_pct > 10 ? '#fff' : '#1e293b';
+  return `<td style="position:relative">
+    <div class="heat-cell" style="background:${bg};color:${textColor}"
+         onclick="showDetail('${month}','${rubric}')">${d.parket_pct}%</div>
+    <div class="heat-tooltip">
+      <strong>${MONTH_SHORT(month)} · ${RUBRIC_LABELS[rubric]||rubric}</strong><br>
+      Статей: ${d.total.toLocaleString('uk')}<br>
+      Паркет: ${d.parket} (${d.parket_pct}%)<br>
+      Сер. джерел: ${d.avg_sources}
+    </div>
+  </td>`;
+}
+
+// ============================================================
+// DETAIL PANEL
+// ============================================================
+function showDetail(month, rubric) {
+  const d = GRAPH_DATA.find(x => x.month===month && x.rubric===rubric);
+  if (!d) return;
+
+  const panel = document.getElementById('detail-panel');
+  panel.classList.add('visible');
+
+  document.getElementById('detail-title').textContent =
+    `${MONTH_SHORT(month)} · ${RUBRIC_LABELS[rubric]||rubric} · ${d.period==='p1'?'Період 1':'Період 2'}`;
+
+  document.getElementById('detail-stats').innerHTML = `
+    <div class="detail-stat"><div class="dn">${d.total.toLocaleString('uk')}</div><div class="dl">статей</div></div>
+    <div class="detail-stat"><div class="dn" style="color:#d97706">${d.parket_pct}%</div><div class="dl">паркет (${d.parket})</div></div>
+    <div class="detail-stat"><div class="dn" style="color:#ef4444">${d.balance_pct}%</div><div class="dl">дисбаланс (${d.balance})</div></div>
+    <div class="detail-stat"><div class="dn">${d.avg_sources}</div><div class="dl">сер. джерел</div></div>
+  `;
+
+  // Link to explorer with filters
+  document.getElementById('detail-link').href =
+    `explorer.html#month=${month}&rubric=${rubric}`;
+
+  panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+init();
+</script>
+</body>
+</html>
