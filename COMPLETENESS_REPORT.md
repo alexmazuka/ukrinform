@@ -72,7 +72,7 @@ Independent re-check of all 50 weekly sitemaps against updated corpus:
 
 | Parameter | IMI | CensorZero |
 |-----------|-----|------------|
-| Sample size per media | ~100 articles | **51,667 articles** |
+| Sample size per media | ~100 articles | **51,589 audited** (51,667 collected) |
 | Collection period | 2 days | Full study period (5.5 + 5.5 months) |
 | **Scale multiplier** | 1x | **~516x larger** |
 | Assessment method | Manual (experts) | Algorithmic (reproducible) |
@@ -81,7 +81,7 @@ Independent re-check of all 50 weekly sitemaps against updated corpus:
 
 ## 6. Data Quality Notes
 
-- All 51,667 records have valid ISO dates
+- All 51,667 records have valid ISO dates (51,589 successfully audited, 78 fetch failures)
 - All records belong to 7 primary rubrics monitored
 - URL deduplication applied (no duplicate articles)
 - Records from recovery (9,594) have `audited=False` — require HTML parsing in Phase 1
@@ -104,7 +104,7 @@ These remain available as backup verification methods if needed.
 
 | File | Description |
 |------|-------------|
-| `data/corpus_fast.csv` | Complete corpus (51,667 records) |
+| `data/corpus_fast.csv` | Complete corpus (51,667 collected, 51,589 audited) |
 | `data/recovered_jan_feb_2024.json` | Recovery audit trail (9,594 URLs) |
 | `data/COMPLETENESS_REPORT.json` | Machine-readable verification results |
 | `scripts/verify_completeness.py` | Verification script (reproducible) |
