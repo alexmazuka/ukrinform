@@ -1,0 +1,189 @@
+{
+  "generated_at": "2026-04-14",
+  "known_reports": [
+    {
+      "url": "https://imi.org.ua/monitorings/bilyj-spysok-imi-za-pershe-pivrichchya-2024-roku",
+      "slug": "white_list_2024-04-26_bilyj-spysok-imi-za-pershe-pivrichchya-2024-roku",
+      "fetched_at": "2026-04-14",
+      "status": 404,
+      "html_file": null,
+      "wayback_url": null,
+      "title": null,
+      "text_excerpt": null,
+      "error": "HTTP 404",
+      "report_type": "white_list",
+      "period": "H1 2024",
+      "note": "Ukrinform EXCLUDED. Reason: \"паркетні повідомлення\" та недостатній баланс думок",
+      "ukrinform_status": "EXCLUDED"
+    },
+    {
+      "url": "https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2024-roku-uvishly-13-media-i64640",
+      "slug": "white_list_2024-11-01_bilyj-spysok-imi-za-druge-pivrichchya-2024-roku-uvishly-13-media-i64640",
+      "fetched_at": "2026-04-14",
+      "status": 200,
+      "html_file": "white_list_2024-11-01_bilyj-spysok-imi-za-druge-pivrichchya-2024-roku-uvishly-13-media-i64640.html",
+      "wayback_url": null,
+      "title": "Білий список ІМІ за друге півріччя 2024 року: увійшли 13 медіа",
+      "text_excerpt": "До Списку прозорих та відповідальних медіа, відомого як Білий список, у другому півріччі 2024 року ввійшли такі редакції: Суспільне, Радіо Свобода, “Українська правда”, “Бабель”, Громадське, “Тексти”, ZN,ua, “Еспресо”, “Слово і діло”, “Український тиждень”, Громадське радіо, NV та “Ґрати”. Такими є результати двоетапного глибинного моніторингу онлайн-медіа, який Інститут масової інформації (ІМІ) проводить раз на пів року. Оцінювання охоплює критерії прозорості, відповідальності, дотримання журналістських стандартів, а також чітке маркування рекламних матеріалів. До списку приєдналося нове видання – “Ґрати”, яке спеціалізується на висвітленні суспільно-політичних подій через призму судових процесів і правових питань. Повернувся до Білого списку сайт NV, який удосконалив маркування рекламного контенту і видалив із сайту розділи, пов’язані з гральним бізнесом, демонструючи відповідальне ставлення до аудиторії. Білий список, до якого ввійшли 13 медіа в другому півріччі 2024 року З методоло",
+      "error": null,
+      "report_type": "white_list",
+      "period": "H2 2024",
+      "note": "Ukrinform NOT returned. 13 media included.",
+      "ukrinform_status": "EXCLUDED"
+    },
+    {
+      "url": "https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2025-roku-uvijshly-17-media",
+      "slug": "white_list_2025-12-16_bilyj-spysok-imi-za-druge-pivrichchya-2025-roku-uvijshly-17-media",
+      "fetched_at": "2026-04-14",
+      "status": 200,
+      "html_file": "white_list_2025-12-16_bilyj-spysok-imi-za-druge-pivrichchya-2025-roku-uvijshly-17-media.html",
+      "wayback_url": null,
+      "title": "Білий список ІМІ за друге півріччя 2025 року: увійшли 17 медіа",
+      "text_excerpt": "До Списку прозорих та відповідальних медіа, відомого також як Білий список, у другому півріччі 2025 року ввійшли такі онлайн-видання: Суспільне Новини Еспресо Бабель Українська правда Радіо Свобода hromadske ZN,UA Тексти LB.ua Укрінформ Ґрати Громадське радіо Український тиждень Рубрика Слово і Діло Новинарня Frontliner Такими є результати двоетапного глибинного моніторингу онлайн-медіа, який провів Інститут масової інформації (ІМІ). Оцінювання охоплює критерії прозорості, відповідальності, дотримання журналістських стандартів, а також чітке маркування рекламних матеріалів. Уперше до списку приєдналися нові видання: LB.ua (спеціалізується на висвітленні суспільно-політичних подій); Frontliner (медіа про війну РФ проти України, готує репортажі та статті про військових і цивільних); Новинарня (пише про війну з Росією, військових, ветеранів, висвітлює проблеми переселенців); Рубрика (видання журналістики рішень). Після тривалої перерви до Білого списку повернувся Укрінформ , який удоскона",
+      "error": null,
+      "report_type": "white_list",
+      "period": "H2 2025",
+      "note": "Ukrinform RETURNED. 17 media included.",
+      "ukrinform_status": "INCLUDED"
+    },
+    {
+      "url": "https://imi.org.ua/monitorings/novyny-pid-chas-vijny-analiz-profesijnyh-standartiv-providnyh-onlajn-media-u-veresni-2024-roku-i64521",
+      "slug": "methodology_2024-10-01_novyny-pid-chas-vijny-analiz-profesijnyh-standartiv-providnyh-onlajn-media-u-ver",
+      "fetched_at": "2026-04-14",
+      "status": 200,
+      "html_file": "methodology_2024-10-01_novyny-pid-chas-vijny-analiz-profesijnyh-standartiv-providnyh-onlajn-media-u-ver.html",
+      "wayback_url": null,
+      "title": "Новини під час війни. Аналіз професійних стандартів провідних онлайн-медіа у вересні 2024 року",
+      "text_excerpt": "Останні дані моніторингу, проведеного Інститутом масової інформації серед популярних онлайн-медіа України, демонструють, що загальна частка дотримання журналістських стандартів зросла на 2,5% в порівнянні з червнем 2024 року. Незважаючи на загальне зростання якості контенту, показник балансу знизився на 0,6%. Це може бути пов’язане з тим, що медіа стали частіше публікувати матеріали з ознаками замовності або спонсоровані публікації, де присутнє однобоке подання інформації. Водночас медіа покращили маркування джерел інформації на 2,4%, що свідчить про посилення уваги редакцій до прозорості і якісної роботи з фактами. Показник відділення фактів і коментарів також зріс на 3,6% порівняно з попереднім моніторинговим періодом, що свідчить про зусилля редакцій, спрямовані на зменшення суб’єктивності в новинних матеріалах. Такими є результати моніторингу професійних стандартів від Інституту масової інформації* в порівнянні з висновками попереднього моніторингу, що був проведений у червні 2024 ",
+      "error": null,
+      "report_type": "methodology",
+      "period": "September 2024",
+      "note": "Key methodology source: 100 articles per media over 2 days. 14 indicators.",
+      "ukrinform_status": null
+    },
+    {
+      "url": "https://detector.media/community/article/226025/2024-04-26-oleksiy-matsuka-dlya-nas-bulo-neochikuvanym-rishennya-imi-pro-vyklyuchennya-ukrinformu-z-bilogo-spysku/",
+      "slug": "context_2024-04-26_",
+      "fetched_at": "2026-04-14",
+      "status": 200,
+      "html_file": "context_2024-04-26_.html",
+      "wayback_url": null,
+      "title": "Олексій Мацука: Для нас було неочікуваним рішення ІМІ про виключення Укрінформу з «Білого списку»",
+      "text_excerpt": null,
+      "error": null,
+      "report_type": "context",
+      "period": "2024-04-26",
+      "note": "Matsuka reaction to IMI exclusion — Detector Media",
+      "ukrinform_status": null
+    },
+    {
+      "url": "https://detector.media/infospace/article/234255/2024-11-01-imi-onovyv-bilyy-spysok-prozorykh-i-vidpovidalnykh-media/",
+      "slug": "context_2024-11-01_",
+      "fetched_at": "2026-04-14",
+      "status": 200,
+      "html_file": "context_2024-11-01_.html",
+      "wayback_url": null,
+      "title": "ІМІ оновив «Білий список» прозорих і відповідальних медіа",
+      "text_excerpt": null,
+      "error": null,
+      "report_type": "context",
+      "period": "2024",
+      "note": "Detector: IMI updated white list Nov 2024 — Ukrinform not returned",
+      "ukrinform_status": null
+    },
+    {
+      "url": "https://imi.org.ua/news/sergij-cherevatyj-ukrinform-boretsya-za-povernennya-do-bilogo-spysku-i65189",
+      "slug": "context_2024-11-01_sergij-cherevatyj-ukrinform-boretsya-za-povernennya-do-bilogo-spysku-i65189",
+      "fetched_at": "2026-04-14",
+      "status": 200,
+      "html_file": "context_2024-11-01_sergij-cherevatyj-ukrinform-boretsya-za-povernennya-do-bilogo-spysku-i65189.html",
+      "wayback_url": null,
+      "title": "Сергій Череватий: Укрінформ бореться за повернення до Білого списку",
+      "text_excerpt": "Укрінформ бореться за повернення до Списку прозорих та відповідальних медіа, відомого як Білий список ІМІ, а генеральний директор агенції Сергій Череватий обіцяє “жорсткі й негайні” наслідки, якщо помітить “хоча б натяк на якусь джинсу”. Сергій Череватий. Фото – АрміяInform Про це Сергій Череватий розповів під час онлайн-зустрічі “Полковникові багато пишуть: Сергій Череватий про виклики керування державним інформаційним медіа”, повідомляє “Детектор медіа”. “До уваги беруться винятково професійні якості та доброчесність співробітників. Так, наприклад, якщо я помічу в матеріалі хоча б натяк на якусь джинсу або замовність, наслідки будуть жорсткими й негайними. Раз ми боремося за повернення Укрінформу до Білого списку, то маємо бути бездоганними. Моя головна задача – зробити для журналістів комфортні умови й убезпечити їх від будь-якого тиску”, – зазначив Сергій Череватий. Нагадаємо, у квітні 2024 року ІМІ оновив Список прозорих та відповідальних медіа , відомого також як Білий список най",
+      "error": null,
+      "report_type": "context",
+      "period": "2024",
+      "note": "IMI: Cherevaty says Ukrinform is fighting for return to White List",
+      "ukrinform_status": null
+    }
+  ],
+  "discovered_reports": [
+    {
+      "url": "https://imi.org.ua/monitorings/doslidzhennya-profesijnyh-standartiv",
+      "slug": "discovered_doslidzhennya-profesijnyh-standartiv",
+      "fetched_at": "2026-04-14",
+      "status": 200,
+      "html_file": "discovered_doslidzhennya-profesijnyh-standartiv.html",
+      "wayback_url": null,
+      "title": "Моніторинги та матеріали",
+      "text_excerpt": "Моніторинги та матеріали Рубрика Всі Опитування ІМІ Моніторинг прозорості медіа Матеріали Інтерв'ю Методології моніторингів Моніторинг джинси Барометр свободи слова Моніторинг стандартів Моніторинг контенту Моніторинг дезінформації Моніторинг соціальних мереж Регіональна аналітика Роз’яснення юристів Гендерний моніторинг Інше Моніторинг стандартів Перейти до У регіональних медіа погіршилося дотримання базових стандартів журналістики – ІМІ У регіональних медіа погіршилося дотримання базових стандартів журналістики – ІМІ Моніторинг Моніторинг стандартів 19.01.2026, 15:58 Оксана Романюк Перейти до Стандарти та джинса в медіа: підсумки 2025 року Стандарти та джинса в медіа: підсумки 2025 року Моніторинг Моніторинг стандартів 26.12.2025, 11:35 Дмитро Баркар Перейти до 253 українських ресурси потрапили на Мапу рекомендованих медіа від ІМІ та ДМ у 2025 році 253 українських ресурси потрапили на Мапу рекомендованих медіа від ІМІ та ДМ у 2025 році Моніторинг Моніторинг стандартів 18.12.2025, 16:",
+      "error": null,
+      "title_hint": "Моніторинг стандартів",
+      "report_type": "discovered"
+    }
+  ],
+  "wayback_archive_attempts": [
+    {
+      "url": "https://imi.org.ua/monitorings/bilyj-spysok-imi-za-pershe-pivrichchya-2024-roku",
+      "archived_url": null,
+      "success": false
+    },
+    {
+      "url": "https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2024-roku-uvishly-13-media-i64640",
+      "archived_url": null,
+      "success": false
+    },
+    {
+      "url": "https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2025-roku-uvijshly-17-media",
+      "archived_url": null,
+      "success": false
+    },
+    {
+      "url": "https://imi.org.ua/monitorings/novyny-pid-chas-vijny-analiz-profesijnyh-standartiv-providnyh-onlajn-media-u-veresni-2024-roku-i64521",
+      "archived_url": null,
+      "success": false
+    }
+  ],
+  "summary": {
+    "total_reports_fetched": 6,
+    "total_discovered": 1,
+    "wayback_archived": 0,
+    "white_lists_structured": 2,
+    "html_files_saved": 7
+  },
+  "white_list_data": {
+    "H2 2024": {
+      "url": "https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2024-roku-uvishly-13-media-i64640",
+      "date": "2026-04-14",
+      "title": "Білий список ІМІ за друге півріччя 2024 року: увійшли 13 медіа",
+      "ukrinform_status": "EXCLUDED",
+      "media_mentioned": [
+        "NV",
+        "Громадське",
+        "Радіо Свобода",
+        "Тексти",
+        "Тиждень",
+        "Слово і діло",
+        "Українська правда"
+      ],
+      "text_excerpt": "До Списку прозорих та відповідальних медіа, відомого як Білий список, у другому півріччі 2024 року ввійшли такі редакції: Суспільне, Радіо Свобода, “Українська правда”, “Бабель”, Громадське, “Тексти”, ZN,ua, “Еспресо”, “Слово і діло”, “Український тиждень”, Громадське радіо, NV та “Ґрати”. Такими є результати двоетапного глибинного моніторингу онлайн-медіа, який Інститут масової інформації (ІМІ) проводить раз на пів року. Оцінювання охоплює критерії прозорості, відповідальності, дотримання журна"
+    },
+    "H2 2025": {
+      "url": "https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2025-roku-uvijshly-17-media",
+      "date": "2026-04-14",
+      "title": "Білий список ІМІ за друге півріччя 2025 року: увійшли 17 медіа",
+      "ukrinform_status": "INCLUDED",
+      "media_mentioned": [
+        "Укрінформ",
+        "Громадське",
+        "Радіо Свобода",
+        "Тексти",
+        "Тиждень",
+        "Слово і діло",
+        "Українська правда",
+        "Lb.ua"
+      ],
+      "text_excerpt": "До Списку прозорих та відповідальних медіа, відомого також як Білий список, у другому півріччі 2025 року ввійшли такі онлайн-видання: Суспільне Новини Еспресо Бабель Українська правда Радіо Свобода hromadske ZN,UA Тексти LB.ua Укрінформ Ґрати Громадське радіо Український тиждень Рубрика Слово і Діло Новинарня Frontliner Такими є результати двоетапного глибинного моніторингу онлайн-медіа, який провів Інститут масової інформації (ІМІ). Оцінювання охоплює критерії прозорості, відповідальності, дотр"
+    }
+  }
+}

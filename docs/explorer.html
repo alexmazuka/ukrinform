@@ -233,7 +233,7 @@ function applyFilters() {
   filtered = allData.filter(row => {
     if (q && !row.t?.toLowerCase().includes(q) &&
             !row.r?.toLowerCase().includes(q) &&
-            !row.ex?.toLowerCase().includes(q)) return false;
+            !row.r?.toLowerCase().includes(q)) return false;
     if (period === 'matsuka' && !row.d?.startsWith('202') ) return false;
     if (period === 'matsuka' && row.d >= '2025') return false;
     if (period === 'reinclusion' && row.d < '2025') return false;
@@ -291,7 +291,7 @@ function renderTable() {
 
     const rubricLabel = RUBRIC_LABELS[row.r] || row.r || '';
     const title = row.t || row.u?.split('/').pop()?.replace(/-/g,' ') || '—';
-    const excerpt = row.ex ? `<div class="excerpt">${row.ex}</div>` : '';
+    const excerpt = '';
 
     return `<tr>
       <td class="td-date">${row.d || ''}</td>
