@@ -334,8 +334,74 @@ footer a{color:var(--gold)}
     <div id="figures-chart"></div>
   </div>
 
+  <!-- Opposition & balance analysis -->
+  <div style="background:#fff;border:1px solid var(--g200);border-radius:12px;overflow:hidden;margin-bottom:20px">
+    <div style="background:var(--navy);padding:14px 18px;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px">
+      <span style="font-size:18px">⚖️</span> Висвітлення опозиції та баланс думок
+    </div>
+    <div style="padding:20px">
+
+      <div style="font-size:14px;font-weight:700;color:var(--g800);margin-bottom:14px">Влада vs Критичні голоси</div>
+
+      <!-- Visual comparison: two big numbers -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+        <div style="text-align:center;padding:20px;background:var(--g50);border-radius:10px">
+          <div style="font-size:11px;color:var(--g400);margin-bottom:4px">Статті про владу</div>
+          <div style="display:flex;justify-content:center;gap:20px;align-items:baseline">
+            <div><span style="font-size:28px;font-weight:700;color:#1e40af">28.7%</span><br><span style="font-size:11px;color:var(--g400)">П1</span></div>
+            <div style="font-size:16px;color:var(--g300)">=</div>
+            <div><span style="font-size:28px;font-weight:700;color:#166534">28.7%</span><br><span style="font-size:11px;color:var(--g400)">П2</span></div>
+          </div>
+        </div>
+        <div style="text-align:center;padding:20px;background:var(--g50);border-radius:10px">
+          <div style="font-size:11px;color:var(--g400);margin-bottom:4px">Статті з критичними голосами</div>
+          <div style="display:flex;justify-content:center;gap:20px;align-items:baseline">
+            <div><span style="font-size:28px;font-weight:700;color:#1e40af">1.1%</span><br><span style="font-size:11px;color:var(--g400)">П1</span></div>
+            <div style="font-size:16px;color:var(--g300)">≈</div>
+            <div><span style="font-size:28px;font-weight:700;color:#166534">1.2%</span><br><span style="font-size:11px;color:var(--g400)">П2</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opposition details table -->
+      <div style="font-size:14px;font-weight:700;color:var(--g800);margin-bottom:10px">Згадки опозиційних фігур та критичних голосів</div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead>
+            <tr style="border-bottom:2px solid var(--g200)">
+              <th style="text-align:left;padding:8px;color:var(--g600)">Категорія</th>
+              <th style="text-align:right;padding:8px;color:#1e40af">П1</th>
+              <th style="text-align:right;padding:8px;color:#166534">П2</th>
+              <th style="text-align:right;padding:8px;color:var(--g400)">Δ</th>
+            </tr>
+          </thead>
+          <tbody id="opposition-table"></tbody>
+        </table>
+      </div>
+
+      <!-- Balance markers -->
+      <div style="font-size:14px;font-weight:700;color:var(--g800);margin:20px 0 10px">Маркери балансу у статтях про владу</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+        <div style="padding:14px;background:#dbeafe;border-radius:8px;text-align:center">
+          <div style="font-size:11px;color:#1e40af;margin-bottom:4px">П1 (Мацука)</div>
+          <div style="font-size:24px;font-weight:700;color:#1e40af">1.4%</div>
+          <div style="font-size:11px;color:#3b82f6">статей про владу містять баланс</div>
+        </div>
+        <div style="padding:14px;background:#dcfce7;border-radius:8px;text-align:center">
+          <div style="font-size:11px;color:#166534;margin-bottom:4px">П2 (після відходу)</div>
+          <div style="font-size:24px;font-weight:700;color:#166534">2.2%</div>
+          <div style="font-size:11px;color:#22c55e">статей про владу містять баланс</div>
+        </div>
+      </div>
+
+      <div style="padding:12px 16px;background:#fefce8;border-left:3px solid #eab308;border-radius:0 8px 8px 0;font-size:13px;color:#713f12;line-height:1.6">
+        <strong>Що це означає:</strong> Укрінформ — переважно трансляція офіційних повідомлень. Це можна критикувати як модель журналістики. Але ці пропорції <strong>не змінились зі зміною керівника</strong>. ІМІ застосував санкцію лише до одного періоду — хоча структура контенту ідентична.
+      </div>
+    </div>
+  </div>
+
   <div class="note ok">
-    <strong>Підсумок:</strong> Незалежно від зрізу — загальна статистика, персоналії, рубрики, глибина джерел — структура контенту Укрінформу залишилась стабільною. Дані не підтверджують, що якість журналістики суттєво змінилась зі зміною керівництва.
+    <strong>Загальний підсумок:</strong> По кожному зрізу — загальна статистика, персоналії, рубрики, глибина джерел, висвітлення опозиції — структура контенту Укрінформу залишилась стабільною. Дані не підтверджують, що якість журналістики змінилась зі зміною керівництва.
   </div>
 </section>
 
@@ -811,9 +877,40 @@ function buildFiguresChart() {
   }).join('');
 }
 
+// ============================================================
+// OPPOSITION TABLE
+// ============================================================
+const OPPOSITION_DATA = [
+  {name:'Опозиція (загальне)', p1:'1.4%', p2:'1.2%', d:'-0.21'},
+  {name:'Критичні маркери (розкритикував, засудив…)', p1:'1.6%', p2:'1.8%', d:'+0.25'},
+  {name:'Маркери балансу (водночас, натомість…)', p1:'1.5%', p2:'1.7%', d:'+0.20'},
+  {name:'Громадські організації / волонтери', p1:'1.6%', p2:'1.4%', d:'-0.25'},
+  {name:'Антикорупційні / Шабунін', p1:'0.4%', p2:'0.2%', d:'-0.16'},
+  {name:'Гончаренко', p1:'0.1%', p2:'0.2%', d:'+0.15'},
+  {name:'Порошенко / ЄС', p1:'0.03%', p2:'0.04%', d:'≈0'},
+  {name:'Тимошенко / Батьківщина', p1:'0.2%', p2:'0.1%', d:'-0.06'},
+  {name:'Безугла', p1:'0.05%', p2:'0.02%', d:'-0.04'},
+];
+
+function buildOppositionTable() {
+  const tbody = document.getElementById('opposition-table');
+  if (!tbody) return;
+  tbody.innerHTML = OPPOSITION_DATA.map(r => {
+    const dVal = parseFloat(r.d) || 0;
+    const dColor = Math.abs(dVal) < 0.1 ? 'var(--g400)' : dVal > 0 ? '#16a34a' : '#dc2626';
+    return `<tr style="border-bottom:1px solid var(--g100)">
+      <td style="padding:8px">${r.name}</td>
+      <td style="text-align:right;padding:8px;font-weight:600;color:#1e40af">${r.p1}</td>
+      <td style="text-align:right;padding:8px;font-weight:600;color:#166534">${r.p2}</td>
+      <td style="text-align:right;padding:8px;color:${dColor}">${r.d}пп</td>
+    </tr>`;
+  }).join('');
+}
+
 // Init
 init();
 buildFiguresChart();
+buildOppositionTable();
 </script>
 </body>
 </html>
