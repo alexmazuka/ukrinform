@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1a365d"/>
+  <rect y="580" width="1200" height="50" fill="#f6ad55"/>
+  <!-- Title -->
+  <text x="80" y="120" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#f6ad55" letter-spacing="3">CENSORZERO · НЕЗАЛЕЖНИЙ АУДИТ</text>
+  <!-- Main number -->
+  <text x="80" y="230" font-family="Inter, Arial, sans-serif" font-size="80" font-weight="800" fill="white">51 589</text>
+  <text x="80" y="280" font-family="Inter, Arial, sans-serif" font-size="28" fill="rgba(255,255,255,0.7)">статей Укрінформу · два періоди · одне питання</text>
+  <!-- Stats -->
+  <rect x="80" y="320" width="320" height="100" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="100" y="355" font-family="Inter, Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.5)">Паркет — П1 (Мацука)</text>
+  <text x="100" y="400" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="white">6.61%</text>
+  <rect x="440" y="320" width="320" height="100" rx="12" fill="rgba(255,255,255,0.1)"/>
+  <text x="460" y="355" font-family="Inter, Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.5)">Паркет — П2 (після)</text>
+  <text x="460" y="400" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="white">6.01%</text>
+  <rect x="800" y="320" width="320" height="100" rx="12" fill="rgba(246,173,85,0.2)"/>
+  <text x="820" y="355" font-family="Inter, Arial, sans-serif" font-size="14" fill="#f6ad55">Cohen's d</text>
+  <text x="820" y="400" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f6ad55">0.025</text>
+  <!-- Bottom text -->
+  <text x="80" y="490" font-family="Inter, Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.6)">Різниця між періодами — мізерна. Рішення ІМІ не знаходить</text>
+  <text x="80" y="520" font-family="Inter, Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.6)">підтвердження в даних. Перевірте самостійно.</text>
+  <!-- Footer -->
+  <text x="80" y="615" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#1a365d">alexmazuka.github.io/ukrinform</text>
+  <text x="700" y="615" font-family="Inter, Arial, sans-serif" font-size="14" fill="#1a365d">GitHub: alexmazuka/ukrinform · Відкриті дані</text>
+</svg>

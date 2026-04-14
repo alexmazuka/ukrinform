@@ -6,7 +6,14 @@
 <title>CensorZero: Аудит оцінок ІМІ — Укрінформ</title>
 <meta name="description" content="51 589 статей Укрінформу. Два періоди. Перевірте дані самостійно.">
 <meta property="og:title" content="CensorZero: 51 589 статей Укрінформу — незалежний аудит">
-<meta property="og:description" content="ІМІ оцінив ~100 статей. Ми зібрали повний масив і перевірили ті самі критерії. Результати відкриті.">
+<meta property="og:description" content="ІМІ оцінив ~100 статей за 2 дні. Ми зібрали 51 589 і перевірили ті самі критерії. Різниця між періодами — мізерна. Перевірте самі.">
+<meta property="og:image" content="https://alexmazuka.github.io/ukrinform/og-image.svg">
+<meta property="og:url" content="https://alexmazuka.github.io/ukrinform/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="51 589 статей Укрінформу. Два періоди. Одне питання.">
+<meta name="twitter:description" content="Паркет: 6.61% vs 6.01%. Cohen's d = 0.025. Різниця мізерна. Відкриті дані, відкритий код.">
+<meta name="twitter:image" content="https://alexmazuka.github.io/ukrinform/og-image.svg">
 <style>
 :root {
   --navy:#1a365d; --navy-l:#2a4a7f; --gold:#f6ad55; --gold-l:#fbd38d; --gold-d:#d97706;
@@ -219,6 +226,7 @@ footer a{color:var(--gold)}
       <a href="#findings" class="btn btn-gold">Дослідити дані</a>
       <a href="explorer.html" class="btn btn-white">📋 Перевірити будь-яку статтю</a>
       <a href="#methodology" class="btn btn-ghost">Методологія</a>
+      <a href="en.html" class="btn btn-ghost">🌐 English</a>
     </div>
   </div>
 
@@ -264,6 +272,38 @@ footer a{color:var(--gold)}
 </nav>
 
 <main>
+
+<!-- ======== EXECUTIVE SUMMARY ======== -->
+<section id="summary" style="margin-bottom:48px">
+  <div style="background:linear-gradient(135deg,#1a365d 0%,#2a4a7f 100%);border-radius:14px;padding:36px 32px;color:#fff;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:rgba(246,173,85,.08);border-radius:50%"></div>
+    <div style="position:absolute;bottom:-60px;left:-30px;width:160px;height:160px;background:rgba(246,173,85,.05);border-radius:50%"></div>
+    <div style="position:relative">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Executive Summary · 30 секунд</div>
+
+      <div style="display:grid;grid-template-columns:40px 1fr;gap:14px;margin-bottom:18px;align-items:start">
+        <div style="width:36px;height:36px;background:rgba(246,173,85,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px">1</div>
+        <p style="font-size:15px;color:rgba(255,255,255,.9);line-height:1.6;margin:0">
+          <strong style="color:#fff">Ми зібрали 51 589 статей Укрінформу</strong> за два періоди: при Олексії Мацуці (листопад 2023 — квітень 2024) та після його відходу (липень — грудень 2025) — і проаналізували їх алгоритмічно за тими самими критеріями, які ІМІ назвав причиною виключення з Білого списку.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:40px 1fr;gap:14px;margin-bottom:18px;align-items:start">
+        <div style="width:36px;height:36px;background:rgba(246,173,85,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px">2</div>
+        <p style="font-size:15px;color:rgba(255,255,255,.9);line-height:1.6;margin:0">
+          <strong style="color:#fff">Різниця між періодами — мізерна.</strong> «Паркетність»: 6.61% vs 6.01% (без воєнних зведень) або 6.51% vs 6.42% (з ними). Розмір ефекту Cohen's d&nbsp;&lt;&nbsp;0.03. Структура контенту — персоналії, рубрики, глибина джерел, висвітлення опозиції — практично ідентична.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start">
+        <div style="width:36px;height:36px;background:rgba(246,173,85,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px">3</div>
+        <p style="font-size:15px;color:rgba(255,255,255,.9);line-height:1.6;margin:0">
+          <strong style="color:#fff">Ми не знаємо, що саме рахували в ІМІ</strong> — які статті, хто оцінював, за якими балами. Це закрита методологія. Наш аналіз відкритий: кожна стаття, кожен скрипт, кожен крок — <a href="https://github.com/alexmazuka/ukrinform" style="color:var(--gold);text-decoration:underline" target="_blank">публічно на GitHub</a>. Перевірте самі.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ======== KEY FINDINGS HERO ======== -->
 <section id="key-findings" style="margin-bottom:48px">
