@@ -20,3 +20,7 @@ Thumbs.db
 
 # Large data files (JSON duplicates CSV)
 data/corpus_fast.json
+
+# Private documents — never push
+*_PRIVATE*
+COMMUNICATION_STRATEGY*
