@@ -24,3 +24,4 @@ data/corpus_fast.json
 # Private documents — never push
 *_PRIVATE*
 COMMUNICATION_STRATEGY*
+dashboard/

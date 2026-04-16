@@ -1,0 +1,30 @@
+{
+  "scenario": "without_ato",
+  "description": "Statistical tests excluding ATO/Defense rubric (military bulletins)",
+  "total_audited": 39230,
+  "p1_total": 18375,
+  "p2_total": 20855,
+  "parket": {
+    "p1_count": 1215,
+    "p1_pct": 6.61,
+    "p2_count": 1253,
+    "p2_pct": 6.01,
+    "chi_square": 6.0467,
+    "p_value": 0.006614,
+    "cohens_d": 0.0249
+  },
+  "balance_risk": {
+    "p1_count": 1467,
+    "p1_pct": 7.98,
+    "p2_count": 1574,
+    "p2_pct": 7.55,
+    "chi_square": 2.6006,
+    "p_value": 0.100162,
+    "cohens_d": 0.0163
+  },
+  "sources": {
+    "p1_mean": 1.71,
+    "p2_mean": 1.75,
+    "cohens_d": -0.0206
+  }
+}
