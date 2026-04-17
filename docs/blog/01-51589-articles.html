@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Я перевірив 51 589 своїх статей. Ось що знайшов. — CensorZero</title>
+<meta name="description" content="Чому я запустив незалежний аудит оцінки ІМІ — і що цей процес навчив мене про прозорість у медіамоніторингу.">
+<meta property="og:title" content="Я перевірив 51 589 своїх статей. Ось що знайшов.">
+<meta property="og:description" content="Незалежний аудит оцінки ІМІ щодо Укрінформу. 51 589 статей, відкритий код, відтворювана методологія.">
+<meta property="og:image" content="https://ukrinform.censorzero.com/og-image.svg">
+<meta property="og:url" content="https://ukrinform.censorzero.com/blog/01-51589-articles.html">
+<meta property="og:type" content="article">
+<meta property="article:author" content="Oleksiy Matsuka">
+<meta property="article:published_time" content="2026-04-15">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@alexmazuka">
+<link rel="canonical" href="https://ukrinform.censorzero.com/blog/01-51589-articles.html">
+<style>
+:root {
+  --navy:#1a365d; --gold:#f6ad55; --gold-d:#d97706;
+  --g50:#f8fafc; --g100:#f1f5f9; --g200:#e2e8f0;
+  --g400:#94a3b8; --g600:#475569; --g700:#334155; --g800:#1e293b;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --serif:'Georgia','Times New Roman',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:#fff;color:var(--g800);line-height:1.6}
+a{color:var(--navy)}
+
+.hdr{background:var(--navy);color:#fff;padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:700;letter-spacing:.05em;color:var(--gold);text-decoration:none}
+.logo span{color:#fff;font-weight:300}
+.hdr-links{display:flex;gap:20px}
+.hdr-links a{color:rgba(255,255,255,.65);font-size:13px;text-decoration:none}
+.hdr-links a:hover{color:#fff}
+
+.back-bar{background:var(--g50);border-bottom:1px solid var(--g200);padding:12px 32px}
+.back-link{font-size:13px;color:var(--g600);text-decoration:none}
+.back-link:hover{color:var(--navy)}
+
+article{max-width:720px;margin:0 auto;padding:60px 24px 80px}
+
+.article-tag{display:inline-block;background:rgba(246,173,85,.15);color:var(--gold-d);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:20px}
+.article-meta{font-size:13px;color:var(--g400);margin-bottom:24px;display:flex;gap:16px;align-items:center}
+.article-meta .date{text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,46px);font-weight:700;color:var(--g800);line-height:1.15;margin-bottom:20px;letter-spacing:-0.02em}
+.dek{font-family:var(--serif);font-size:19px;color:var(--g600);font-style:italic;margin-bottom:48px;line-height:1.5}
+
+article h2{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--g800);margin:48px 0 16px;line-height:1.3}
+article h3{font-size:18px;font-weight:700;color:var(--navy);margin:32px 0 12px}
+
+article p{font-family:var(--serif);font-size:18px;color:var(--g700);line-height:1.75;margin-bottom:20px}
+article p a{color:var(--navy);border-bottom:1px solid var(--g200);text-decoration:none;transition:border-color .15s}
+article p a:hover{border-color:var(--navy)}
+
+article strong{color:var(--g800);font-weight:700}
+
+article ul{margin:0 0 20px 20px;font-family:var(--serif);font-size:18px;color:var(--g700);line-height:1.8}
+article li{margin-bottom:6px}
+
+.hr-sep{text-align:center;color:var(--g300);font-size:20px;letter-spacing:16px;margin:48px 0;font-weight:300}
+
+table.comparison{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;background:#fff;border:1px solid var(--g200);border-radius:10px;overflow:hidden;font-family:var(--font)}
+table.comparison th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:12px}
+table.comparison td{padding:10px 14px;border-bottom:1px solid var(--g100)}
+table.comparison tr:last-child td{border-bottom:none}
+table.comparison tr:nth-child(even) td{background:var(--g50)}
+
+.callout{background:var(--g50);border-left:4px solid var(--navy);padding:18px 22px;margin:28px 0;border-radius:0 8px 8px 0;font-family:var(--font)}
+.callout p{font-family:var(--font);font-size:15px;line-height:1.6;margin-bottom:0}
+
+.author-bio{border-top:2px solid var(--g100);padding-top:24px;margin-top:48px;font-family:var(--font);font-size:14px;color:var(--g600);line-height:1.6;font-style:italic}
+.author-bio a{color:var(--navy)}
+
+.share-bar{display:flex;gap:10px;margin:40px 0 20px;padding:20px 0;border-top:1px solid var(--g100);border-bottom:1px solid var(--g100);align-items:center}
+.share-label{font-size:13px;color:var(--g600);font-weight:600}
+.share-btn{padding:6px 14px;background:var(--g100);color:var(--navy);font-size:12px;font-weight:600;border-radius:20px;text-decoration:none;border:1px solid var(--g200)}
+.share-btn:hover{background:var(--g200)}
+
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:32px;font-size:13px;text-align:center}
+footer a{color:var(--gold);text-decoration:none}
+
+@media(max-width:600px){
+  article{padding:32px 16px}
+  article p,article ul{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="../index.html" class="logo">CENSOR<span>ZERO</span></a>
+  <nav class="hdr-links">
+    <a href="../index.html">Дашборд</a>
+    <a href="index.html">Блог</a>
+    <a href="../en.html">English</a>
+    <a href="https://github.com/alexmazuka/ukrinform" target="_blank">GitHub</a>
+  </nav>
+</header>
+
+<div class="back-bar">
+  <a href="index.html" class="back-link">← Всі записи блогу</a>
+</div>
+
+<article>
+  <div class="article-tag">Дослідження</div>
+  <h1>Я перевірив 51 589 своїх статей. Ось що знайшов.</h1>
+  <p class="dek">Чому я запустив незалежний аудит оцінки ІМІ — і що цей процес навчив мене про прозорість у медіамоніторингу.</p>
+
+  <div class="article-meta">
+    <span class="date">15 квітня 2026</span>
+    <span>Олексій Мацука</span>
+    <span>15 хв читання</span>
+  </div>
+
+  <p>26 квітня 2024 року мій телефон не замовкав. Інститут масової інформації (<a href="https://imi.org.ua" target="_blank">imi.org.ua</a>) щойно оприлюднив <a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-pershe-pivrichchya-2024-roku" target="_blank">піврічний Білий список</a> прозорих і відповідальних медіа — і вперше за довгий час Укрінформу там не було. Разом з нами з переліку випали NV та LIGA.net, але <a href="https://mediamaker.me/news/imi-onovyv-bilyj-spysok-vidpovidalnyh-media/" target="_blank">причини оголошені різні</a>. NV і «Лігу» виключили за конкретне — приховану рекламу онлайн-казино. Нас — за «паркетні повідомлення» та «недостатній баланс думок».</p>
+
+  <p>Через місяць я пішов з посади генерального директора.</p>
+
+  <p>Півтора року я мовчав. Не писав колонок, не виходив у прямі ефіри коментувати це рішення, не боровся публічно. Не було сил — бо коли тебе звинувачують саме в тому, проти чого ти намагався реформувати агентство, важко говорити врівноважено. Я обрав тишу. Це було помилкою.</p>
+
+  <p>Тим часом сталось ось що. У <a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2024-roku-uvishly-13-media-i64640" target="_blank">листопаді 2024 року ІМІ оновив Білий список</a> — нас там не було. Через рік, у <a href="https://imi.org.ua/monitorings/bilyj-spysok-imi-za-druge-pivrichchya-2025-roku-uvijshly-17-media" target="_blank">грудні 2025</a>, повернули. Півтора року після мого відходу. Без пояснень, що саме змінилось у контенті. Для порівняння — <a href="https://nv.ua/ukr/ukraine/events/reyting-zmi-v-ukrajini-nv-potrapiv-u-top-nayyakisnishih-onlayn-media-ukrajini-50463244.html" target="_blank">NV повернувся у список уже за півроку</a>, прибравши розділ з рекламою казино. LIGA.net досі виключена. Зрозуміле рішення — зрозумілий шлях назад.</p>
+
+  <p>Саме асиметрія з Укрінформом змусила мене повернутись до питання. Не до свого — а до методологічного.</p>
+
+  <div class="hr-sep">• • •</div>
+
+  <h2>Як ми це зробили</h2>
+
+  <p>Я не міг провести ручний аудит 51 667 статей. Жодна людина не може. Але я міг написати код, який прочитає кожну з них і порахує одне й те саме у кожній — скільки джерел, якого типу, чи є ознаки «паркету» та дисбалансу. Це я і зробив.</p>
+
+  <p>Процес складався з чотирьох фаз, і кожну з них можна перевірити в Git-історії проєкту:</p>
+
+  <h3>Фаза 0 — верифікація повноти</h3>
+  <p>Я пройшовся по всіх 50 тижневих файлах sitemap Укрінформу. Виявив, що в оригінальному зборі дані за січень-лютий 2024 року були майже повністю відсутні — лише 17 статей замість очікуваних ~9000. Причина виявилась прозаїчною: баг у первісному скрипті збору. Довелось повертатись і збирати ці тижні заново, доповнивши корпус на 9 594 URL. Весь звіт — у файлі <a href="https://github.com/alexmazuka/ukrinform/blob/main/COMPLETENESS_REPORT.md" target="_blank">COMPLETENESS_REPORT.md</a> на GitHub.</p>
+
+  <h3>Фаза 1 — парсинг HTML</h3>
+  <p>Для кожної з 51 667 статей скрипт завантажував повний HTML, витягав заголовок, текст, шукав у тексті цитовані джерела за допомогою регулярних виразів. Це зайняло кілька годин роботи і кілька десятків гігабайтів трафіку. З 51 667 URL вдалось успішно спарсити 51 589 — 78 статей сервер Укрінформу не віддав (0.15% — це нормальна частка технічних збоїв). Кожна з цих 78 URL задокументована і доступна для повторного парсингу. Різницю між «зібрано» і «проаналізовано» я одразу виніс окремим розділом у <a href="https://github.com/alexmazuka/ukrinform/blob/main/VERSION_NOTE.md" target="_blank">VERSION_NOTE.md</a> — щоб не було жодних двозначностей.</p>
+
+  <h3>Фаза 2 — класифікація за критеріями ІМІ</h3>
+  <p>Для кожної статті скрипт визначав: чи цитується офіційне державне джерело (президент, уряд, міністерства, Генштаб), скільки в цілому ідентифікованих джерел у тексті, скільки з них неофіційних. За класифікацією ІМІ стаття з одним офіційним джерелом і без альтернативних голосів — кандидат у «паркет». Це і стало нашою проксі-метрикою.</p>
+
+  <h3>Фаза 3 — статистичні тести</h3>
+  <p>Два періоди, два набори чисел. Стандартні тести для різниці між двома групами: Chi-square, Mann-Whitney U, Cohen's d. Числа — стабільні. <a href="https://github.com/alexmazuka/ukrinform/blob/main/data/statistical_tests.json" target="_blank">Результати збережено у JSON</a>, сам код тестів — в <a href="https://github.com/alexmazuka/ukrinform/tree/main/scripts" target="_blank">scripts/</a>.</p>
+
+  <div class="hr-sep">• • •</div>
+
+  <h2>Що показали дані</h2>
+
+  <p>За критеріями, які назвав сам ІМІ — різниці між періодами немає.</p>
+
+  <div class="callout">
+    <p><strong>Без рубрики АТО (39 230 статей):</strong></p>
+    <p style="margin:8px 0 0 0;font-family:var(--font);font-size:15px">
+      «Паркет» за мого керівництва: <strong>6.61%</strong><br>
+      «Паркет» після мого відходу: <strong>6.01%</strong><br>
+      Різниця 0.6 процентних пункти. p-value = 0.007. Cohen's d = 0.025.
+    </p>
+  </div>
+
+  <div class="callout">
+    <p><strong>З рубрикою АТО (51 589 статей):</strong></p>
+    <p style="margin:8px 0 0 0;font-family:var(--font);font-size:15px">
+      «Паркет» за мого керівництва: <strong>6.51%</strong><br>
+      «Паркет» після мого відходу: <strong>6.42%</strong><br>
+      Різниця 0.09 процентних пункти. p-value = 0.678.
+    </p>
+  </div>
+
+  <p>Два слова про ці числа. Cohen's d — це показник розміру ефекту. У статистиці все, що менше 0.2, вважається «мізерним». У нас 0.025 — тобто ефект є, але настільки малий, що він практично неможливий для розрізнення на реальних даних. p-value = 0.007 без рубрики АТО — це статистично значуща різниця, але <em>у зворотному напрямку</em>: паркету за мого керівництва більше на півпроцентного пункта. Це важливо, бо ІМІ стверджував протилежне.</p>
+
+  <p>Чому я показую два сценарії — з АТО і без? Бо рубрика «АТО/Оборона» за визначенням містить воєнні зведення Генштабу, у яких за технічних причин буде одне офіційне джерело. Це не журналістська проблема — це природа воєнної комунікації. Чесно відокремити цей шум від основного сигналу — принципово. Всі числа — в <a href="https://github.com/alexmazuka/ukrinform/blob/main/data/dashboard_numbers.json" target="_blank">dashboard_numbers.json</a>.</p>
+
+  <p>Для контексту: ІМІ оцінив <a href="https://imi.org.ua/monitorings/novyny-pid-chas-vijny-analiz-profesijnyh-standartiv-providnyh-onlajn-media-u-veresni-2024-roku-i64521" target="_blank">100 статей кожного медіа, зібраних за два дні</a>. Це їхня опублікована методологія, я цитую дослівно. Ми проаналізували масив у 516 разів більший. За той самий часовий зріз, за тими самими публічно названими критеріями.</p>
+
+  <p><strong>Дані не підтверджують, що за мого керівництва Укрінформ став більш «паркетним».</strong></p>
+
+  <div class="hr-sep">• • •</div>
+
+  <h2>Контрольна група</h2>
+
+  <p>Щоб переконатись, що наш алгоритм взагалі працює адекватно, ми застосували його до двох інших українських медіа, які ІМІ тримає у Білому списку.</p>
+
+  <table class="comparison">
+    <thead>
+      <tr><th>Медіа</th><th>Статус ІМІ</th><th>Проаналіз.</th><th>Паркет</th><th>Сер. джерел</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Укрінформ (Мацука)</strong></td><td>Виключений</td><td>18 375</td><td><strong>6.61%</strong></td><td>1.71</td></tr>
+      <tr><td><strong>Укрінформ (після)</strong></td><td>Повернутий</td><td>20 855</td><td><strong>6.01%</strong></td><td>1.75</td></tr>
+      <tr><td><strong>Суспільне Новини</strong></td><td>В списку</td><td>976</td><td><strong>5.43%</strong></td><td>3.22</td></tr>
+      <tr><td><strong>Українська правда</strong></td><td>В списку</td><td>1 638</td><td><strong>0.00%</strong></td><td>1.50</td></tr>
+    </tbody>
+  </table>
+
+  <p>Дані — в папці <a href="https://github.com/alexmazuka/ukrinform/tree/main/data/control_group" target="_blank">data/control_group/</a> на GitHub, включно зі скриптами, які їх зібрали.</p>
+
+  <p>Суспільне Новини — державне інформагентство з мовленням, як і ми. 5.43% паркету. Різниця з Укрінформом за мого керівництва — 1.18 процентних пункти. Обидва — державні медіа зі схожою структурою джерел, подібним потоком офіційних релізів, подібною місією. <strong>Одне виключили. Інше лишили.</strong></p>
+
+  <p>Українська правда — 0% паркету. І це правильний результат валідації алгоритму: УП не є державним інформагентством, вона не живе трансляцією офіційних повідомлень, її модель журналістики інша за визначенням. Наша метрика коректно це відрізняє. Саме тому я кажу, що не можна застосовувати однаковий стандарт «балансу» до державного агентства і до незалежного розслідувального видання. Це дві різні професії під одним словом «журналістика».</p>
+
+  <div class="hr-sep">• • •</div>
+
+  <h2>Що з цього випливає</h2>
+
+  <p><strong>По-перше:</strong> рішення ІМІ про виключення Укрінформу у квітні 2024 року не знаходить підтвердження в даних. Структура контенту не була значимо гіршою за мого керівництва, ніж у наступному періоді. Суспільне Новини з аналогічними показниками паркету залишалось у Білому списку весь цей час.</p>
+
+  <p><strong>По-друге:</strong> рішення ІМІ про повернення Укрінформу в грудні 2025 року теж не знаходить підтвердження в даних. Показники паркету не покращились — вони практично ідентичні. Якщо ІМІ вважає, що Укрінформ заслуговує бути в списку зараз — він заслуговував бути там і за мого керівництва. Якщо не заслуговує за тих показників — не заслуговує і зараз.</p>
+
+  <p><strong>По-третє, і це найважливіше:</strong> методологія ІМІ недостатньо прозора для прийняття рішень такого рівня наслідків. Вони не публікують список конкретних статей, які оцінювали. Не розкривають особи оцінювачів. Не показують бали за кожним з 14 індикаторів. Не пояснюють, чи змінювались оцінювачі між хвилями. Все це — нормальні вимоги до будь-якого публічного дослідження. Вони є стандартом у науці. Вони мають бути стандартом у медіамоніторингу.</p>
+
+  <div class="hr-sep">• • •</div>
+
+  <h2>Що я вивчив як менеджер</h2>
+
+  <p>Цей проєкт почався як спроба зрозуміти рішення ІМІ щодо Укрінформу. Він завершився ширшим запитанням — до самого себе.</p>
+
+  <p>Бо правда в тому, що за моє керівництво структура контенту Укрінформу справді не змінилась радикально. Я мав план реформ. Я впроваджував нові процеси — зокрема автоматизовану маршрутизацію вхідної кореспонденції, щоб чиновницькі листи з рекомендованими спікерами не осідали в одній скриньці одного керівника, а проходили через системні фільтри. Іронія в тому, що саме ця система — створена для прозорості — була використана проти мене. Один з таких листів автоматично потрапив до моєї заступниці, яка згодом подала його як «доказ», ніби я особисто розсилаю «темники» редакції.</p>
+
+  <p>Я не розсилав темники. Я навіть не відкривав того листа. Але структурна проблема державного медіа — надмірна офіційність, мала частка альтернативних голосів — залишилась. Її не вирішиш за п'ять місяців. Її не вирішиш за рік. Вона потребує реформи ширшої, ніж просто зміна директора.</p>
+
+  <p>Це мій управлінський урок. Щоб міняти інституцію, потрібен час, політична підтримка, й команда, яка готова не використовувати зміни як інструмент внутрішньої боротьби. У нас був обмежений час, вузька підтримка, і частина команди, яка в якийсь момент зробила вибір.</p>
+
+  <div class="hr-sep">• • •</div>
+
+  <h2>Що далі</h2>
+
+  <p>Сайт уже є: <a href="https://ukrinform.censorzero.com"><strong>ukrinform.censorzero.com</strong></a>. Там три інструменти:</p>
+
+  <ul>
+    <li><a href="../index.html">Головний дашборд</a> з повними результатами, статистичними тестами і контрольною групою</li>
+    <li><a href="../explorer.html">Message Explorer</a> — повний пошук по 51 589 статтях з фільтрами. Якщо наш алгоритм позначив статтю як «паркет» — відкрийте її й переконайтесь самі</li>
+    <li><a href="../graph.html">Граф паркетності</a> — візуалізація за місяцями і рубриками</li>
+  </ul>
+
+  <p>Репозиторій з кодом і даними — <a href="https://github.com/alexmazuka/ukrinform" target="_blank"><strong>github.com/alexmazuka/ukrinform</strong></a>. Весь код під MIT-ліцензією. Англомовна версія листа для міжнародної аудиторії — <a href="../en.html">ukrinform.censorzero.com/en.html</a>.</p>
+
+  <p>Не згодні з алгоритмом — відкрийте <a href="https://github.com/alexmazuka/ukrinform/issues" target="_blank">Issue на GitHub</a>. Виправимо й перерахуємо. Саме так працює прозорість.</p>
+
+  <p>Я направив ІМІ офіційний лист із п'ятьма методологічними питаннями. Чекаю відповіді. Результат опублікую — і відповідь, і її відсутність.</p>
+
+  <p>Я не прошу про реабілітацію. Я прошу про стандарт. Про те, щоб моніторингові оцінки, які формують репутаційне середовище української журналістики, були такими ж прозорими, як ми вимагаємо від самих медіа. Тоді ІМІ стане сильнішим. І країна стане сильнішою.</p>
+
+  <p><strong>Півтора року мовчання — це було довго. Далі говоритимуть дані.</strong></p>
+
+  <div class="share-bar">
+    <span class="share-label">Поділитись:</span>
+    <a href="https://twitter.com/intent/tweet?text=Я перевірив 51 589 своїх статей. Ось що знайшов.&url=https://ukrinform.censorzero.com/blog/01-51589-articles.html&via=alexmazuka" target="_blank" class="share-btn">Twitter</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://ukrinform.censorzero.com/blog/01-51589-articles.html" target="_blank" class="share-btn">Facebook</a>
+    <a href="https://t.me/share/url?url=https://ukrinform.censorzero.com/blog/01-51589-articles.html&text=Я перевірив 51 589 своїх статей" target="_blank" class="share-btn">Telegram</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ukrinform.censorzero.com/blog/01-51589-articles.html" target="_blank" class="share-btn">LinkedIn</a>
+  </div>
+
+  <div class="author-bio">
+    Олексій Мацука — засновник CensorZero, колишній генеральний директор Укрінформу (листопад 2023 – травень 2024). Весь масив даних, код і методологія дослідження — <a href="https://github.com/alexmazuka/ukrinform" target="_blank">github.com/alexmazuka/ukrinform</a>. Читати англійською — <a href="../en.html">ukrinform.censorzero.com/en.html</a>.
+  </div>
+</article>
+
+<footer>
+  <div style="margin-bottom:8px"><strong style="color:#fff">CensorZero</strong> — незалежна платформа аудиту медійних стандартів</div>
+  <div style="margin-bottom:12px">Засновник: <a href="https://matsuka.online">Олексій Мацука</a> (@alexmazuka)</div>
+  <div style="font-size:11px;opacity:.5">Дані: Укрінформ (публічні sitemap) · Код: MIT License</div>
+</footer>
+
+</body>
+</html>

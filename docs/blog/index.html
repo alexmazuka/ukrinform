@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог — CensorZero</title>
+<meta name="description" content="Публіцистика та роздуми про медіамоніторинг, прозорість і журналістські стандарти.">
+<meta property="og:title" content="Блог — CensorZero">
+<meta property="og:description" content="Публіцистика про медіамоніторинг, прозорість і журналістські стандарти.">
+<meta property="og:url" content="https://ukrinform.censorzero.com/blog/">
+<link rel="canonical" href="https://ukrinform.censorzero.com/blog/">
+<style>
+:root {
+  --navy:#1a365d; --gold:#f6ad55; --gold-d:#d97706;
+  --g50:#f8fafc; --g100:#f1f5f9; --g200:#e2e8f0;
+  --g400:#94a3b8; --g600:#475569; --g700:#334155; --g800:#1e293b;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--g50);color:var(--g800);line-height:1.6}
+a{color:var(--navy)}
+
+.hdr{background:var(--navy);color:#fff;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1)}
+.logo{font-size:18px;font-weight:700;letter-spacing:.05em;color:var(--gold);text-decoration:none}
+.logo span{color:#fff;font-weight:300}
+.hdr-links{display:flex;gap:20px}
+.hdr-links a{color:rgba(255,255,255,.65);font-size:13px;text-decoration:none}
+.hdr-links a:hover{color:#fff}
+
+main{max-width:800px;margin:0 auto;padding:60px 24px 80px}
+.tag{display:inline-block;background:rgba(246,173,85,.15);color:var(--gold-d);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:20px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--g800);line-height:1.2;margin-bottom:16px}
+.lead{font-size:17px;color:var(--g600);margin-bottom:48px;line-height:1.6}
+
+.post-list{display:flex;flex-direction:column;gap:24px}
+.post-card{background:#fff;border:1px solid var(--g200);border-radius:12px;padding:28px;transition:border-color .2s,transform .15s;text-decoration:none;color:inherit;display:block}
+.post-card:hover{border-color:var(--navy);transform:translateY(-2px)}
+.post-meta{font-size:12px;color:var(--g400);margin-bottom:8px;display:flex;gap:12px;align-items:center}
+.post-date{text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.post-category{background:var(--g100);padding:2px 8px;border-radius:3px;color:var(--g600)}
+.post-title{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:10px;line-height:1.3}
+.post-excerpt{font-size:15px;color:var(--g600);line-height:1.6}
+.post-read{display:inline-block;margin-top:14px;font-size:13px;color:var(--navy);font-weight:600}
+
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:32px;font-size:13px;text-align:center}
+footer a{color:var(--gold);text-decoration:none}
+
+@media(max-width:600px){main{padding:32px 16px}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="../index.html" class="logo">CENSOR<span>ZERO</span></a>
+  <nav class="hdr-links">
+    <a href="../index.html">Дашборд</a>
+    <a href="../explorer.html">Всі статті</a>
+    <a href="../en.html">English</a>
+    <a href="https://github.com/alexmazuka/ukrinform" target="_blank">GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <div class="tag">Блог</div>
+  <h1>Нотатки про медіамоніторинг, прозорість і стандарти</h1>
+  <p class="lead">Публіцистичні тексти про те, як працює медіа-середовище, які питання ставимо ІМІ та іншим моніторинговим організаціям, і чому відтворюваність — основа довіри.</p>
+
+  <div class="post-list">
+
+    <a href="01-51589-articles.html" class="post-card">
+      <div class="post-meta">
+        <span class="post-date">15 квітня 2026</span>
+        <span class="post-category">Дослідження</span>
+      </div>
+      <div class="post-title">Я перевірив 51 589 своїх статей. Ось що знайшов.</div>
+      <div class="post-excerpt">Чому я запустив незалежний аудит оцінки ІМІ — і що цей процес навчив мене про прозорість у медіамоніторингу. Від першого рішення про виключення Укрінформу до повної перевірки методології.</div>
+      <div class="post-read">Читати →</div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <div style="margin-bottom:8px"><strong style="color:#fff">CensorZero</strong> — незалежна платформа аудиту медійних стандартів</div>
+  <div style="margin-bottom:12px">Засновник: <a href="https://matsuka.online">Олексій Мацука</a> (@alexmazuka)</div>
+  <div style="font-size:11px;opacity:.5">Дані: Укрінформ (публічні sitemap) · Код: MIT License</div>
+</footer>
+
+</body>
+</html>
