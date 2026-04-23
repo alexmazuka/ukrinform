@@ -31,8 +31,26 @@ The ATO/Defense rubric contains military bulletins (Genshtab reports) that by de
 ### Checks (proxy metrics for two IMI-cited criteria)
 - ✅ "Parket" content — official source + ≤1 source + 0 non-official sources
 - ✅ Balance risk — official source + 0 non-official sources
-- ✅ Source count per article
-- ✅ Source type classification (official vs non-official)
+- ✅ Source count per article (via regex on reporting verbs)
+- ✅ Source type classification (official vs non-official, via URL slug keywords)
+
+### ⚠️ KNOWN METHODOLOGICAL LIMITATION: "Parket" via source_count == 0
+
+**Critical finding from second-pass audit (April 2026):**
+
+Of all articles flagged as `likely_parket=True`, **99.9% have `source_count == 0`** — meaning our regex parser found zero cited sources in the article text. This does not mean they are "parket" in the journalistic sense; it means one of three things:
+
+1. **Legitimate short briefings** — e.g. Genshtab daily reports: "За добу 82 зіткнення" — by nature have no quoted sources
+2. **Source mentioned in title only** — e.g. "Russia continues terror — Genshtab" — source is in headline but our parser only reads body text
+3. **Technical parsing limits** — regex catches common reporting verbs (заявив, повідомив) but misses some constructions
+
+**Strict definition** (official source + exactly 1 source + 0 non-official): flags <0.01% of articles in both periods. Too strict to be useful.
+
+**Current definition** (≤1 source incl. zero): flags 7.86% P1 / 7.98% P2 (with ATO) or 7.98% P1 / 7.55% P2 (without ATO). Technically includes many short briefings that are not true "parket."
+
+**Why the main conclusion still holds:** Both definitions produce **essentially identical rates across the two periods**. Any parser imperfection affects P1 and P2 equally. The core finding — no significant difference between Matsuka era and post-Matsuka period — is robust against this limitation.
+
+**What this means practically:** Our metric is best read as "share of articles with an official-slug URL and no quoted sources found in body text." This is a relevant proxy for "parket" but not identical to IMI's manual assessment.
 
 ### Does NOT check
 - ❌ Completeness (background, context, who/what/where/when)
@@ -42,7 +60,7 @@ The ATO/Defense rubric contains military bulletins (Genshtab reports) that by de
 - ❌ Sponsored content marking
 - ❌ Presumption of innocence
 
-IMI cited "parket messages" and "insufficient balance" as the specific reasons for Ukrinform's exclusion. This research checks those two signals on the full public corpus.
+IMI cited "parket messages" and "insufficient balance" as the specific reasons for Ukrinform's exclusion. This research checks those two signals on the full public corpus — subject to the methodological limitation disclosed above.
 
 ## File versioning
 

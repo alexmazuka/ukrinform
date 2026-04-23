@@ -658,6 +658,31 @@ footer a{color:var(--gold)}
   <div class="note ok">
     <strong>Висновок:</strong> В обох сценаріях (з АТО і без) різниця між періодами — мізерна (Cohen's d &lt; 0.03). Без АТО паркету за Мацуки навіть дещо більше (6.61% vs 6.01%). З АТО — практично ідентично (6.51% vs 6.42%). <strong>Ні в одному зі сценаріїв дані не підтверджують, що якість контенту погіршилась за Мацуки.</strong>
   </div>
+
+  <!-- METHODOLOGICAL SELF-DISCLOSURE -->
+  <div style="background:#fff;border:2px dashed var(--gold-d);border-radius:12px;padding:24px;margin-top:32px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+      <span style="font-size:22px">⚠️</span>
+      <h3 style="font-size:17px;font-weight:700;color:var(--gold-d);margin:0">Методологічне самовикриття</h3>
+    </div>
+    <p style="font-size:14px;color:var(--g700);line-height:1.7;margin-bottom:12px">
+      Під час повторного методологічного аудиту (19 квітня 2026) ми виявили важливе обмеження нашої метрики й вважаємо принципово важливим його задокументувати публічно:
+    </p>
+    <p style="font-size:14px;color:var(--g700);line-height:1.7;margin-bottom:12px">
+      <strong>99.9% статей, позначених як «паркет», мають source_count = 0</strong> — тобто наш regex не знайшов жодного цитованого джерела в тілі тексту. Це не означає що вони справді «паркетні» в журналістському сенсі. Причини можуть бути три:
+    </p>
+    <ul style="font-size:14px;color:var(--g700);line-height:1.7;margin:0 0 12px 20px">
+      <li><strong>Легітимні короткі зведення</strong> — наприклад, зведення Генштабу «за добу 82 зіткнення» — за природою не мають цитованих джерел.</li>
+      <li><strong>Джерело лише в заголовку</strong> — «Росія продовжує терор — Генштаб» — джерело в заголовку, але парсер читає тільки тіло.</li>
+      <li><strong>Технічні обмеження regex</strong> — захоплює стандартні цитування («заявив», «повідомив»), але пропускає деякі конструкції.</li>
+    </ul>
+    <p style="font-size:14px;color:var(--g700);line-height:1.7;margin-bottom:12px">
+      <strong>Чому головний висновок все одно тримається:</strong> обидва визначення (строге і поточне) дають <strong>практично однакові відсотки в обох періодах</strong>. Будь-яке обмеження парсера впливає на П1 і П2 однаково. Ключова знахідка — відсутність значущої різниці між періодами — стійка до цього обмеження.
+    </p>
+    <p style="font-size:14px;color:var(--g700);line-height:1.7;margin:0">
+      Повний розбір — у <a href="https://github.com/alexmazuka/ukrinform/blob/main/VERSION_NOTE.md" target="_blank" style="color:var(--navy)">VERSION_NOTE.md</a>. Наша метрика точніше читається як «частка статей з офіційним URL-слагом і без знайдених цитованих джерел у тілі». Це валідний проксі для «паркету», але не ідентичний ручній оцінці ІМІ.
+    </p>
+  </div>
 </section>
 
 <!-- ======== PARKET THRESHOLD SLIDER ======== -->
