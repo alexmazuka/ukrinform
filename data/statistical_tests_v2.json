@@ -1,0 +1,59 @@
+{
+  "parser_version": "v2",
+  "description": "Improved parser with 5 additional source patterns",
+  "date": "2026-04-19",
+  "scenarios": {
+    "with_ato": {
+      "n1": 26247,
+      "n2": 25173,
+      "parket": {
+        "p1_count": 1830,
+        "p1_pct": 6.97,
+        "p2_count": 1679,
+        "p2_pct": 6.67,
+        "chi_square": 1.8477,
+        "p_value": 0.178172,
+        "cohens_d": 0.012
+      },
+      "balance": {
+        "p1_count": 1830,
+        "p1_pct": 6.97,
+        "p2_count": 1679,
+        "p2_pct": 6.67,
+        "chi_square": 1.8477,
+        "p_value": 0.178172,
+        "cohens_d": 0.012
+      },
+      "sources": {
+        "p1_mean": 2.06,
+        "p2_mean": 2.08
+      }
+    },
+    "without_ato": {
+      "n1": 18341,
+      "n2": 20810,
+      "parket": {
+        "p1_count": 1327,
+        "p1_pct": 7.24,
+        "p2_count": 1304,
+        "p2_pct": 6.27,
+        "chi_square": 14.6009,
+        "p_value": 5e-06,
+        "cohens_d": 0.0387
+      },
+      "balance": {
+        "p1_count": 1327,
+        "p1_pct": 7.24,
+        "p2_count": 1304,
+        "p2_pct": 6.27,
+        "chi_square": 14.6009,
+        "p_value": 5e-06,
+        "cohens_d": 0.0387
+      },
+      "sources": {
+        "p1_mean": 2.04,
+        "p2_mean": 2.09
+      }
+    }
+  }
+}
