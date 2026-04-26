@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" font-family="Inter, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a365d"/>
+      <stop offset="100%" stop-color="#0f1f3a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="1100" cy="100" r="180" fill="#f6ad55" opacity="0.08"/>
+  <circle cx="100" cy="600" r="220" fill="#f6ad55" opacity="0.05"/>
+  <text x="80" y="100" font-size="20" font-weight="600" fill="#f6ad55" letter-spacing="6">CENSORZERO · НЕЗАЛЕЖНИЙ АУДИТ</text>
+  <text x="80" y="240" font-size="120" font-weight="800" fill="white" letter-spacing="-3">51 589</text>
+  <text x="80" y="295" font-size="32" fill="rgba(255,255,255,0.85)" font-weight="500">статей Укрінформу</text>
+  <text x="80" y="345" font-size="22" fill="rgba(255,255,255,0.6)">Два періоди. Одне питання. Усі дані відкриті.</text>
+  <line x1="80" y1="395" x2="280" y2="395" stroke="#f6ad55" stroke-width="3"/>
+  <text x="80" y="450" font-size="18" fill="rgba(255,255,255,0.5)" letter-spacing="3">МЕТОДОЛОГІЯ ІМІ ПЕРЕВІРЕНА АЛГОРИТМІЧНО</text>
+  <text x="80" y="490" font-size="36" fill="white" font-weight="600">У 516 разів більше, ніж оцінив ІМІ</text>
+  <rect x="80" y="595" width="140" height="40" fill="#f6ad55" rx="6"/>
+  <text x="150" y="622" font-size="16" fill="#1a365d" font-weight="700" text-anchor="middle">ВІДКРИТИЙ КОД</text>
+  <text x="240" y="622" font-size="16" fill="rgba(255,255,255,0.7)" font-weight="500">ukrinform.censorzero.com</text>
+</svg>

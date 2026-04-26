@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" font-family="Inter, Arial, sans-serif">
+  <rect width="1200" height="675" fill="#f8fafc"/>
+  <rect x="0" y="0" width="1200" height="100" fill="#1a365d"/>
+  <text x="60" y="45" font-size="14" fill="#f6ad55" letter-spacing="3" font-weight="600">CENSORZERO · КОНТРОЛЬНА ГРУПА</text>
+  <text x="60" y="78" font-size="28" fill="white" font-weight="700">Чотири медіа. Однакова метрика. Різний статус ІМІ.</text>
+
+  <!-- Headers -->
+  <text x="60" y="155" font-size="13" fill="#64748b" letter-spacing="2" font-weight="600">МЕДІА</text>
+  <text x="450" y="155" font-size="13" fill="#64748b" letter-spacing="2" font-weight="600">СТАТУС ІМІ</text>
+  <text x="720" y="155" font-size="13" fill="#64748b" letter-spacing="2" font-weight="600">ПАРКЕТ</text>
+  <text x="900" y="155" font-size="13" fill="#64748b" letter-spacing="2" font-weight="600">СЕР. ДЖЕРЕЛ</text>
+  <line x1="60" y1="170" x2="1140" y2="170" stroke="#cbd5e1" stroke-width="1"/>
+
+  <!-- Row 1: Ukrinform P1 -->
+  <text x="60" y="210" font-size="18" fill="#1e293b" font-weight="700">Укрінформ (Період 1, Мацука)</text>
+  <text x="60" y="232" font-size="13" fill="#64748b">18 375 статей · державне</text>
+  <rect x="450" y="200" width="180" height="36" fill="#fee2e2" rx="6"/>
+  <text x="540" y="224" font-size="15" fill="#dc2626" font-weight="700" text-anchor="middle">ВИКЛЮЧЕНИЙ</text>
+  <text x="720" y="225" font-size="24" fill="#1e293b" font-weight="700">7.24%</text>
+  <text x="900" y="225" font-size="20" fill="#475569" font-weight="600">2.04</text>
+  <line x1="60" y1="260" x2="1140" y2="260" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Row 2: Ukrinform P2 -->
+  <text x="60" y="300" font-size="18" fill="#1e293b" font-weight="700">Укрінформ (Період 2, після)</text>
+  <text x="60" y="322" font-size="13" fill="#64748b">20 855 статей · державне</text>
+  <rect x="450" y="290" width="180" height="36" fill="#dcfce7" rx="6"/>
+  <text x="540" y="314" font-size="15" fill="#16a34a" font-weight="700" text-anchor="middle">ПОВЕРНУТИЙ</text>
+  <text x="720" y="315" font-size="24" fill="#1e293b" font-weight="700">6.27%</text>
+  <text x="900" y="315" font-size="20" fill="#475569" font-weight="600">2.09</text>
+  <line x1="60" y1="350" x2="1140" y2="350" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Row 3: Suspilne -->
+  <text x="60" y="390" font-size="18" fill="#1e293b" font-weight="700">Суспільне Новини</text>
+  <text x="60" y="412" font-size="13" fill="#64748b">976 статей · державне (мовлення)</text>
+  <rect x="450" y="380" width="180" height="36" fill="#dcfce7" rx="6"/>
+  <text x="540" y="404" font-size="15" fill="#16a34a" font-weight="700" text-anchor="middle">У СПИСКУ ВЕСЬ ЧАС</text>
+  <text x="720" y="405" font-size="24" fill="#1e293b" font-weight="700">5.43%</text>
+  <text x="900" y="405" font-size="20" fill="#475569" font-weight="600">3.22</text>
+  <line x1="60" y1="440" x2="1140" y2="440" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Row 4: Pravda -->
+  <text x="60" y="480" font-size="18" fill="#1e293b" font-weight="700">Українська правда</text>
+  <text x="60" y="502" font-size="13" fill="#64748b">1 638 статей · незалежне</text>
+  <rect x="450" y="470" width="180" height="36" fill="#dcfce7" rx="6"/>
+  <text x="540" y="494" font-size="15" fill="#16a34a" font-weight="700" text-anchor="middle">У СПИСКУ ВЕСЬ ЧАС</text>
+  <text x="720" y="495" font-size="24" fill="#1e293b" font-weight="700">0.00%</text>
+  <text x="900" y="495" font-size="20" fill="#475569" font-weight="600">1.50</text>
+
+  <!-- Conclusion -->
+  <rect x="60" y="540" width="1080" height="80" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" rx="10"/>
+  <text x="80" y="572" font-size="17" fill="#1e3a8a" font-weight="700">Питання до прозорості: чому Суспільне (5.43%) у списку, а Укрінформ (6.01%) повертають через 1.5 року?</text>
+  <text x="80" y="600" font-size="14" fill="#1e3a8a">Обидва — державні медіа з аналогічним рівнем паркету. Незалежне медіа (УП) показує 0% — інша модель журналістики.</text>
+
+  <text x="60" y="655" font-size="12" fill="#94a3b8">ukrinform.censorzero.com · Дані: github.com/alexmazuka/ukrinform/data/control_group/</text>
+</svg>

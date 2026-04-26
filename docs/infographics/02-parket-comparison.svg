@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" font-family="Inter, Arial, sans-serif">
+  <rect width="1200" height="675" fill="#f8fafc"/>
+  <rect x="0" y="0" width="1200" height="100" fill="#1a365d"/>
+  <text x="60" y="45" font-size="14" fill="#f6ad55" letter-spacing="3" font-weight="600">CENSORZERO</text>
+  <text x="60" y="78" font-size="28" fill="white" font-weight="700">Паркет: за Мацуки vs після</text>
+
+  <text x="60" y="160" font-size="13" fill="#475569" letter-spacing="2" font-weight="600">БЕЗ ВОЄННИХ ЗВЕДЕНЬ · 39 230 СТАТЕЙ</text>
+
+  <text x="60" y="220" font-size="16" fill="#1e293b" font-weight="600">Період 1 — за керівництва Мацуки (26 342 статті)</text>
+  <text x="60" y="248" font-size="14" fill="#64748b">09.11.2023 — 25.04.2024</text>
+  <rect x="60" y="265" width="520" height="40" fill="#e2e8f0" rx="6"/>
+  <rect x="60" y="265" width="263" height="40" fill="#3b82f6" rx="6"/>
+  <text x="80" y="291" font-size="20" fill="white" font-weight="700">7.24%</text>
+  <text x="600" y="290" font-size="14" fill="#475569">паркет (1 327 статей)</text>
+
+  <text x="60" y="360" font-size="16" fill="#1e293b" font-weight="600">Період 2 — після відходу (25 247 статей)</text>
+  <text x="60" y="388" font-size="14" fill="#64748b">01.07.2025 — 15.12.2025</text>
+  <rect x="60" y="405" width="520" height="40" fill="#e2e8f0" rx="6"/>
+  <rect x="60" y="405" width="227" height="40" fill="#22c55e" rx="6"/>
+  <text x="80" y="431" font-size="20" fill="white" font-weight="700">6.27%</text>
+  <text x="600" y="430" font-size="14" fill="#475569">паркет (1 304 статті)</text>
+
+  <rect x="60" y="490" width="1080" height="120" fill="#fefce8" stroke="#eab308" stroke-width="2" rx="10"/>
+  <text x="80" y="525" font-size="20" font-weight="700" fill="#713f12">Різниця: 0.97 процентних пункти</text>
+  <text x="80" y="555" font-size="16" fill="#713f12">p-value = 0.000005 · Cohen's d = 0.039 (мізерний ефект)</text>
+  <text x="80" y="585" font-size="15" fill="#92400e">За Мацуки паркету ДЕЩО БІЛЬШЕ — у зворотному напрямку від звинувачень ІМІ</text>
+
+  <text x="60" y="650" font-size="13" fill="#94a3b8">ukrinform.censorzero.com · Відкриті дані, відкритий код</text>
+</svg>

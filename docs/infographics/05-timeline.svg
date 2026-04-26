@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" font-family="Inter, Arial, sans-serif">
+  <rect width="1200" height="675" fill="#f8fafc"/>
+  <rect x="0" y="0" width="1200" height="100" fill="#1a365d"/>
+  <text x="60" y="45" font-size="14" fill="#f6ad55" letter-spacing="3" font-weight="600">CENSORZERO · ХРОНОЛОГІЯ</text>
+  <text x="60" y="78" font-size="28" fill="white" font-weight="700">Що відбулося. Факти без інтерпретацій.</text>
+
+  <!-- Timeline -->
+  <line x1="80" y1="200" x2="80" y2="600" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Event 1 -->
+  <circle cx="80" cy="200" r="10" fill="#1a365d"/>
+  <text x="120" y="190" font-size="13" fill="#94a3b8" letter-spacing="1" font-weight="600">09 ЛИСТОПАДА 2023</text>
+  <text x="120" y="218" font-size="20" fill="#1e293b" font-weight="700">Олексій Мацука призначений</text>
+  <text x="120" y="240" font-size="15" fill="#475569">генеральним директором Укрінформу</text>
+
+  <!-- Event 2 -->
+  <circle cx="80" cy="290" r="10" fill="#dc2626"/>
+  <text x="120" y="280" font-size="13" fill="#94a3b8" letter-spacing="1" font-weight="600">26 КВІТНЯ 2024</text>
+  <text x="120" y="308" font-size="20" fill="#dc2626" font-weight="700">ІМІ виключає Укрінформ з Білого списку</text>
+  <text x="120" y="330" font-size="15" fill="#475569">Причина: «паркетні повідомлення», недостатній баланс</text>
+
+  <!-- Event 3 -->
+  <circle cx="80" cy="380" r="10" fill="#1a365d"/>
+  <text x="120" y="370" font-size="13" fill="#94a3b8" letter-spacing="1" font-weight="600">24 ТРАВНЯ 2024</text>
+  <text x="120" y="398" font-size="20" fill="#1e293b" font-weight="700">Мацука залишає посаду</text>
+  <text x="120" y="420" font-size="15" fill="#475569">Через 28 днів після рішення ІМІ. Новий гендиректор — Череватий</text>
+
+  <!-- Event 4 -->
+  <circle cx="80" cy="470" r="10" fill="#dc2626"/>
+  <text x="120" y="460" font-size="13" fill="#94a3b8" letter-spacing="1" font-weight="600">01 ЛИСТОПАДА 2024</text>
+  <text x="120" y="488" font-size="20" fill="#dc2626" font-weight="700">Білий список H2 2024 — Укрінформ відсутній</text>
+  <text x="120" y="510" font-size="15" fill="#475569">5 місяців після відходу Мацуки. NV повертається, Укрінформ — ні</text>
+
+  <!-- Event 5 -->
+  <circle cx="80" cy="560" r="10" fill="#16a34a"/>
+  <text x="120" y="550" font-size="13" fill="#94a3b8" letter-spacing="1" font-weight="600">16 ГРУДНЯ 2025</text>
+  <text x="120" y="578" font-size="20" fill="#16a34a" font-weight="700">Білий список H2 2025 — Укрінформ повертається</text>
+  <text x="120" y="600" font-size="15" fill="#475569">1.5 року після відходу Мацуки. Контент за нашим аналізом не змінився</text>
+
+  <text x="60" y="660" font-size="13" fill="#94a3b8">Усі джерела підтверджені посиланнями на imi.org.ua · ukrinform.censorzero.com</text>
+</svg>
