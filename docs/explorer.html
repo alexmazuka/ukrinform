@@ -89,6 +89,7 @@
   .td-sources.multi { color: #16a34a; }
   .td-flags { white-space: nowrap; }
   .td-period { font-size: 11px; }
+  .period-0 { color: #92400e; font-weight: 600; }
   .period-1 { color: #1e40af; font-weight: 600; }
   .period-2 { color: #166534; font-weight: 600; }
 
@@ -126,9 +127,10 @@
     <input type="text" id="search" placeholder="Пошук за заголовком, рубрикою, словом..." autocomplete="off">
   </div>
   <select id="filter-period">
-    <option value="">Обидва періоди</option>
-    <option value="matsuka">Період 1 — Мацука (2023-2024)</option>
-    <option value="reinclusion">Період 2 — Після відходу (2025)</option>
+    <option value="">Усі три періоди</option>
+    <option value="pre">П0 — До Мацуки (трав–жов 2023)</option>
+    <option value="matsuka">П1 — Мацука (лис 2023 – кві 2024)</option>
+    <option value="reinclusion">П2 — Після Мацуки (лип–гру 2025)</option>
   </select>
   <select id="filter-rubric">
     <option value="">Всі рубрики</option>
@@ -234,9 +236,12 @@ function applyFilters() {
     if (q && !row.t?.toLowerCase().includes(q) &&
             !row.r?.toLowerCase().includes(q) &&
             !row.r?.toLowerCase().includes(q)) return false;
-    if (period === 'matsuka' && !row.d?.startsWith('202') ) return false;
-    if (period === 'matsuka' && row.d >= '2025') return false;
-    if (period === 'reinclusion' && row.d < '2025') return false;
+    // P0: May-Oct 2023 (before Matsuka)
+    if (period === 'pre' && (row.d < '2023-05-01' || row.d > '2023-10-31')) return false;
+    // P1: Nov 2023 - Apr 2024 (Matsuka era)
+    if (period === 'matsuka' && (row.d < '2023-11-01' || row.d > '2024-04-30')) return false;
+    // P2: Jul-Dec 2025 (after Matsuka)
+    if (period === 'reinclusion' && row.d < '2025-07-01') return false;
     if (rubric && row.r !== rubric) return false;
     if (type === 'parket' && !row.pk) return false;
     if (type === 'balance' && !row.br) return false;
@@ -286,7 +291,7 @@ function renderTable() {
     const scText = sc < 0 ? '?' : sc;
 
     const period = row.d < '2025'
-      ? '<span class="period-1">П1</span>'
+      ? (row.d < '2023-11-01' ? '<span class="period-0">П0</span>' : '<span class="period-1">П1</span>')
       : '<span class="period-2">П2</span>';
 
     const rubricLabel = RUBRIC_LABELS[row.r] || row.r || '';

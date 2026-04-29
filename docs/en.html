@@ -110,7 +110,9 @@ footer a{color:var(--gold);text-decoration:none}
 
       <p>It is therefore fundamentally important to me that significant conclusions — especially those concerning editorial standards and management quality — rest on approaches that can be <strong>verified, reproduced, and critically evaluated</strong>.</p>
 
-      <p>I collected an open corpus of 51,589 Ukrinform articles across two comparable periods — my tenure (26,342 articles) and a later period after my departure (25,247 articles) — and analyzed the signals publicly cited as grounds for criticism: the share of protocol-official news, source structure, and balance indicators.</p>
+      <p>I collected an open corpus of <strong>79,505 Ukrinform articles across three comparable periods</strong> — six months before my appointment (May–October 2023, 27,916 articles), my tenure (November 2023–April 2024, 26,342 articles), and a later period before Ukrinform's return to the White List (July–December 2025, 25,247 articles) — and analyzed the signals publicly cited as grounds for criticism: the share of protocol-official news, source structure, and balance indicators.</p>
+
+      <p><strong>The data show a consistent decline in parket rates across the three periods:</strong> 5.43% (before my tenure) → 4.97% (during) → 4.14% (after). IMI kept Ukrinform in the White List during the highest-parket period and excluded it during a period when the rate was already lower. The trend in the metric does not align with the timeline of IMI's decisions.</p>
 
       <h3>The main finding</h3>
 
@@ -189,16 +191,21 @@ footer a{color:var(--gold);text-decoration:none}
   <p class="sub">Three independent data cuts — all pointing to the same conclusion.</p>
 
   <div class="card">
-    <h3>Statistical Tests (current parser version: v3)</h3>
+    <h3>Three Periods, One Trend (parser v3)</h3>
     <table>
-      <thead><tr><th>Metric</th><th style="text-align:right">P1 (Matsuka)</th><th style="text-align:right">P2 (After)</th><th style="text-align:right">p-value</th><th style="text-align:right">Effect</th></tr></thead>
+      <thead><tr><th>Period</th><th style="text-align:right">N</th><th style="text-align:right">Parket (no ATO)</th><th style="text-align:right">Parket (with ATO)</th><th>IMI Status</th></tr></thead>
       <tbody>
-        <tr><td><strong>Without military bulletins (39,230 articles)</strong></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>Likely parket</td><td style="text-align:right">4.97%</td><td style="text-align:right">4.14%</td><td style="text-align:right;color:#d97706;font-weight:600">2×10⁻⁶</td><td style="text-align:right;color:var(--g400)">d=0.040</td></tr>
-        <tr><td><strong>With military bulletins (51,589 articles)</strong></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>Likely parket</td><td style="text-align:right">5.11%</td><td style="text-align:right">4.66%</td><td style="text-align:right;color:#d97706;font-weight:600">0.010</td><td style="text-align:right;color:var(--g400)">d=0.021</td></tr>
+        <tr><td><strong>P0 — pre-Matsuka</strong> (May–Oct 2023)</td><td style="text-align:right">27,916</td><td style="text-align:right;font-weight:700">5.43%</td><td style="text-align:right">5.70%</td><td class="tyes">In White List</td></tr>
+        <tr><td><strong>P1 — Matsuka</strong> (Nov 2023–Apr 2024)</td><td style="text-align:right">26,342</td><td style="text-align:right;font-weight:700">4.97%</td><td style="text-align:right">5.11%</td><td class="tno">Excluded</td></tr>
+        <tr><td><strong>P2 — after Matsuka</strong> (Jul–Dec 2025)</td><td style="text-align:right">25,247</td><td style="text-align:right;font-weight:700">4.14%</td><td style="text-align:right">4.66%</td><td class="tyes">Returned</td></tr>
       </tbody>
     </table>
+    <div class="note ok" style="margin-top:14px">
+      <strong>Key finding:</strong> Parket rate consistently <em>decreased</em> across the three periods. IMI excluded Ukrinform during the period when parket was already lower than in the period when IMI kept it on the White List. The trend does not correlate with IMI's decisions.
+    </div>
+    <p style="font-size:13px;color:var(--g600);margin-top:14px;line-height:1.6">
+      <strong>Pairwise comparisons (no ATO):</strong> P0 vs P1: −0.46pp (p=0.038, d=0.021) · P0 vs P2: −1.29pp (p&lt;0.001, d=0.061) · P1 vs P2: −0.83pp (p&lt;0.001, d=0.040). All effect sizes negligible (Cohen's d &lt; 0.07).
+    </p>
     <div class="note warn" style="margin-top:14px;background:#fef3c7;border-left-color:#d97706;color:#7c2d12">
       <strong>Methodological honesty:</strong> Across three parser versions (v1/v2/v3) the parket rate ranges <strong>4–7%</strong>. Two bugs were found and fixed by us before publication: (1) regex missed sources, (2) substring matching produced 32% false positives (e.g. "amerikanskimi" contained marker "mer"). All versions, fixes and full audit log are in <a href="https://github.com/alexmazuka/ukrinform" target="_blank" style="color:#7c2d12;font-weight:600">Git history</a>. <strong>What stays stable across versions: the difference between periods is consistently negligible</strong> (Cohen's d 0.003–0.040). The conclusion is robust to methodological variations.
     </div>

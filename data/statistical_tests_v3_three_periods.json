@@ -1,0 +1,35 @@
+{
+  "parser_version": "v3",
+  "periods": {
+    "P0_pre_matsuka": {
+      "dates": "2023-05-01 to 2023-10-31",
+      "imi_status": "White List",
+      "n_total": 27916,
+      "parket_total": 1592,
+      "parket_pct_total": 5.7,
+      "n_no_ato": 18369,
+      "parket_no_ato": 997,
+      "parket_pct_no_ato": 5.43
+    },
+    "P1_matsuka": {
+      "dates": "2023-11-09 to 2024-04-25",
+      "imi_status": "Excluded",
+      "n_total": 26247,
+      "parket_total": 1342,
+      "parket_pct_total": 5.11,
+      "n_no_ato": 18341,
+      "parket_no_ato": 912,
+      "parket_pct_no_ato": 4.97
+    },
+    "P2_after": {
+      "dates": "2025-07-01 to 2025-12-15",
+      "imi_status": "Returned to White List",
+      "n_total": 25173,
+      "parket_total": 1174,
+      "parket_pct_total": 4.66,
+      "n_no_ato": 20810,
+      "parket_no_ato": 862,
+      "parket_pct_no_ato": 4.14
+    }
+  }
+}
