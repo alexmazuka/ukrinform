@@ -364,14 +364,14 @@ footer a{color:var(--gold)}
 
         <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:18px;border-left:3px solid var(--gold)">
           <div style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;font-weight:600;margin-bottom:4px">РОЗМІР ЕФЕКТУ</div>
-          <div style="font-size:32px;font-weight:800;color:#fff;line-height:1.1">d = 0.039</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px">Cohen's d &lt; 0.2 = мізерний ефект</div>
+          <div style="font-size:32px;font-weight:800;color:#fff;line-height:1.1">d &lt; 0.05</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px">Cohen's d у будь-якому варіанті розрахунку — мізерний</div>
         </div>
 
         <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:18px;border-left:3px solid var(--gold)">
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;font-weight:600;margin-bottom:4px">ПОРІВНЯННЯ З БІЛИМ СПИСКОМ</div>
-          <div style="font-size:32px;font-weight:800;color:#fff;line-height:1.1">5.43%</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px">паркет Суспільного — у списку весь час</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;font-weight:600;margin-bottom:4px">ДІАПАЗОН ПАРКЕТУ</div>
+          <div style="font-size:32px;font-weight:800;color:#fff;line-height:1.1">4–7%</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px">залежно від словника та методу — обидва періоди в межах діапазону</div>
         </div>
 
       </div>
@@ -379,13 +379,13 @@ footer a{color:var(--gold)}
       <!-- Three core findings -->
       <div style="background:rgba(0,0,0,0.15);border-radius:10px;padding:18px 22px;line-height:1.7">
         <div style="font-size:14px;color:rgba(255,255,255,0.9);margin-bottom:10px">
-          <span style="color:var(--gold);font-weight:700">1.</span> <strong>За Мацуки паркету не більше</strong>, ніж після відходу. 7.24% (П1) vs 6.27% (П2). Різниця у зворотному напрямку від звинувачень ІМІ.
+          <span style="color:var(--gold);font-weight:700">1.</span> <strong>За Мацуки паркету не більше</strong>, ніж після відходу. У трьох версіях алгоритму (v1/v2/v3) різниця тримається у межах <strong>0.4–1.0 пп</strong> у напрямку проти звинувачень ІМІ — мізерна за будь-яким методом.
         </div>
         <div style="font-size:14px;color:rgba(255,255,255,0.9);margin-bottom:10px">
           <span style="color:var(--gold);font-weight:700">2.</span> <strong>Структура контенту стабільна</strong>: персоналії, рубрики, глибина джерел, висвітлення опозиції — практично ідентичні в обох періодах.
         </div>
         <div style="font-size:14px;color:rgba(255,255,255,0.9)">
-          <span style="color:var(--gold);font-weight:700">3.</span> <strong>Контрольна група показує асиметрію:</strong> Суспільне (5.43% паркету) — у Білому списку весь час; Укрінформ (6.01% паркету) повернули туди ж лише через 1.5 року. Питання до прозорості критерію.
+          <span style="color:var(--gold);font-weight:700">3.</span> <strong>Контрольна група показує асиметрію:</strong> Суспільне (близько 5% паркету) — у Білому списку весь час; Укрінформ (близько 4% паркету) повернули туди ж лише через 1.5 року. Питання до прозорості критерію.
         </div>
       </div>
 
@@ -764,7 +764,17 @@ footer a{color:var(--gold)}
       Повний розбір — у <a href="https://github.com/alexmazuka/ukrinform/blob/main/VERSION_NOTE.md" target="_blank" style="color:var(--navy)">VERSION_NOTE.md</a>. Наша метрика точніше читається як «частка статей з офіційним URL-слагом і без знайдених цитованих джерел у тілі». Це валідний проксі для «паркету», але не ідентичний ручній оцінці ІМІ.
     </p>
     <p style="font-size:13px;color:var(--g600);line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid var(--g100)">
-      <strong>Парсер v2 — оновлено 19 квітня 2026:</strong> перепарсовано 51 420 з 51 589 статей з додатковими патернами (джерело з заголовка, «Про це повідомляє X», «Як передає Укрінформ, про це Y...»). Середня кількість знайдених джерел зросла з 1.7 до ~2.1 на статтю. <strong>Основний висновок не змінився:</strong> без АТО П1 паркет 7.24%, П2 6.27% — за Мацуки паркету дещо більше, p=0.000005, Cohen's d=0.039 (мізерний ефект). З АТО — 6.97% vs 6.67%, p=0.178. Повні результати — у <a href="https://github.com/alexmazuka/ukrinform/blob/main/data/statistical_tests_v2.json" target="_blank" style="color:var(--navy)">statistical_tests_v2.json</a>.
+      <strong>Журнал виправлень методології (методологічні помилки знайдені нами самими, до публікації):</strong>
+      <ul style="margin:12px 0 0 20px;line-height:1.8;font-size:13px;color:var(--g600)">
+        <li><strong>v1 → v2 (помилка #1):</strong> regex знаходив тільки частину цитованих джерел у тілі статті. <strong>Виправили:</strong> додали 5 нових патернів (джерело з заголовка «— Генштаб», «Про це повідомляє X», «Як передає Укрінформ» тощо). Середня кількість знайдених джерел зросла з 1.7 до 2.1.</li>
+        <li><strong>v2 → v3 (помилка #2):</strong> класифікація «офіційне джерело» через substring-match хибно ловила слова що випадково містять маркери (`amerikanskimi` → містить `mer`; `pomerla` → містить `mer`; `vijskova` → містить `ova`). 32% статей хибно класифіковано як офіційні. <strong>Виправили:</strong> перейшли на word-boundary матчинг + додали українські відмінки (urad/uradu/uryad).</li>
+        <li><strong>Залишкове обмеження:</strong> на ~5% статей алгоритм продовжує помилятись через семантичний контекст — наприклад, статті про російського міністра РФ хибно класифікуються як «про українську владу». Це фундаментальне обмеження методу slug-classification.</li>
+      </ul>
+      <p style="margin-top:14px;font-size:13px;color:var(--g600);line-height:1.7">
+        <strong>Висновок методологічної саморевізії:</strong> у трьох версіях алгоритму (v1/v2/v3) частка статей з ознаками паркету коливається у межах <strong>4–7%</strong> для обох періодів. Точна цифра залежить від словника та методу, але <strong>різниця між періодами стабільно мізерна</strong> (Cohen's d у діапазоні 0.003–0.04). Це робить висновок стійким до методологічних варіацій.
+      </p>
+      <p style="margin-top:10px;font-size:13px;color:var(--g600)">
+        Повні результати: <a href="https://github.com/alexmazuka/ukrinform/blob/main/data/statistical_tests_v3.json" target="_blank" style="color:var(--navy)">statistical_tests_v3.json</a> (поточна версія) · <a href="https://github.com/alexmazuka/ukrinform/blob/main/data/statistical_tests_v2.json" target="_blank" style="color:var(--navy)">v2</a> · <a href="https://github.com/alexmazuka/ukrinform/blob/main/data/statistical_tests.json" target="_blank" style="color:var(--navy)">v1</a> — для повної прозорості ходу досліджень.
     </p>
   </div>
 </section>

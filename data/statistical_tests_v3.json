@@ -1,0 +1,35 @@
+{
+  "parser_version": "v3",
+  "description": "Word-boundary classification fix + Ukrainian morphology",
+  "date": "2026-04-19",
+  "note": "Range across v1/v2/v3: parket 4-7% across all scenarios. Difference between periods consistently negligible.",
+  "scenarios": {
+    "with_ato": {
+      "n1": 26247,
+      "n2": 25173,
+      "p1_pct": 5.11,
+      "p2_pct": 4.66,
+      "p1_count": 1342,
+      "p2_count": 1174,
+      "chi_square": 5.5724,
+      "p_value": 0.009683,
+      "cohens_d": 0.0208
+    },
+    "without_ato": {
+      "n1": 18341,
+      "n2": 20810,
+      "p1_pct": 4.97,
+      "p2_pct": 4.14,
+      "p1_count": 912,
+      "p2_count": 862,
+      "chi_square": 15.5336,
+      "p_value": 2e-06,
+      "cohens_d": 0.0399
+    }
+  },
+  "historical_versions": {
+    "v1": "substring matching (had false positives)",
+    "v2": "expanded source patterns",
+    "v3": "word-boundary + morphology"
+  }
+}
