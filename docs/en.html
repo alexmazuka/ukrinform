@@ -189,20 +189,21 @@ footer a{color:var(--gold);text-decoration:none}
   <p class="sub">Three independent data cuts — all pointing to the same conclusion.</p>
 
   <div class="card">
-    <h3>Statistical Tests</h3>
+    <h3>Statistical Tests (current parser version: v3)</h3>
     <table>
       <thead><tr><th>Metric</th><th style="text-align:right">P1 (Matsuka)</th><th style="text-align:right">P2 (After)</th><th style="text-align:right">p-value</th><th style="text-align:right">Effect</th></tr></thead>
       <tbody>
         <tr><td><strong>Without military bulletins (39,230 articles)</strong></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>Likely parket</td><td style="text-align:right">6.61%</td><td style="text-align:right">6.01%</td><td style="text-align:right;color:#d97706;font-weight:600">0.007</td><td style="text-align:right;color:var(--g400)">d=0.025</td></tr>
-        <tr><td>Balance risk</td><td style="text-align:right">7.98%</td><td style="text-align:right">7.55%</td><td style="text-align:right;color:#16a34a">0.100</td><td style="text-align:right;color:var(--g400)">d=0.016</td></tr>
+        <tr><td>Likely parket</td><td style="text-align:right">4.97%</td><td style="text-align:right">4.14%</td><td style="text-align:right;color:#d97706;font-weight:600">2×10⁻⁶</td><td style="text-align:right;color:var(--g400)">d=0.040</td></tr>
         <tr><td><strong>With military bulletins (51,589 articles)</strong></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>Likely parket</td><td style="text-align:right">6.51%</td><td style="text-align:right">6.42%</td><td style="text-align:right;color:#16a34a">0.678</td><td style="text-align:right;color:var(--g400)">d=0.003</td></tr>
-        <tr><td>Balance risk</td><td style="text-align:right">7.86%</td><td style="text-align:right">7.98%</td><td style="text-align:right;color:#16a34a">0.606</td><td style="text-align:right;color:var(--g400)">d=0.005</td></tr>
+        <tr><td>Likely parket</td><td style="text-align:right">5.11%</td><td style="text-align:right">4.66%</td><td style="text-align:right;color:#d97706;font-weight:600">0.010</td><td style="text-align:right;color:var(--g400)">d=0.021</td></tr>
       </tbody>
     </table>
+    <div class="note warn" style="margin-top:14px;background:#fef3c7;border-left-color:#d97706;color:#7c2d12">
+      <strong>Methodological honesty:</strong> Across three parser versions (v1/v2/v3) the parket rate ranges <strong>4–7%</strong>. Two bugs were found and fixed by us before publication: (1) regex missed sources, (2) substring matching produced 32% false positives (e.g. "amerikanskimi" contained marker "mer"). All versions, fixes and full audit log are in <a href="https://github.com/alexmazuka/ukrinform" target="_blank" style="color:#7c2d12;font-weight:600">Git history</a>. <strong>What stays stable across versions: the difference between periods is consistently negligible</strong> (Cohen's d 0.003–0.040). The conclusion is robust to methodological variations.
+    </div>
     <div class="note ok">
-      <strong>In both scenarios</strong>, the difference between periods is negligible (Cohen's d &lt; 0.03). The data does not support the conclusion that content quality deteriorated under Matsuka's leadership.
+      <strong>In all scenarios and across all parser versions</strong>, the difference between periods remains negligible (Cohen's d &lt; 0.05). The data does not support the conclusion that content quality deteriorated under Matsuka's leadership.
     </div>
   </div>
 
