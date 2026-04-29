@@ -25,3 +25,7 @@ data/corpus_fast.json
 *_PRIVATE*
 COMMUNICATION_STRATEGY*
 dashboard/
+
+# Temporary processing files
+data/reparse_progress.json
+data/corpus_v1_backup.csv
