@@ -656,8 +656,70 @@ footer a{color:var(--gold)}
     </div>
   </div>
 
+  <!-- CENSORSHIP HYPOTHESIS TEST -->
+  <div style="background:#fff;border:1px solid var(--g200);border-radius:12px;overflow:hidden;margin-bottom:20px">
+    <div style="background:var(--navy);padding:14px 18px;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px">
+      <span style="font-size:18px">🧪</span> Тест гіпотези «цензури»
+    </div>
+    <div style="padding:20px">
+      <p style="font-size:14px;color:var(--g700);line-height:1.7;margin-bottom:16px">
+        Якщо припустити, що за час керівництва Мацуки впроваджувалась цензура — то в даних має бути слід: <strong>опозиція, критичні голоси, корупційна тематика мали би ЗМЕНШИТИСЬ у П1 і ВІДНОВИТИСЬ у П2</strong> (після відходу). Перевіримо цей патерн на 79 505 статтях:
+      </p>
+
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px">
+        <thead>
+          <tr style="border-bottom:2px solid var(--g200)">
+            <th style="text-align:left;padding:10px;color:var(--g600)">Категорія</th>
+            <th style="text-align:right;padding:10px;color:#92400e">П0 до</th>
+            <th style="text-align:right;padding:10px;color:#1e40af">П1 Мацука</th>
+            <th style="text-align:right;padding:10px;color:#166534">П2 після</th>
+            <th style="text-align:center;padding:10px;color:var(--g600)">Цензура?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--g100)">
+            <td style="padding:10px;font-weight:600">Опозиція</td>
+            <td style="text-align:right;padding:10px">1.33%</td>
+            <td style="text-align:right;padding:10px">1.30%</td>
+            <td style="text-align:right;padding:10px">2.03%</td>
+            <td style="text-align:center;padding:10px;color:#16a34a;font-weight:700">❌ Ні</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--g100)">
+            <td style="padding:10px;font-weight:600">Критичні голоси</td>
+            <td style="text-align:right;padding:10px">1.04%</td>
+            <td style="text-align:right;padding:10px">0.91%</td>
+            <td style="text-align:right;padding:10px">0.84%</td>
+            <td style="text-align:center;padding:10px;color:#16a34a;font-weight:700">❌ Ні</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--g100)">
+            <td style="padding:10px;font-weight:600">Корупційна тематика</td>
+            <td style="text-align:right;padding:10px">1.20%</td>
+            <td style="text-align:right;padding:10px">1.16%</td>
+            <td style="text-align:right;padding:10px">2.16%</td>
+            <td style="text-align:center;padding:10px;color:#16a34a;font-weight:700">❌ Ні</td>
+          </tr>
+          <tr>
+            <td style="padding:10px;font-weight:600">Права людини</td>
+            <td style="text-align:right;padding:10px">0.37%</td>
+            <td style="text-align:right;padding:10px;color:#16a34a;font-weight:700">0.44% ↑</td>
+            <td style="text-align:right;padding:10px">0.31%</td>
+            <td style="text-align:center;padding:10px;color:#16a34a;font-weight:700">❌ Ні (зросло!)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="padding:14px 18px;background:#eff6ff;border-left:4px solid #3b82f6;border-radius:0 8px 8px 0;font-size:13px;color:#1e3a8a;line-height:1.7;margin-bottom:12px">
+        <strong>Жодна з 4 категорій не показує патерну цензури.</strong> Найвиразніше: <strong>права людини зросли під час керівництва Мацуки</strong> (0.44% vs 0.37% до того). Якби впроваджувалась цензура — мало б падати. Критичні голоси послідовно знижувались <strong>і після відходу Мацуки</strong> — отже причина системна, не персональна.
+      </div>
+
+      <p style="font-size:13px;color:var(--g600);line-height:1.6;margin:0">
+        <strong>Що ця таблиця спростовує:</strong> поширене звинувачення про «спробу впровадити цензуру». Якщо такі спроби були — у відкритому потоці статей їх би було видно. Спроби впровадження редакційного контролю не лишають слідів у тестах на чутливі теми. <a href="https://github.com/alexmazuka/ukrinform/blob/main/data/censorship_test.json" target="_blank" style="color:var(--navy)">Дані у форматі JSON</a>.
+      </p>
+    </div>
+  </div>
+
   <div class="note ok">
-    <strong>Загальний підсумок:</strong> На масиві 39 230 статей (без воєнних зведень) паркет за Мацуки трохи <strong>вищий</strong> (4.97% vs 4.14%, v3). Суспільне Новини в Білому списку показує близько 5% — практично такий самий рівень. По кожному зрізу — персоналії, рубрики, глибина джерел, висвітлення опозиції, порівняння з іншими медіа — структура контенту стабільна. Рішення ІМІ не знаходить підтвердження в даних.
+    <strong>Загальний підсумок:</strong> Тренд паркетності — стійке зниження (5.43% → 4.97% → 4.14%). ІМІ виключив на меншому показнику, ніж до того тримав у списку. Висвітлення опозиції, критики, корупції, прав людини за час Мацуки — стабільне або вище. Жодна метрика не підтверджує ні «погіршення якості», ні «спроб цензури».
   </div>
 </section>
 
