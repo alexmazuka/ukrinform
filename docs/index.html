@@ -871,16 +871,16 @@ footer a{color:var(--gold)}
 <section id="slider">
   <p class="stit">Інтерактивний аналіз</p>
   <h2 class="sh">Змініть визначення «паркету» — і подивіться що станеться</h2>
-  <p class="ss">Пересувайте слайдер: скільки джерел потрібно, щоб стаття НЕ вважалась паркетною?</p>
+  <p class="ss">Пересувайте слайдер: яку верхню межу джерел ми допускаємо в проксі-визначенні «паркету»?</p>
 
   <div class="slider-box">
     <div class="slider-header">
-      <div class="slider-title">Поріг: стаття паркетна, якщо джерел ≤</div>
+      <div class="slider-title">Поріг: стаття паркетна, якщо джерел ≤ N і немає неофіційних джерел</div>
       <div class="slider-value" id="threshold-display">1</div>
     </div>
     <input type="range" id="parket-slider" min="0" max="3" value="1" step="1">
     <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--g400);margin-top:-8px;margin-bottom:16px">
-      <span>0 (тільки без жодного)</span><span>1 (базове визначення)</span><span>2</span><span>3 (суворе)</span>
+      <span>0 (найсуворіше)</span><span>1 (базове визначення)</span><span>2</span><span>3 (найширше)</span>
     </div>
     <div class="slider-results">
       <div class="slider-card sc1">
@@ -1228,7 +1228,7 @@ function updateSlider() {
 
   // Recalculate parket with custom threshold
   const calcParket = (arr) => {
-    const pk = arr.filter(x => x.of && x.sc >= 0 && x.sc <= threshold).length;
+    const pk = arr.filter(x => x.of && x.noc === 0 && x.sc >= 0 && x.sc <= threshold).length;
     return arr.length ? (pk / arr.length * 100).toFixed(2) + '%' : '—';
   };
 
