@@ -1,0 +1,603 @@
+{
+  "total_rows": 79505,
+  "total_official": 18513,
+  "total_parket": 4167,
+  "total_balance": 4867,
+  "consistency": {
+    "pk_without_of": 0,
+    "br_without_of": 0,
+    "pk_with_noc_gt_0": 0,
+    "pk_with_sc_gt_1": 0,
+    "br_with_noc_gt_0": 0
+  },
+  "by_period": {
+    "p0": {
+      "n": 27916,
+      "official": 6832,
+      "parket": 1640,
+      "balance": 1877,
+      "parket_sc_distribution": {
+        "0": 1028,
+        "1": 612
+      },
+      "balance_sc_distribution": {
+        "0": 1028,
+        "1": 612,
+        "2": 189,
+        "3": 38,
+        "4": 9,
+        "6": 1
+      }
+    },
+    "p1": {
+      "n": 26342,
+      "official": 6120,
+      "parket": 1349,
+      "balance": 1584,
+      "parket_sc_distribution": {
+        "0": 887,
+        "1": 462
+      },
+      "balance_sc_distribution": {
+        "0": 887,
+        "1": 462,
+        "2": 183,
+        "3": 41,
+        "4": 10,
+        "5": 1
+      }
+    },
+    "p2": {
+      "n": 25247,
+      "official": 5561,
+      "parket": 1178,
+      "balance": 1406,
+      "parket_sc_distribution": {
+        "0": 710,
+        "1": 468
+      },
+      "balance_sc_distribution": {
+        "0": 710,
+        "1": 468,
+        "2": 186,
+        "3": 34,
+        "4": 7,
+        "5": 1
+      }
+    }
+  },
+  "rubric_parket": {
+    "ato": {
+      "parket": 1325,
+      "total": 21906,
+      "parket_pct": 6.05
+    },
+    "economy": {
+      "parket": 734,
+      "total": 11905,
+      "parket_pct": 6.17
+    },
+    "society": {
+      "parket": 719,
+      "total": 10619,
+      "parket_pct": 6.77
+    },
+    "polytics": {
+      "parket": 716,
+      "total": 11491,
+      "parket_pct": 6.23
+    },
+    "regions": {
+      "parket": 612,
+      "total": 20899,
+      "parket_pct": 2.93
+    },
+    "vidbudova": {
+      "parket": 52,
+      "total": 2304,
+      "parket_pct": 2.26
+    },
+    "tymchasovo-okupovani": {
+      "parket": 9,
+      "total": 381,
+      "parket_pct": 2.36
+    }
+  },
+  "rubric_balance": {
+    "ato": {
+      "balance": 1577,
+      "total": 21906,
+      "balance_pct": 7.2
+    },
+    "economy": {
+      "balance": 867,
+      "total": 11905,
+      "balance_pct": 7.28
+    },
+    "polytics": {
+      "balance": 848,
+      "total": 11491,
+      "balance_pct": 7.38
+    },
+    "society": {
+      "balance": 808,
+      "total": 10619,
+      "balance_pct": 7.61
+    },
+    "regions": {
+      "balance": 696,
+      "total": 20899,
+      "balance_pct": 3.33
+    },
+    "vidbudova": {
+      "balance": 62,
+      "total": 2304,
+      "balance_pct": 2.69
+    },
+    "tymchasovo-okupovani": {
+      "balance": 9,
+      "total": 381,
+      "balance_pct": 2.36
+    }
+  },
+  "derived_slug_categories": {
+    "official_all": {
+      "Президент / ОП": 6140,
+      "Силовий блок": 4774,
+      "Міністерства": 3656,
+      "Держструктури / держкомпанії": 1409,
+      "Уряд / Кабмін": 1257,
+      "Парламент": 1235,
+      "Регіональна влада": 948
+    },
+    "parket_only": {
+      "Силовий блок": 1472,
+      "Президент / ОП": 803,
+      "Міністерства": 649,
+      "Держструктури / держкомпанії": 512,
+      "Уряд / Кабмін": 329,
+      "Регіональна влада": 315,
+      "Парламент": 267
+    },
+    "balance_only": {
+      "Силовий блок": 1691,
+      "Президент / ОП": 931,
+      "Міністерства": 801,
+      "Держструктури / держкомпанії": 646,
+      "Регіональна влада": 369,
+      "Уряд / Кабмін": 365,
+      "Парламент": 287
+    }
+  },
+  "suspicious_counts": {
+    "pk_sc_0": 2625,
+    "pk_sc_1": 1542,
+    "pk_ato": 1325,
+    "pk_regions_sc_0": 403,
+    "pk_foreignish": 1200,
+    "pk_foreignish_sc_0": 758,
+    "pk_minister_foreignish": 18,
+    "official_false_oc_gt_0": 17816,
+    "official_true_oc_0": 9427,
+    "official_true_sc_0": 2625
+  },
+  "pk_sc0_keyword_buckets": {
+    "zvedennya": 200,
+    "za_dobu": 325,
+    "ova_or_kmva": 424,
+    "zsu_or_genshtab_or_sbu": 753,
+    "president_or_rada": 641
+  },
+  "samples": {
+    "pk_sc0_foreignish": [
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "ЗСУ знищили вже 190 960 російських загарбників",
+        "url": "https://www.ukrinform.ua/rubric-ato/3702941-zsu-znisili-vze-190-960-rosijskih-zagarbnikiv.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "росіяни за добу атакували 11 областей України - зведення ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3703012-rosiani-za-dobu-atakuvali-11-oblastej-ukraini-zvedenna-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-02",
+        "period": "p0",
+        "rubric": "economy",
+        "title": "Заборона на рибу і деревину з росії: Рада закликає світ розширити санкції",
+        "url": "https://www.ukrinform.ua/rubric-economy/3703814-zaborona-na-ribu-i-derevinu-z-rosii-rada-zaklikae-svit-rozsiriti-sankcii.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-02",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "росіяни за добу обстріляли дев'ять областей України - зведення ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3703575-rosiani-za-dobu-obstrilali-devat-oblastej-ukraini-zvedenna-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-02",
+        "period": "p0",
+        "rubric": "society",
+        "title": "СБУ викрила ділків, які профінансували бойовиків «днр» більш як на ₴50 мільйонів",
+        "url": "https://www.ukrinform.ua/rubric-society/3703640-sbu-vikrila-dilkiv-aki-profinansuvali-bojovikiv-dnr-bils-ak-na-50-miljoniv.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-03",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "ЗСУ ліквідували вже 191 940 російських загарбників",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703928-zsu-likviduvali-vze-191-940-rosijskih-zagarbnikiv.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-03",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "Загарбники за добу атакували 11 регіонів України - зведення ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3704026-armia-rf-za-dobu-atakuvala-11-regioniv-ukraini-zvedenna-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-04",
+        "period": "p0",
+        "rubric": "polytics",
+        "title": "Зеленський і Рютте закликали росію негайно припинити війну",
+        "url": "https://www.ukrinform.ua/rubric-polytics/3704829-zelenskij-i-rutte-zaklikali-rosiu-negajno-pripiniti-vijnu.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      }
+    ],
+    "pk_ato": [
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "ЗСУ за добу відбили понад 36 атак противника на трьох напрямках",
+        "url": "https://www.ukrinform.ua/rubric-ato/3702924-zsu-za-dobu-vidbili-ponad-36-atak-protivnika-na-troh-napramkah.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "ЗСУ знищили вже 190 960 російських загарбників",
+        "url": "https://www.ukrinform.ua/rubric-ato/3702941-zsu-znisili-vze-190-960-rosijskih-zagarbnikiv.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Виплати 30 тисяч військовим: петиція до Президента набрала необхідну кількість голосів",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703077-viplati-30-tisac-vijskovim-peticia-do-prezidenta-nabrala-neobhidnu-kilkist-golosiv.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Зеленський пропонує Раді продовжити воєнний стан та загальну мобілізацію",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703348-zelenskij-proponue-radi-prodovziti-voennij-stan-ta-zagalnu-mobilizaciu.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-02",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Укази Президента про продовження воєнного стану та мобілізації пройшли комітет Ради",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703502-ukazi-prezidenta-pro-prodovzenna-voennogo-stanu-ta-mobilizacii-projsli-komitet-radi.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-02",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Рада продовжила воєнний стан та загальну мобілізацію ще на 90 діб",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703675-rada-prodovzila-voennij-stan-ta-zagalnu-mobilizaciu-se-na-90-dib.html",
+        "sc": 1,
+        "oc": 1,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-02",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Президент нагородив 63 військових",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703877-prezident-nagorodiv-63-vijskovih.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-03",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "На Київщині зберігається повітряна небезпека - ОВА",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703896-na-kiivsini-zberigaetsa-povitrana-nebezpeka-ova.html",
+        "sc": 1,
+        "oc": 1,
+        "noc": 0
+      }
+    ],
+    "pk_regions_sc0": [
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "росіяни за добу атакували 11 областей України - зведення ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3703012-rosiani-za-dobu-atakuvali-11-oblastej-ukraini-zvedenna-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-02",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "росіяни за добу обстріляли дев'ять областей України - зведення ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3703575-rosiani-za-dobu-obstrilali-devat-oblastej-ukraini-zvedenna-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-03",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "Загарбники за добу атакували 11 регіонів України - зведення ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3704026-armia-rf-za-dobu-atakuvala-11-regioniv-ukraini-zvedenna-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-04",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "росіяни за добу атакували десять областей України — зведення ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3704553-rosiani-za-dobu-atakuvali-desat-oblastej-ukraini-zvedenna-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-04",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "Час комендантської години у Запоріжжі не зміниться - міськрада",
+        "url": "https://www.ukrinform.ua/rubric-regions/3704895-cas-komendantskoi-godini-u-zaporizzi-ne-zminitsa-miskrada.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-05",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "Ігор Табурець, начальник Черкаської ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3705228-igor-taburec-nacalnik-cerkaskoi-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-06",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "росіяни за добу атакували дев'ять регіонів України - зведення ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3705525-rosiani-za-dobu-atakuvali-devat-regioniv-ukraini-zvedenna-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-07",
+        "period": "p0",
+        "rubric": "regions",
+        "title": "Війська рф за добу обстріляли дев’ять областей України - зведення ОВА",
+        "url": "https://www.ukrinform.ua/rubric-regions/3705879-vijska-rf-za-dobu-obstrilali-devat-oblastej-ukraini-zvedenna-ova.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      }
+    ],
+    "official_false_oc_gt0": [
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "У Бахмуті загинув американський доброволець Купер Ендрюс",
+        "url": "https://www.ukrinform.ua/rubric-ato/3702909-u-bahmuti-zaginuv-amerikanskij-dobrovolec-kuper-endrus.html",
+        "sc": 3,
+        "oc": 1,
+        "noc": 2
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "росіяни атакували Україну зі стратегічної авіації, випустили 18 крилатих ракет - Залужний",
+        "url": "https://www.ukrinform.ua/rubric-ato/3702927-rosiani-atakuvali-ukrainu-zi-strategicnoi-aviacii-vipustili-18-krilatih-raket-zaluznij.html",
+        "sc": 4,
+        "oc": 2,
+        "noc": 2
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "путін не призначав командувача для вторгнення в Україну, щоб приписати «перемогу» собі – ISW",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703038-putin-ne-priznacav-komanduvaca-dla-vtorgnenna-v-ukrainu-sob-pripisati-peremogu-sobi-isw.html",
+        "sc": 2,
+        "oc": 1,
+        "noc": 1
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "На Житомирщині під час нічної атаки є влучання у промисловий об’єкт",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703081-na-zitomirsini-pid-cas-nicnoi-ataki-e-vlucanna-u-promislovij-obekt.html",
+        "sc": 2,
+        "oc": 2,
+        "noc": 0
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Резніков вірить в успішність контрнаступу",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703119-reznikov-virit-v-uspisnist-kontrnastupu.html",
+        "sc": 7,
+        "oc": 2,
+        "noc": 3
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Із західних танків в Україні вже є «Леопарди» і «Челленджери» - Резніков",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703134-iz-zahidnih-tankiv-v-ukraini-vze-e-leopardi-i-cellendzeri-reznikov.html",
+        "sc": 5,
+        "oc": 1,
+        "noc": 4
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Резніков – про «снарядний голод»: Для контрнаступу підготовлений резерв",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703152-reznikov-pro-snaradnij-golod-dla-kontrnastupu-pidgotovlenij-rezerv.html",
+        "sc": 3,
+        "oc": 1,
+        "noc": 2
+      },
+      {
+        "date": "2023-05-01",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Україна попросила у Японії засоби радіоелектронної боротьби з російськими дронами",
+        "url": "https://www.ukrinform.ua/rubric-ato/3703164-ukraina-poprosila-u-aponii-zasobi-radioelektronnoi-borotbi-z-rosijskimi-dronami.html",
+        "sc": 6,
+        "oc": 2,
+        "noc": 3
+      }
+    ],
+    "pk_minister_foreignish": [
+      {
+        "date": "2023-08-14",
+        "period": "p0",
+        "rubric": "polytics",
+        "title": "Міністр фінансів Німеччини прибув до Києва",
+        "url": "https://www.ukrinform.ua/rubric-polytics/3747976-ministr-finansiv-nimeccini-pribuv-do-kieva.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-09-13",
+        "period": "p0",
+        "rubric": "polytics",
+        "title": "Міністр закордонних справ Британії їде до Туреччини говорити про війну та зернову ініціативу",
+        "url": "https://www.ukrinform.ua/rubric-polytics/3760594-ministr-zakordonnih-sprav-britanii-ide-do-tureccini-govoriti-pro-vijnu-ta-zernovu-iniciativu.html",
+        "sc": 1,
+        "oc": 1,
+        "noc": 0
+      },
+      {
+        "date": "2023-09-26",
+        "period": "p0",
+        "rubric": "ato",
+        "title": "Міністр оборони Канади проінспектував навчання українських захисників у Британії",
+        "url": "https://www.ukrinform.ua/rubric-ato/3766054-ministr-oboroni-kanadi-proinspektuvav-navcanna-ukrainskih-zahisnikiv-u-britanii.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-09-28",
+        "period": "p0",
+        "rubric": "polytics",
+        "title": "До Києва прибув міністр оборони Франції",
+        "url": "https://www.ukrinform.ua/rubric-polytics/3767199-do-kieva-pribuv-ministr-oboroni-francii.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-10-13",
+        "period": "p0",
+        "rubric": "polytics",
+        "title": "Росія має заплатити за агресію: міністри фінансів G7 у Марокко підтримали Україну",
+        "url": "https://www.ukrinform.ua/rubric-polytics/3773482-rosia-mae-zaplatiti-za-agresiu-ministri-finansiv-g7-u-marokko-pidtrimali-ukrainu.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-10-29",
+        "period": "p0",
+        "rubric": "economy",
+        "title": "Міністри G7 засудили війну Росії проти України і атаки на зернову інфраструктуру",
+        "url": "https://www.ukrinform.ua/rubric-economy/3780019-ministri-g7-zasudili-vijnu-rosii-proti-ukraini-i-ataki-na-zernovu-infrastrukturu.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-11-30",
+        "period": "p1",
+        "rubric": "polytics",
+        "title": "На Раді міністрів ОБСЄ 36 країн закликали Росію негайно вивести війська з України",
+        "url": "https://www.ukrinform.ua/rubric-polytics/3793929-na-radi-ministriv-obse-36-krain-zaklikali-rosiu-negajno-vivesti-vijska-z-ukraini.html",
+        "sc": 0,
+        "oc": 0,
+        "noc": 0
+      },
+      {
+        "date": "2023-11-30",
+        "period": "p1",
+        "rubric": "regions",
+        "title": "СБУ повідомила про підозру ексбухгалтеру, який дослужився до «заступника міністра ЛНР»",
+        "url": "https://www.ukrinform.ua/rubric-regions/3793711-sbu-ogolosila-pidozru-eksbuhgalteru-akij-dosluzivsa-do-zastupnika-ministra-lnr.html",
+        "sc": 1,
+        "oc": 1,
+        "noc": 0
+      }
+    ]
+  }
+}

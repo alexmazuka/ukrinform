@@ -6,7 +6,7 @@
 <title>CensorZero: Independent Audit of IMI's Assessment of Ukrinform</title>
 <meta name="description" content="79,505 Ukrinform articles across three periods. Parket trend: consistent decline.">
 <meta property="og:title" content="CensorZero: 79,505 Ukrinform articles — independent audit">
-<meta property="og:description" content="IMI evaluated ~100 articles in 2 days. We collected 79,505 across three periods. Parket rate consistently declined: 5.80% → 4.97% → 4.14%. IMI excluded Ukrinform during the period with lower rate than when it kept it on the White List.">
+<meta property="og:description" content="IMI evaluated ~100 articles in 2 days. We collected 79,505 across three periods. By our proxy metric, the parket rate declined: 5.80% → 4.97% → 4.14%.">
 <meta property="og:image" content="https://ukrinform.censorzero.com/og-image.svg">
 <meta property="og:url" content="https://ukrinform.censorzero.com/en.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -117,14 +117,14 @@ footer a{color:var(--gold);text-decoration:none}
 
       <p>I collected an open corpus of <strong>79,505 Ukrinform articles across three comparable periods</strong> — six months before my appointment (May–October 2023, 27,916 articles), my tenure (November 2023–April 2024, 26,342 articles), and a later period before Ukrinform's return to the White List (July–December 2025, 25,247 articles) — and analyzed the signals publicly cited as grounds for criticism: the share of protocol-official news, source structure, and balance indicators.</p>
 
-      <p><strong>The data show a consistent decline in parket rates across the three periods:</strong> 5.80% (before my tenure) → 4.97% (during) → 4.14% (after). IMI kept Ukrinform in the White List during the highest-parket period and excluded it during a period when the rate was already lower. The trend in the metric does not align with the timeline of IMI's decisions.</p>
+      <p><strong>By our proxy metric, the data show a consistent decline in parket rates across the three periods:</strong> 5.80% (before my tenure) → 4.97% (during) → 4.14% (after). IMI kept Ukrinform in the White List during the highest-parket period and excluded it during a period when the rate was already lower. This metric alone does not provide a simple explanation for the timeline of IMI's decisions.</p>
 
       <p><strong>Method correction note, April 30, 2026:</strong> public assets were rebuilt from one canonical metrics layer after aligning official-source detection, official-URL classification, and the formulas for <code>parket</code> and <code>balance</code>. The correction log is public in <a href="https://github.com/alexmazuka/ukrinform/blob/main/CORRECTIONS.md">CORRECTIONS.md</a>.</p>
 
       <h3>The main finding</h3>
 
       <div class="note ok">
-        <strong>The open data do not support the claim that during my tenure Ukrinform's content became significantly more "parket" or noticeably less balanced than in the comparable period after my departure.</strong>
+        <strong>In the metrics we tested, the open data do not show that during my tenure Ukrinform's content became significantly more "parket" or noticeably less balanced than in the comparable period after my departure.</strong>
       </div>
 
       <p>In other words, the open corpus of articles shows no structural shift that would justify strong, far-reaching conclusions about a fundamental deterioration in news quality during this specific period.</p>
@@ -208,7 +208,7 @@ footer a{color:var(--gold);text-decoration:none}
       </tbody>
     </table>
     <div class="note ok" style="margin-top:14px">
-      <strong>Key finding:</strong> Parket rate consistently <em>decreased</em> across the three periods. IMI excluded Ukrinform during the period when parket was already lower than in the period when IMI kept it on the White List. The trend does not correlate with IMI's decisions.
+      <strong>Key finding:</strong> By our proxy metric, the parket rate consistently <em>decreased</em> across the three periods. IMI excluded Ukrinform during the period when parket was already lower than in the period when IMI kept it on the White List. This metric does not provide a simple explanation for IMI's decisions.
     </div>
     <p style="font-size:13px;color:var(--g600);margin-top:14px;line-height:1.6">
       <strong>Pairwise comparisons (no ATO):</strong> P0 vs P1: −0.82pp (p=0.00047, h=0.0365) · P0 vs P2: −1.66pp (p&lt;0.001, h=0.0766) · P1 vs P2: −0.84pp (p&lt;0.001, h=0.0401). All effect sizes remain small.
@@ -217,7 +217,7 @@ footer a{color:var(--gold);text-decoration:none}
       <strong>Methodological honesty:</strong> Across parser versions the parket rate ranges <strong>4–7%</strong>. Two repository-wide issues were corrected publicly: (1) official source detection in article text, (2) naive substring matching in official URL classification. All versions, fixes and rebuild scripts remain public in <a href="https://github.com/alexmazuka/ukrinform" target="_blank" style="color:#7c2d12;font-weight:600">Git history</a>. <strong>What stays stable across versions: the direction of the conclusion</strong> does not flip.
     </div>
     <div class="note ok">
-      <strong>In all scenarios and across parser versions</strong>, the direction of the result remains the same: the data does not support the conclusion that content quality deteriorated under Matsuka's leadership.
+      <strong>In all scenarios and across parser versions</strong>, the direction of the result remains the same: the tested metrics do not support the conclusion that content quality deteriorated under Matsuka's leadership.
     </div>
   </div>
 
@@ -263,7 +263,7 @@ footer a{color:var(--gold);text-decoration:none}
       <li style="margin-bottom:12px"><strong>Who personally assessed the articles? What is the inter-rater reliability?</strong><br><span style="color:var(--g400)">Evaluator composition and agreement rates are not disclosed.</span></li>
       <li style="margin-bottom:12px"><strong>What scores did each article receive on each of the 14 indicators?</strong><br><span style="color:var(--g400)">Only the aggregate conclusion is published, not the scoring matrix.</span></li>
       <li style="margin-bottom:12px"><strong>Did the evaluators change between the H1 2024 and H2 2025 waves?</strong><br><span style="color:var(--g400)">A change in evaluators could explain different outcomes regardless of media quality.</span></li>
-      <li><strong>Why was Ukrinform returned to the White List if our analysis shows no improvement in parket metrics?</strong><br><span style="color:var(--g400)">IMI may have factors beyond our algorithm. We await their official response.</span></li>
+      <li><strong>Why was Ukrinform returned to the White List if our proxy metric shows only a modest change between P1 and P2?</strong><br><span style="color:var(--g400)">IMI may have factors beyond our algorithm. We await their official response.</span></li>
     </ol>
   </div>
 </section>
