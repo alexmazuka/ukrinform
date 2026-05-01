@@ -15,136 +15,29 @@ from __future__ import annotations
 import csv, json, re, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+import sys
 import requests
 from bs4 import BeautifulSoup
 
 BASE = Path(__file__).resolve().parent.parent
+if str(BASE) not in sys.path:
+    sys.path.insert(0, str(BASE))
+
+from canonical_metrics import (
+    compute_risks,
+    extract_sources_v2,
+    official_categories_for_slug,
+    slug_from_url,
+)
+
 CSV = BASE / 'data' / 'corpus_fast.csv'
 OUT = BASE / 'data' / 'corpus_v2_parsed.csv'
 PROGRESS = BASE / 'data' / 'reparse_progress.json'
 
 UA = 'Mozilla/5.0 (Macintosh) AppleWebKit/537.36 Chrome/124.0 Safari/537.36'
 
-# ==== EXISTING PATTERNS (from v1) ====
-REPORTING_VERBS = (
-    'заявив', 'заявила', 'повідомив', 'повідомила', 'сказав', 'сказала',
-    'наголосив', 'наголосила', 'зауважив', 'зауважила', 'додав', 'додала',
-    'підкреслив', 'підкреслила', 'відзначив', 'відзначила', 'розповів',
-    'розповіла', 'написав', 'написала', 'зазначив', 'зазначила'
-)
-PERSON_RE = re.compile(r'([А-ЯІЇЄҐA-Z][^.!?\n]{1,90}?)\s+(?:' + '|'.join(REPORTING_VERBS) + r')\b')
-LEADING_RE = re.compile(r'(?:За словами|За даними|Як повідомив|Як повідомила|Як повідомили|Як зазначив|Як зазначила|Повідомляє)\s+([^,.;:\n]{1,90})')
 
-# ==== NEW PATTERNS (v2) ====
-# 1. Headline source: "... — Author" or "... - Author" at end
-HEADLINE_SRC_RE = re.compile(r'\s[—–-]\s*([А-ЯІЇЄҐA-Z][А-ЯІЇЄҐа-яіїєґA-Za-z\s]{2,60}?)\s*$')
-
-# 2. "Про це повідомляє/йдеться/зазначає X"
-PRO_CE_RE = re.compile(
-    r'[Пп]ро це (?:повідомляє|повідомили|йдеться\s+(?:в|у)|зазначається\s+(?:в|у)|сказано\s+(?:в|у)|(?:розповів|розповіла))\s+([А-ЯІЇЄҐA-Z][^.!?\n]{2,80})'
-)
-
-# 3. "Як передає X, про це Y повідомили/заявили..."
-AS_TRANSMITS_RE = re.compile(
-    r'[Яя]к (?:передає|передають|пише|пишуть|повідомляє|повідомляють)\s+Укрінформ,?\s*про це\s+([А-ЯІЇЄҐA-Z][^.!?\n]{2,70})'
-)
-
-# 4. "повідомили/зазначили/уточнили в X"
-IN_ORG_RE = re.compile(
-    r'(?:повідомили|зазначили|уточнили|наголосили|підкреслили|сказали|вважають|додали)\s+(?:в|у|на)\s+([А-ЯІЇЄҐA-Z][^.!?\n]{2,50})'
-)
-
-# 5. OG description ending dash-source: "... — Name" (Ukrinform puts source in og:desc too)
-OG_SRC_RE = re.compile(r'[—–]\s*([А-ЯІЇЄҐA-Z][^.!?\n—–]{2,60}?)\s*\.?$')
-
-OFFICIAL_MARKERS = {
-    'Президент / ОП': ['zelensk','prezident','ofis-prezidenta','opu','yermak','ermak','єрмак','зеленськ'],
-    'Уряд / Кабмін': ['kabmin','uryad','smygal','premyer','premier','шмигал','кабмін','уряд','прем\'єр'],
-    'Парламент': ['verhovn','rada','nardep','deputat','komitet','верховна рада','нардеп','парламент'],
-    'Міністерства': ['ministr','ministerstvo','mzs','minoboroni','mvs','minekonom','minfin','mon','mincifri',
-                    'міністр','міноборон','мзс','мвс','мінфін','мінекономіки','кулеба','сибіга','умєров'],
-    'Силовий блок': ['genshtab','zsu','sbu','gur','dpsu','dsns','sili-oboroni',
-                    'генштаб','зсу','сбу','гур','сили оборони','сирськ'],
-    'Регіональна влада': ['ova','kmva','kmda','oblrada','miskrada','mer','ова','кмда','облрада','мер'],
-    'Держструктури': ['ukrzaliznic','ukrenergo','naftogaz','fond-derzmajna','pensijn','podatkov','mitnic',
-                     'укрзалізниц','укренерго','нафтогаз','фонд держмайна','національний банк','нбу']
-}
-ALL_OFFICIAL = [m for lst in OFFICIAL_MARKERS.values() for m in lst]
-
-
-def normalize(t):
-    c = re.sub(r'\s+', ' ', t.replace('\xa0', ' ')).strip(' ,;:.!?"""«»()[]—–-')
-    if len(c.split()) > 10 or len(c) < 3: return ''
-    return c
-
-
-def classify_source(text):
-    """Return 'official' / 'non_official' / None."""
-    t = text.lower()
-    if any(m in t for m in ALL_OFFICIAL):
-        return 'official'
-    return 'non_official'
-
-
-def extract_sources_v2(title, og_desc, body):
-    """Returns (total, official, non_official, extracted_list)."""
-    sources = {}  # normalized -> type
-
-    # V1 patterns (in body)
-    for raw in PERSON_RE.findall(body):
-        e = normalize(raw)
-        if e and e not in sources:
-            sources[e] = classify_source(e)
-    for raw in LEADING_RE.findall(body):
-        e = normalize(raw)
-        if e and e not in sources:
-            sources[e] = classify_source(e)
-
-    # V2.1: Headline source (after em-dash)
-    m = HEADLINE_SRC_RE.search(title)
-    if m:
-        e = normalize(m.group(1))
-        if e and e not in sources:
-            sources[e] = classify_source(e)
-
-    # V2.2: "Про це повідомляє"
-    for raw in PRO_CE_RE.findall(body):
-        e = normalize(raw)
-        if e and e not in sources:
-            sources[e] = classify_source(e)
-
-    # V2.3: "Як передає Укрінформ, про це X"
-    for raw in AS_TRANSMITS_RE.findall(body):
-        e = normalize(raw)
-        if e and e not in sources:
-            sources[e] = classify_source(e)
-
-    # V2.4: "повідомили в X"
-    for raw in IN_ORG_RE.findall(body):
-        e = normalize(raw)
-        if e and e not in sources:
-            sources[e] = classify_source(e)
-
-    # V2.5: OG description source
-    if og_desc:
-        m = OG_SRC_RE.search(og_desc)
-        if m:
-            e = normalize(m.group(1))
-            # Skip if it's just "Укрінформ"
-            if e and 'укрінформ' not in e.lower() and e not in sources:
-                sources[e] = classify_source(e)
-
-    official = sum(1 for t in sources.values() if t == 'official')
-    non_official = sum(1 for t in sources.values() if t == 'non_official')
-    return len(sources), official, non_official, list(sources.keys())
-
-
-def is_official_url(url):
-    slug = url.rstrip('/').split('/')[-1].lower()
-    return any(m in slug for m in ALL_OFFICIAL if not any(c in m for c in 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'))
-
-
-def parse_article(url):
+def parse_article(url, slug_text):
     sess = requests.Session()
     sess.headers['User-Agent'] = UA
     try:
@@ -166,11 +59,12 @@ def parse_article(url):
         if len(body_text) < 30: return None
 
         sc, oc, noc, extracted = extract_sources_v2(title, og_desc, body_text)
-        off_url = is_official_url(url)
+        off_url = bool(official_categories_for_slug(slug_text or slug_from_url(url)))
+        parket_v2, balance_v2 = compute_risks(off_url, sc, noc)
         return {
             'sc_v2': sc, 'oc_v2': oc, 'noc_v2': noc,
-            'parket_v2': off_url and sc <= 1 and noc == 0,
-            'balance_v2': off_url and noc == 0 and sc <= 1,
+            'parket_v2': parket_v2,
+            'balance_v2': balance_v2,
             'sources_v2': '; '.join(extracted[:5])
         }
     except Exception:
@@ -210,7 +104,7 @@ def main():
         print(f"\nBatch {batch_num}/{total_batches} ({len(batch)} articles)")
 
         with ThreadPoolExecutor(max_workers=12) as ex:
-            futures = {ex.submit(parse_article, r['url']): r for r in batch}
+            futures = {ex.submit(parse_article, r['url'], r.get('slug_text', '')): r for r in batch}
             done = 0
             for f in as_completed(futures):
                 done += 1

@@ -24,12 +24,12 @@
       </linearGradient>
     </defs>
     <rect width="240" height="240" fill="url(#goldGrad)" rx="16"/>
-    <text x="120" y="125" font-size="72" fill="#1a365d" font-weight="800" text-anchor="middle">516×</text>
+    <text x="120" y="125" font-size="72" fill="#1a365d" font-weight="800" text-anchor="middle">795×</text>
     <text x="120" y="165" font-size="20" fill="#1a365d" font-weight="600" text-anchor="middle">більше</text>
   </g>
-  <text x="840" y="490" font-size="32" fill="white" font-weight="700" text-anchor="middle">51 589</text>
+  <text x="840" y="490" font-size="32" fill="white" font-weight="700" text-anchor="middle">79 505</text>
   <text x="840" y="525" font-size="18" fill="rgba(255,255,255,0.7)" text-anchor="middle">статей</text>
-  <text x="840" y="555" font-size="18" fill="rgba(255,255,255,0.7)" text-anchor="middle">за 12 місяців</text>
+  <text x="840" y="555" font-size="18" fill="rgba(255,255,255,0.7)" text-anchor="middle">за 18 місяців</text>
   <text x="840" y="600" font-size="22" fill="#f6ad55" font-weight="600" text-anchor="middle">CensorZero</text>
 
   <text x="600" y="660" font-size="14" fill="rgba(255,255,255,0.4)" text-anchor="middle">ukrinform.censorzero.com · Відкритий код, відкриті дані</text>

@@ -6,7 +6,7 @@
 <title>CensorZero: Independent Audit of IMI's Assessment of Ukrinform</title>
 <meta name="description" content="79,505 Ukrinform articles across three periods. Parket trend: consistent decline.">
 <meta property="og:title" content="CensorZero: 79,505 Ukrinform articles — independent audit">
-<meta property="og:description" content="IMI evaluated ~100 articles in 2 days. We collected 79,505 across three periods. Parket rate consistently declined: 5.43% → 4.97% → 4.14%. IMI excluded Ukrinform during the period with lower rate than when it kept it on the White List.">
+<meta property="og:description" content="IMI evaluated ~100 articles in 2 days. We collected 79,505 across three periods. Parket rate consistently declined: 5.80% → 4.97% → 4.14%. IMI excluded Ukrinform during the period with lower rate than when it kept it on the White List.">
 <meta property="og:image" content="https://ukrinform.censorzero.com/og-image.svg">
 <meta property="og:url" content="https://ukrinform.censorzero.com/en.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -80,6 +80,7 @@ footer a{color:var(--gold);text-decoration:none}
     <a href="index.html" class="logo">CENSOR<span>ZERO</span></a>
     <nav class="hdr-links">
       <a href="index.html">🇺🇦 Українська</a>
+      <a href="blog/">Blog</a>
       <a href="explorer.html">All Articles</a>
       <a href="https://github.com/alexmazuka/ukrinform" target="_blank">GitHub</a>
     </nav>
@@ -93,6 +94,10 @@ footer a{color:var(--gold);text-decoration:none}
   <div class="tag">Open Letter</div>
   <h1>Open Letter on the Ukrinform Content Research</h1>
   <p class="sub">Oleksiy Matsuka · Founder, CensorZero · April 2026</p>
+
+  <div class="note info">
+    <strong>Separate blog post on the censorship accusation:</strong> <a href="blog/02-censorship-accusation.html">blog/02-censorship-accusation.html</a>.
+  </div>
 
   <div class="card">
     <div class="letter">
@@ -112,7 +117,9 @@ footer a{color:var(--gold);text-decoration:none}
 
       <p>I collected an open corpus of <strong>79,505 Ukrinform articles across three comparable periods</strong> — six months before my appointment (May–October 2023, 27,916 articles), my tenure (November 2023–April 2024, 26,342 articles), and a later period before Ukrinform's return to the White List (July–December 2025, 25,247 articles) — and analyzed the signals publicly cited as grounds for criticism: the share of protocol-official news, source structure, and balance indicators.</p>
 
-      <p><strong>The data show a consistent decline in parket rates across the three periods:</strong> 5.43% (before my tenure) → 4.97% (during) → 4.14% (after). IMI kept Ukrinform in the White List during the highest-parket period and excluded it during a period when the rate was already lower. The trend in the metric does not align with the timeline of IMI's decisions.</p>
+      <p><strong>The data show a consistent decline in parket rates across the three periods:</strong> 5.80% (before my tenure) → 4.97% (during) → 4.14% (after). IMI kept Ukrinform in the White List during the highest-parket period and excluded it during a period when the rate was already lower. The trend in the metric does not align with the timeline of IMI's decisions.</p>
+
+      <p><strong>Method correction note, April 30, 2026:</strong> public assets were rebuilt from one canonical metrics layer after aligning official-source detection, official-URL classification, and the formulas for <code>parket</code> and <code>balance</code>. The correction log is public in <a href="https://github.com/alexmazuka/ukrinform/blob/main/CORRECTIONS.md">CORRECTIONS.md</a>.</p>
 
       <h3>The main finding</h3>
 
@@ -195,22 +202,22 @@ footer a{color:var(--gold);text-decoration:none}
     <table>
       <thead><tr><th>Period</th><th style="text-align:right">N</th><th style="text-align:right">Parket (no ATO)</th><th style="text-align:right">Parket (with ATO)</th><th>IMI Status</th></tr></thead>
       <tbody>
-        <tr><td><strong>P0 — pre-Matsuka</strong> (May–Oct 2023)</td><td style="text-align:right">27,916</td><td style="text-align:right;font-weight:700">5.43%</td><td style="text-align:right">5.70%</td><td class="tyes">In White List</td></tr>
-        <tr><td><strong>P1 — Matsuka</strong> (Nov 2023–Apr 2024)</td><td style="text-align:right">26,342</td><td style="text-align:right;font-weight:700">4.97%</td><td style="text-align:right">5.11%</td><td class="tno">Excluded</td></tr>
-        <tr><td><strong>P2 — after Matsuka</strong> (Jul–Dec 2025)</td><td style="text-align:right">25,247</td><td style="text-align:right;font-weight:700">4.14%</td><td style="text-align:right">4.66%</td><td class="tyes">Returned</td></tr>
+        <tr><td><strong>P0 — pre-Matsuka</strong> (May–Oct 2023)</td><td style="text-align:right">27,916</td><td style="text-align:right;font-weight:700">5.80%</td><td style="text-align:right">5.87%</td><td class="tyes">In White List</td></tr>
+        <tr><td><strong>P1 — Matsuka</strong> (Nov 2023–Apr 2024)</td><td style="text-align:right">26,342</td><td style="text-align:right;font-weight:700">4.97%</td><td style="text-align:right">5.12%</td><td class="tno">Excluded</td></tr>
+        <tr><td><strong>P2 — after Matsuka</strong> (Jul–Dec 2025)</td><td style="text-align:right">25,247</td><td style="text-align:right;font-weight:700">4.14%</td><td style="text-align:right">4.67%</td><td class="tyes">Returned</td></tr>
       </tbody>
     </table>
     <div class="note ok" style="margin-top:14px">
       <strong>Key finding:</strong> Parket rate consistently <em>decreased</em> across the three periods. IMI excluded Ukrinform during the period when parket was already lower than in the period when IMI kept it on the White List. The trend does not correlate with IMI's decisions.
     </div>
     <p style="font-size:13px;color:var(--g600);margin-top:14px;line-height:1.6">
-      <strong>Pairwise comparisons (no ATO):</strong> P0 vs P1: −0.46pp (p=0.038, d=0.021) · P0 vs P2: −1.29pp (p&lt;0.001, d=0.061) · P1 vs P2: −0.83pp (p&lt;0.001, d=0.040). All effect sizes negligible (Cohen's d &lt; 0.07).
+      <strong>Pairwise comparisons (no ATO):</strong> P0 vs P1: −0.82pp (p=0.00047, h=0.0365) · P0 vs P2: −1.66pp (p&lt;0.001, h=0.0766) · P1 vs P2: −0.84pp (p&lt;0.001, h=0.0401). All effect sizes remain small.
     </p>
     <div class="note warn" style="margin-top:14px;background:#fef3c7;border-left-color:#d97706;color:#7c2d12">
-      <strong>Methodological honesty:</strong> Across three parser versions (v1/v2/v3) the parket rate ranges <strong>4–7%</strong>. Two bugs were found and fixed by us before publication: (1) regex missed sources, (2) substring matching produced 32% false positives (e.g. "amerikanskimi" contained marker "mer"). All versions, fixes and full audit log are in <a href="https://github.com/alexmazuka/ukrinform" target="_blank" style="color:#7c2d12;font-weight:600">Git history</a>. <strong>What stays stable across versions: the difference between periods is consistently negligible</strong> (Cohen's d 0.003–0.040). The conclusion is robust to methodological variations.
+      <strong>Methodological honesty:</strong> Across parser versions the parket rate ranges <strong>4–7%</strong>. Two repository-wide issues were corrected publicly: (1) official source detection in article text, (2) naive substring matching in official URL classification. All versions, fixes and rebuild scripts remain public in <a href="https://github.com/alexmazuka/ukrinform" target="_blank" style="color:#7c2d12;font-weight:600">Git history</a>. <strong>What stays stable across versions: the direction of the conclusion</strong> does not flip.
     </div>
     <div class="note ok">
-      <strong>In all scenarios and across all parser versions</strong>, the difference between periods remains negligible (Cohen's d &lt; 0.05). The data does not support the conclusion that content quality deteriorated under Matsuka's leadership.
+      <strong>In all scenarios and across parser versions</strong>, the direction of the result remains the same: the data does not support the conclusion that content quality deteriorated under Matsuka's leadership.
     </div>
   </div>
 
@@ -220,7 +227,7 @@ footer a{color:var(--gold);text-decoration:none}
       <thead><tr><th>Parameter</th><th>IMI</th><th>CensorZero</th></tr></thead>
       <tbody>
         <tr><td>Sample size</td><td>~100 articles in 2 days</td><td class="tyes">79,505 articles over 18 months (3 periods)</td></tr>
-        <tr><td>Scale</td><td>1×</td><td class="tyes">~516× larger</td></tr>
+        <tr><td>Scale</td><td>1×</td><td class="tyes">~795× larger</td></tr>
         <tr><td>Method</td><td>Manual (experts)</td><td>Algorithmic (reproducible)</td></tr>
         <tr><td>Transparency</td><td class="tno">Assessed articles not published</td><td class="tyes">Every article accessible</td></tr>
         <tr><td>Reproducibility</td><td class="tno">Depends on evaluator</td><td class="tyes">One script → same results</td></tr>

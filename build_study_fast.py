@@ -17,6 +17,12 @@ from xml.etree import ElementTree as ET
 import requests
 from bs4 import BeautifulSoup
 
+from canonical_metrics import (
+    compute_risks,
+    extract_sources_v2,
+    official_categories_for_slug as canonical_official_categories_for_slug,
+)
+
 BASE_DIR = Path('/Users/oleksiymatsuka/Desktop/ukrinform-imi-study')
 DATA_DIR = BASE_DIR / 'data'
 DASHBOARD_DIR = BASE_DIR / 'dashboard'
@@ -53,16 +59,6 @@ PRIMARY_RUBRICS = {
     'rubric-vidbudova',
 }
 
-OFFICIAL_CATEGORY_PATTERNS = {
-    'Президент / ОП': ['zelensk', 'prezident', 'ofis-prezidenta', 'opu', 'yermak', 'ermak'],
-    'Уряд / Кабмін': ['kabmin', 'uryad', 'smygal', 'premyer', 'premier'],
-    'Парламент': ['verhovn', 'rada', 'nardep', 'deputat', 'komitet'],
-    'Міністерства': ['ministr', 'ministerstvo', 'mzs', 'minoboroni', 'mvs', 'minekonom', 'minfin', 'mon', 'mincifri', 'minkult'],
-    'Силовий блок': ['genshtab', 'zsu', 'sbu', 'gur', 'dpsu', 'dsns', 'sili-oboroni', 'armiya'],
-    'Регіональна влада': ['ova', 'kmva', 'kmda', 'oblrada', 'miskrada', 'mer'],
-    'Держструктури / держкомпанії': ['ukrzaliznic', 'ukrenergo', 'naftogaz', 'fond-derzmajna', 'pensijn', 'podatkov', 'mitnic'],
-}
-
 REPORTING_VERBS = (
     'заявив', 'заявила', 'повідомив', 'повідомила', 'сказав', 'сказала', 'наголосив',
     'наголосила', 'зауважив', 'зауважила', 'додав', 'додала', 'підкреслив', 'підкреслила',
@@ -76,12 +72,6 @@ LEADING_SOURCE_RE = re.compile(
     r'(?:За словами|За даними|Як повідомив|Як повідомила|Як повідомили|Як зазначив|Як зазначила|Повідомляє)\s+'
     r'([^,.;:\n]{1,90})'
 )
-BALANCE_MARKERS = [
-    'водночас', 'натомість', 'у відповідь', 'відмовився коментувати', 'відмовилася коментувати',
-    'не відповів на запит', 'не відповіла на запит', 'опозиці', 'критик', 'правозахис', 'експерт', 'аналітик'
-]
-
-
 @dataclass
 class CorpusRecord:
     period_slug: str
@@ -139,12 +129,7 @@ def slug_from_url(url: str) -> str:
 
 
 def official_categories_for_slug(slug: str) -> list[str]:
-    low = slug.lower()
-    categories = []
-    for category, patterns in OFFICIAL_CATEGORY_PATTERNS.items():
-        if any(pattern in low for pattern in patterns):
-            categories.append(category)
-    return categories
+    return canonical_official_categories_for_slug(slug)
 
 
 def iso_weeks_between(start: date, end: date) -> list[tuple[int, int]]:
@@ -254,28 +239,8 @@ def normalize_entity(text: str) -> str:
 
 
 def extract_sources(text: str) -> tuple[int, int, int]:
-    candidates = []
-    for raw in PERSON_SOURCE_RE.findall(text):
-        entity = normalize_entity(raw)
-        if entity:
-            candidates.append(entity)
-    for raw in LEADING_SOURCE_RE.findall(text):
-        entity = normalize_entity(raw)
-        if entity:
-            candidates.append(entity)
-    deduped = []
-    seen = set()
-    for entity in candidates:
-        key = entity.lower()
-        if key not in seen:
-            seen.add(key)
-            deduped.append(entity)
-    official = 0
-    for entity in deduped:
-        low = entity.lower()
-        if any(marker in low for markers in OFFICIAL_CATEGORY_PATTERNS.values() for marker in markers):
-            official += 1
-    return len(deduped), official, max(len(deduped) - official, 0)
+    total, official, non_official, _ = extract_sources_v2('', '', text)
+    return total, official, non_official
 
 
 def audit_sample(records: list[CorpusRecord], rng_seed: int = 42) -> list[CorpusRecord]:
@@ -297,7 +262,7 @@ def audit_sample(records: list[CorpusRecord], rng_seed: int = 42) -> list[Corpus
     return audited
 
 
-def parse_title_and_text(html: str) -> tuple[str, str]:
+def parse_title_and_text(html: str) -> tuple[str, str, str]:
     soup = BeautifulSoup(html, 'html.parser')
     title = ''
     og_title = soup.find('meta', attrs={'property': 'og:title'})
@@ -305,6 +270,10 @@ def parse_title_and_text(html: str) -> tuple[str, str]:
         title = og_title['content'].strip()
     if not title and soup.title and soup.title.string:
         title = soup.title.string.strip()
+    og_description = ''
+    og_desc = soup.find('meta', attrs={'property': 'og:description'})
+    if og_desc and og_desc.get('content'):
+        og_description = og_desc['content'].strip()
 
     body = soup.select_one('div.newsText') or soup.find('article')
     text = ''
@@ -312,7 +281,7 @@ def parse_title_and_text(html: str) -> tuple[str, str]:
         paragraphs = [p.get_text(' ', strip=True) for p in body.find_all('p') if p.get_text(' ', strip=True)]
         text = '\n'.join(paragraphs) if paragraphs else body.get_text(' ', strip=True)
     text = re.sub(r'\s+', ' ', text).strip()
-    return title, text
+    return title, og_description, text
 
 
 def run_audit(records: list[CorpusRecord], max_workers: int = 10) -> None:
@@ -329,15 +298,22 @@ def run_audit(records: list[CorpusRecord], max_workers: int = 10) -> None:
             record, html = future.result()
             if not html:
                 continue
-            title, text = parse_title_and_text(html)
-            source_count, official_count, non_official_count = extract_sources(text)
+            title, og_description, text = parse_title_and_text(html)
+            source_count, official_count, non_official_count, _ = extract_sources_v2(
+                title,
+                og_description,
+                text,
+            )
             record.audited = True
             record.actual_title = title or record.slug_text.replace('-', ' ')
             record.source_count = source_count
             record.official_source_count = official_count
             record.non_official_source_count = non_official_count
-            record.balance_risk = record.official_slug and non_official_count == 0 and source_count <= 1
-            record.likely_parket = record.official_slug and source_count <= 1 and non_official_count == 0
+            record.likely_parket, record.balance_risk = compute_risks(
+                record.official_slug,
+                source_count,
+                non_official_count,
+            )
             record.excerpt = (text[:320] + '...') if len(text) > 320 else text
 
 

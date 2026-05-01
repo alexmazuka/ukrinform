@@ -10,6 +10,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+import sys
 import time
 from collections import defaultdict
 from datetime import date
@@ -19,6 +20,11 @@ from xml.etree import ElementTree as ET
 import requests
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+from canonical_metrics import official_categories_for_slug
+
 DATA_DIR = BASE_DIR / 'data'
 
 USER_AGENT = (
@@ -40,16 +46,6 @@ PERIOD_LABEL = 'Перед виключенням за керівництва О
 # Weeks to recover: all weeks that overlap with Jan 1 - Feb 29, 2024
 RECOVERY_WEEKS = [(2024, w) for w in range(1, 10)]
 
-OFFICIAL_CATEGORY_PATTERNS = {
-    'Президент / ОП': ['zelensk', 'prezident', 'ofis-prezidenta', 'opu', 'yermak', 'ermak'],
-    'Уряд / Кабмін': ['kabmin', 'uryad', 'smygal', 'premyer', 'premier'],
-    'Парламент': ['verhovn', 'rada', 'nardep', 'deputat', 'komitet'],
-    'Міністерства': ['ministr', 'ministerstvo', 'mzs', 'minoboroni', 'mvs', 'minekonom', 'minfin', 'mon', 'mincifri', 'minkult'],
-    'Силовий блок': ['genshtab', 'zsu', 'sbu', 'gur', 'dpsu', 'dsns', 'sili-oboroni', 'armiya'],
-    'Регіональна влада': ['ova', 'kmva', 'kmda', 'oblrada', 'miskrada', 'mer'],
-    'Держструктури / держкомпанії': ['ukrzaliznic', 'ukrenergo', 'naftogaz', 'fond-derzmajna', 'pensijn', 'podatkov', 'mitnic'],
-}
-
 
 def rubric_from_url(url: str) -> str:
     match = re.search(r'ukrinform\.ua/(rubric-[a-z-]+)/', url)
@@ -59,12 +55,6 @@ def rubric_from_url(url: str) -> str:
 def slug_from_url(url: str) -> str:
     path = url.rstrip('/').split('/')[-1]
     return re.sub(r'^\d+-', '', path)
-
-
-def official_categories_for_slug(slug: str) -> list[str]:
-    low = slug.lower()
-    return [cat for cat, markers in OFFICIAL_CATEGORY_PATTERNS.items()
-            if any(m in low for m in markers)]
 
 
 def parse_sitemap(xml_text: str) -> list[dict]:

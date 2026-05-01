@@ -24,6 +24,11 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+from canonical_metrics import compute_risks, extract_sources_v2, official_categories_for_slug
+
 DATA_DIR = BASE_DIR / 'data'
 CORPUS_PATH = DATA_DIR / 'corpus_fast.csv'
 PROGRESS_PATH = DATA_DIR / 'audit_progress.json'
@@ -33,64 +38,8 @@ USER_AGENT = (
     'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
 )
 
-OFFICIAL_CATEGORY_PATTERNS = {
-    'Президент / ОП': ['zelensk', 'prezident', 'ofis-prezidenta', 'opu', 'yermak', 'ermak'],
-    'Уряд / Кабмін': ['kabmin', 'uryad', 'smygal', 'premyer', 'premier'],
-    'Парламент': ['verhovn', 'rada', 'nardep', 'deputat', 'komitet'],
-    'Міністерства': ['ministr', 'ministerstvo', 'mzs', 'minoboroni', 'mvs', 'minekonom', 'minfin', 'mon', 'mincifri', 'minkult'],
-    'Силовий блок': ['genshtab', 'zsu', 'sbu', 'gur', 'dpsu', 'dsns', 'sili-oboroni', 'armiya'],
-    'Регіональна влада': ['ova', 'kmva', 'kmda', 'oblrada', 'miskrada', 'mer'],
-    'Держструктури / держкомпанії': ['ukrzaliznic', 'ukrenergo', 'naftogaz', 'fond-derzmajna', 'pensijn', 'podatkov', 'mitnic'],
-}
 
-REPORTING_VERBS = (
-    'заявив', 'заявила', 'повідомив', 'повідомила', 'сказав', 'сказала', 'наголосив',
-    'наголосила', 'зауважив', 'зауважила', 'додав', 'додала', 'підкреслив', 'підкреслила',
-    'відзначив', 'відзначила', 'розповів', 'розповіла', 'написав', 'написала', 'зазначив', 'зазначила'
-)
-
-PERSON_SOURCE_RE = re.compile(
-    r'([А-ЯІЇЄҐA-Z][^.!?\n]{1,90}?)\s+(?:' + '|'.join(REPORTING_VERBS) + r')\b'
-)
-LEADING_SOURCE_RE = re.compile(
-    r'(?:За словами|За даними|Як повідомив|Як повідомила|Як повідомили|Як зазначив|Як зазначила|Повідомляє)\s+'
-    r'([^,.;:\n]{1,90})'
-)
-
-
-def normalize_entity(text: str) -> str:
-    cleaned = re.sub(r'\s+', ' ', text.replace('\xa0', ' ')).strip(' ,;:.!?"""«»()[]')
-    if len(cleaned.split()) > 10:
-        return ''
-    return cleaned
-
-
-def extract_sources(text: str) -> tuple[int, int, int]:
-    candidates = []
-    for raw in PERSON_SOURCE_RE.findall(text):
-        entity = normalize_entity(raw)
-        if entity:
-            candidates.append(entity)
-    for raw in LEADING_SOURCE_RE.findall(text):
-        entity = normalize_entity(raw)
-        if entity:
-            candidates.append(entity)
-    deduped = []
-    seen = set()
-    for entity in candidates:
-        key = entity.lower()
-        if key not in seen:
-            seen.add(key)
-            deduped.append(entity)
-    official = 0
-    for entity in deduped:
-        low = entity.lower()
-        if any(marker in low for markers in OFFICIAL_CATEGORY_PATTERNS.values() for marker in markers):
-            official += 1
-    return len(deduped), official, max(len(deduped) - official, 0)
-
-
-def parse_title_and_text(html: str) -> tuple[str, str]:
+def parse_title_and_text(html: str) -> tuple[str, str, str]:
     soup = BeautifulSoup(html, 'html.parser')
     title = ''
     og_title = soup.find('meta', attrs={'property': 'og:title'})
@@ -98,6 +47,10 @@ def parse_title_and_text(html: str) -> tuple[str, str]:
         title = og_title['content'].strip()
     if not title and soup.title and soup.title.string:
         title = soup.title.string.strip()
+    og_description = ''
+    og_desc = soup.find('meta', attrs={'property': 'og:description'})
+    if og_desc and og_desc.get('content'):
+        og_description = og_desc['content'].strip()
 
     body = soup.select_one('div.newsText') or soup.find('article')
     text = ''
@@ -105,7 +58,7 @@ def parse_title_and_text(html: str) -> tuple[str, str]:
         paragraphs = [p.get_text(' ', strip=True) for p in body.find_all('p') if p.get_text(' ', strip=True)]
         text = '\n'.join(paragraphs) if paragraphs else body.get_text(' ', strip=True)
     text = re.sub(r'\s+', ' ', text).strip()
-    return title, text
+    return title, og_description, text
 
 
 def fetch_and_audit(url: str, slug_text: str, is_official: bool) -> dict | None:
@@ -116,17 +69,26 @@ def fetch_and_audit(url: str, slug_text: str, is_official: bool) -> dict | None:
         resp = session.get(url, timeout=12)
         if resp.status_code != 200:
             return None
-        title, text = parse_title_and_text(resp.text)
+        title, og_description, text = parse_title_and_text(resp.text)
         if not text:
             return None
-        source_count, official_count, non_official_count = extract_sources(text)
+        source_count, official_count, non_official_count, _ = extract_sources_v2(
+            title,
+            og_description,
+            text,
+        )
+        likely_parket, balance_risk = compute_risks(
+            is_official,
+            source_count,
+            non_official_count,
+        )
         return {
             'actual_title': title or slug_text.replace('-', ' '),
             'source_count': source_count,
             'official_source_count': official_count,
             'non_official_source_count': non_official_count,
-            'likely_parket': is_official and source_count <= 1 and non_official_count == 0,
-            'balance_risk': is_official and non_official_count == 0 and source_count <= 1,
+            'likely_parket': likely_parket,
+            'balance_risk': balance_risk,
             'excerpt': (text[:320] + '...') if len(text) > 320 else text,
         }
     except Exception:
@@ -187,7 +149,7 @@ def main():
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             futures = {}
             for idx, row in batch:
-                is_official = row['official_slug'] == 'True'
+                is_official = bool(official_categories_for_slug(row['slug_text']))
                 future = executor.submit(
                     fetch_and_audit, row['url'], row['slug_text'], is_official
                 )

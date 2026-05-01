@@ -10,12 +10,18 @@ import csv, json, re, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, timedelta
 from pathlib import Path
+import sys
 from xml.etree import ElementTree as ET
 
 import requests
 from bs4 import BeautifulSoup
 
 BASE = Path(__file__).resolve().parent.parent
+if str(BASE) not in sys.path:
+    sys.path.insert(0, str(BASE))
+
+from canonical_metrics import compute_risks, extract_sources_v2, official_categories_for_slug
+
 DATA = BASE / 'data' / 'period_zero'
 DATA.mkdir(parents=True, exist_ok=True)
 
@@ -30,75 +36,6 @@ PRIMARY_RUBRICS = {
     'rubric-regions', 'rubric-ato', 'rubric-tymchasovo-okupovani',
     'rubric-vidbudova',
 }
-
-# Source detection patterns (v2 from main project)
-REPORTING_VERBS = (
-    'заявив', 'заявила', 'повідомив', 'повідомила', 'сказав', 'сказала',
-    'наголосив', 'наголосила', 'зауважив', 'зауважила', 'додав', 'додала',
-    'підкреслив', 'підкреслила', 'відзначив', 'відзначила', 'розповів',
-    'розповіла', 'написав', 'написала', 'зазначив', 'зазначила'
-)
-PERSON_RE = re.compile(r'([А-ЯІЇЄҐA-Z][^.!?\n]{1,90}?)\s+(?:' + '|'.join(REPORTING_VERBS) + r')\b')
-LEADING_RE = re.compile(r'(?:За словами|За даними|Як повідомив|Як повідомила|Як повідомили|Як зазначив|Як зазначила|Повідомляє)\s+([^,.;:\n]{1,90})')
-HEADLINE_SRC_RE = re.compile(r'\s[—–-]\s*([А-ЯІЇЄҐA-Z][А-ЯІЇЄҐа-яіїєґA-Za-z\s]{2,60}?)\s*$')
-PRO_CE_RE = re.compile(r'[Пп]ро це (?:повідомляє|повідомили|йдеться\s+(?:в|у)|зазначається\s+(?:в|у)|сказано\s+(?:в|у)|(?:розповів|розповіла))\s+([А-ЯІЇЄҐA-Z][^.!?\n]{2,80})')
-AS_TRANSMITS_RE = re.compile(r'[Яя]к (?:передає|передають|пише|пишуть|повідомляє|повідомляють)\s+Укрінформ,?\s*про це\s+([А-ЯІЇЄҐA-Z][^.!?\n]{2,70})')
-IN_ORG_RE = re.compile(r'(?:повідомили|зазначили|уточнили|наголосили|підкреслили|сказали|вважають|додали)\s+(?:в|у|на)\s+([А-ЯІЇЄҐA-Z][^.!?\n]{2,50})')
-
-# v3 word-boundary classification
-OFFICIAL_PATTERNS = {
-    'Президент / ОП': {'exact':['zelenskij','zelensky','prezident','opu','yermak','ermak'],'prefix':['zelensk','prezident','ofis-prezidenta','yermak','ermak']},
-    'Уряд': {'exact':['kabmin','kabminu','kabministr','uryad','uryadu','urad','uradu','uradi','uradova','uradovij','smygal','shmygal','premyer','premier','svyrydenko','svyridenko'],'prefix':['kabmin','uryad','urad','smygal','shmygal','premyer','premier','svyriden','svyryden']},
-    'Парламент': {'exact':['rada','radoyu','radoju','verhovna','verhovnoyu','verhovnoju','nardep','nardepy','deputat','deputaty','komitet','stefancuk'],'prefix':['verhovn','nardep','stefancuk']},
-    'Міністерства': {'exact':['ministr','ministra','ministry','ministrom','ministerstvo','ministerstva','mzs','mvs','minfin','minekonom','minoboroni','mincifri','minkult','minstratehprom','minekoenergo','umerov','umerova','kuleba','kulebu','sybiha','shmygal','shmyhalja','fedorov','fedorova'],'prefix':['ministr','ministerstv','minoboron','minekonom','minfin','mincifr','minkult','minstrateh','umerov','kuleb','sybih','fedorov']},
-    'Силовий блок': {'exact':['genshtab','zsu','sbu','gur','dpsu','dsns','syrskij','sirskij','syrskogo','sirskogo','zaluzhnij','zaluzhnogo','budanov','budanova'],'prefix':['genshtab','zaluzhn','syrsk','sirsk','budanov'],'multi_word':['sili-oboroni','syl-oborony']},
-    'Регіональна влада': {'exact':['ova','kmva','kmda','oblrada','miskrada'],'prefix':['oblrada','miskrada']},
-    'Держструктури': {'exact':['ukrzaliznicia','ukrzaliznycia','ukrenergo','naftogaz','oschadbank','pryvatbank','pension','nbu','nabu','sap'],'prefix':['ukrzaliznic','ukrzaliznyc','ukrenergo','naftogaz']},
-}
-
-def classify_official_v3(slug):
-    words = [w for w in re.split(r'[-_.]', slug.lower()) if w]
-    if not words: return False
-    for cat, p in OFFICIAL_PATTERNS.items():
-        if any(w in p.get('exact',[]) for w in words): return True
-        for w in words:
-            for prefix in p.get('prefix',[]):
-                if len(prefix) >= 5 and w.startswith(prefix): return True
-        for mw in p.get('multi_word',[]):
-            if mw in slug.lower(): return True
-    return False
-
-def normalize(t):
-    c = re.sub(r'\s+',' ',t.replace('\xa0',' ')).strip(' ,;:.!?"""«»()[]—–-')
-    return c if 3 <= len(c) <= 100 and len(c.split()) <= 10 else ''
-
-def extract_sources(title, og_desc, body):
-    sources = set()
-    for raw in PERSON_RE.findall(body):
-        e = normalize(raw)
-        if e: sources.add(e)
-    for raw in LEADING_RE.findall(body):
-        e = normalize(raw)
-        if e: sources.add(e)
-    m = HEADLINE_SRC_RE.search(title)
-    if m:
-        e = normalize(m.group(1))
-        if e: sources.add(e)
-    for raw in PRO_CE_RE.findall(body):
-        e = normalize(raw)
-        if e: sources.add(e)
-    for raw in AS_TRANSMITS_RE.findall(body):
-        e = normalize(raw)
-        if e: sources.add(e)
-    for raw in IN_ORG_RE.findall(body):
-        e = normalize(raw)
-        if e: sources.add(e)
-    if og_desc:
-        m = re.search(r'[—–]\s*([А-ЯІЇЄҐA-Z][^.!?\n—–]{2,60}?)\s*\.?$', og_desc)
-        if m:
-            e = normalize(m.group(1))
-            if e and 'укрінформ' not in e.lower(): sources.add(e)
-    return list(sources)
 
 def iso_weeks_between(start, end):
     current = start
@@ -137,7 +74,7 @@ def collect_corpus():
                 records[loc] = {
                     'url': loc, 'date': d.isoformat(), 'month': d.strftime('%Y-%m'),
                     'rubric': rubric_match.group(1), 'slug': slug,
-                    'official': classify_official_v3(slug),
+                    'official': bool(official_categories_for_slug(slug)),
                 }
         except Exception as e:
             print(f"  Error {url}: {e}")
@@ -170,17 +107,13 @@ def parse_article(rec):
         if not body: return None
         body_text = re.sub(r'\s+',' ',' '.join(p.get_text(' ',strip=True) for p in body.find_all('p') if p.get_text(' ',strip=True))).strip()
         if len(body_text) < 30: return None
-        sources = extract_sources(title, og_desc, body_text)
-        sc = len(sources)
-        # Classify each source as official/non-official
-        OFFICIAL_MARKERS = ['зеленськ','президент','офіс','єрмак','кабмін','уряд','шмигал','премʼєр','премьер','верховн','рада','нардеп','міністр','мзс','мвс','міноборон','генштаб','зсу','сбу','гур','двсу','дсну','сил оборон','ова','кмда','облрада','мер','укрзалізниц','укренерго','нафтогаз']
-        official_count = sum(1 for s in sources if any(m in s.lower() for m in OFFICIAL_MARKERS))
-        noc = sc - official_count
+        sc, official_count, noc, sources = extract_sources_v2(title, og_desc, body_text)
         official_url = rec['official']
+        parket_v3, balance_v3 = compute_risks(official_url, sc, noc)
         return {
             'title': title, 'sc': sc, 'oc': official_count, 'noc': noc,
-            'parket_v3': official_url and sc <= 1 and noc == 0,
-            'balance_v3': official_url and noc == 0 and sc <= 1,
+            'parket_v3': parket_v3,
+            'balance_v3': balance_v3,
             'sources': '; '.join(sources[:5])
         }
     except: return None

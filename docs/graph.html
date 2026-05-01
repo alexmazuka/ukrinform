@@ -59,6 +59,7 @@ td:hover .heat-tooltip{display:block}
 
 /* Period separator */
 .period-sep{background:var(--g800);color:#fff;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px}
+.p0-header{color:#f59e0b}
 .p1-header{color:var(--blue)}
 .p2-header{color:var(--green)}
 
@@ -84,7 +85,7 @@ td:hover .heat-tooltip{display:block}
 
 <main>
   <h1>Візуалізація паркетності</h1>
-  <p class="sub">Два способи побачити одні й ті самі дані. Натискайте на елементи для деталей.</p>
+  <p class="sub">Три періоди, дві візуалізації, один канонічний набір даних. Натискайте на елементи для деталей.</p>
 
   <div class="tabs">
     <button class="tab active" onclick="showViz('bubble')">🔵 Bubble Map</button>
@@ -110,7 +111,8 @@ td:hover .heat-tooltip{display:block}
       <span class="legend-label">→</span>
       <span class="legend-label">15%+</span>
       <span style="margin-left:auto;font-size:12px;color:var(--g400)">
-        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--blue);vertical-align:middle"></span> П1
+        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#f59e0b;vertical-align:middle"></span> П0
+        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--blue);vertical-align:middle;margin-left:8px"></span> П1
         <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--green);vertical-align:middle;margin-left:8px"></span> П2
       </span>
     </div>
@@ -194,6 +196,7 @@ function parketColor(pct) {
 }
 
 function periodBorder(period) {
+  if (period === 'p0') return '#f59e0b';
   return period === 'p1' ? '#3b82f6' : '#22c55e';
 }
 
@@ -264,17 +267,20 @@ function buildHeatmap() {
   const lookup = {};
   GRAPH_DATA.forEach(d => { lookup[d.month+'|'+d.rubric] = d; });
 
-  // Find gap between periods
-  const p1months = months.filter(m => m < '2025');
+  const p0months = months.filter(m => m < '2023-11');
+  const p1months = months.filter(m => m >= '2023-11' && m < '2025');
   const p2months = months.filter(m => m >= '2025');
 
   let html = '<table class="heatmap"><thead><tr><th class="rubric-header"></th>';
 
-  // P1 headers
+  p0months.forEach(m => {
+    html += `<th class="p0-header">${MONTH_SHORT(m)}</th>`;
+  });
+  html += `<th style="width:20px"></th>`;
   p1months.forEach(m => {
     html += `<th class="p1-header">${MONTH_SHORT(m)}</th>`;
   });
-  html += `<th style="width:20px"></th>`; // Gap
+  html += `<th style="width:20px"></th>`;
   p2months.forEach(m => {
     html += `<th class="p2-header">${MONTH_SHORT(m)}</th>`;
   });
@@ -283,6 +289,11 @@ function buildHeatmap() {
   rubrics.forEach(rub => {
     html += `<tr><th class="rubric-header">${RUBRIC_LABELS[rub]||rub}</th>`;
 
+    p0months.forEach(m => {
+      const d = lookup[m+'|'+rub];
+      html += renderHeatCell(d, m, rub);
+    });
+    html += `<td style="background:var(--g800);width:4px;padding:0"></td>`;
     p1months.forEach(m => {
       const d = lookup[m+'|'+rub];
       html += renderHeatCell(d, m, rub);
@@ -326,7 +337,7 @@ function showDetail(month, rubric) {
   panel.classList.add('visible');
 
   document.getElementById('detail-title').textContent =
-    `${MONTH_SHORT(month)} · ${RUBRIC_LABELS[rubric]||rubric} · ${d.period==='p1'?'Період 1':'Період 2'}`;
+    `${MONTH_SHORT(month)} · ${RUBRIC_LABELS[rubric]||rubric} · ${d.period==='p0'?'Період 0':d.period==='p1'?'Період 1':'Період 2'}`;
 
   document.getElementById('detail-stats').innerHTML = `
     <div class="detail-stat"><div class="dn">${d.total.toLocaleString('uk')}</div><div class="dl">статей</div></div>

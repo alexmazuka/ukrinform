@@ -1,35 +1,141 @@
 {
-  "parser_version": "v3",
+  "parser_version": "canonical_v4",
+  "date": "2026-04-30",
+  "note": "Period 0 uses stored extracted sources from p0_audited.json, reclassified with the canonical official/non-official rules.",
   "periods": {
     "P0_pre_matsuka": {
+      "slug": "pre_matsuka_white_list",
+      "label": "До Мацуки, коли Укрінформ був у Білому списку",
       "dates": "2023-05-01 to 2023-10-31",
       "imi_status": "White List",
       "n_total": 27916,
-      "parket_total": 1592,
-      "parket_pct_total": 5.7,
+      "parket_total": 1640,
+      "parket_pct_total": 5.87,
+      "balance_total": 1877,
+      "balance_pct_total": 6.72,
+      "avg_sources_total": 2.11,
       "n_no_ato": 18369,
-      "parket_no_ato": 997,
-      "parket_pct_no_ato": 5.43
+      "parket_no_ato": 1065,
+      "parket_pct_no_ato": 5.8,
+      "balance_no_ato": 1213,
+      "balance_pct_no_ato": 6.6,
+      "avg_sources_no_ato": 2.06
     },
     "P1_matsuka": {
+      "slug": "before_exclusion_matsuka",
+      "label": "Перед виключенням за керівництва Олексія Мацуки",
       "dates": "2023-11-09 to 2024-04-25",
       "imi_status": "Excluded",
-      "n_total": 26247,
-      "parket_total": 1342,
-      "parket_pct_total": 5.11,
-      "n_no_ato": 18341,
-      "parket_no_ato": 912,
-      "parket_pct_no_ato": 4.97
+      "n_total": 26342,
+      "parket_total": 1349,
+      "parket_pct_total": 5.12,
+      "balance_total": 1584,
+      "balance_pct_total": 6.01,
+      "avg_sources_total": 2.05,
+      "n_no_ato": 18375,
+      "parket_no_ato": 914,
+      "parket_pct_no_ato": 4.97,
+      "balance_no_ato": 1061,
+      "balance_pct_no_ato": 5.77,
+      "avg_sources_no_ato": 2.04
     },
-    "P2_after": {
+    "P2_after_departure": {
+      "slug": "before_reinclusion_after_departure",
+      "label": "Перед повторним включенням після відходу Олексія Мацуки",
       "dates": "2025-07-01 to 2025-12-15",
       "imi_status": "Returned to White List",
-      "n_total": 25173,
-      "parket_total": 1174,
-      "parket_pct_total": 4.66,
-      "n_no_ato": 20810,
-      "parket_no_ato": 862,
-      "parket_pct_no_ato": 4.14
+      "n_total": 25247,
+      "parket_total": 1178,
+      "parket_pct_total": 4.67,
+      "balance_total": 1406,
+      "balance_pct_total": 5.57,
+      "avg_sources_total": 2.07,
+      "n_no_ato": 20855,
+      "parket_no_ato": 863,
+      "parket_pct_no_ato": 4.14,
+      "balance_no_ato": 1016,
+      "balance_pct_no_ato": 4.87,
+      "avg_sources_no_ato": 2.08
+    }
+  },
+  "pairwise_no_ato": {
+    "P0_vs_P1": {
+      "parket": {
+        "n_a": 18369,
+        "n_b": 18375,
+        "count_a": 1065,
+        "count_b": 914,
+        "pct_a": 5.8,
+        "pct_b": 4.97,
+        "pp_diff": 0.82,
+        "chi_square": 12.2295,
+        "p_value": 0.0004703945575951528,
+        "cohens_h": 0.0365
+      },
+      "balance": {
+        "n_a": 18369,
+        "n_b": 18375,
+        "count_a": 1213,
+        "count_b": 1061,
+        "pct_a": 6.6,
+        "pct_b": 5.77,
+        "pp_diff": 0.83,
+        "chi_square": 10.8833,
+        "p_value": 0.0009703442394389017,
+        "cohens_h": 0.0344
+      }
+    },
+    "P0_vs_P2": {
+      "parket": {
+        "n_a": 18369,
+        "n_b": 20855,
+        "count_a": 1065,
+        "count_b": 863,
+        "pct_a": 5.8,
+        "pct_b": 4.14,
+        "pp_diff": 1.66,
+        "chi_square": 57.5633,
+        "p_value": 3.272812481764198e-14,
+        "cohens_h": 0.0766
+      },
+      "balance": {
+        "n_a": 18369,
+        "n_b": 20855,
+        "count_a": 1213,
+        "count_b": 1016,
+        "pct_a": 6.6,
+        "pct_b": 4.87,
+        "pp_diff": 1.73,
+        "chi_square": 54.6489,
+        "p_value": 1.4410304475926801e-13,
+        "cohens_h": 0.0747
+      }
+    },
+    "P1_vs_P2": {
+      "parket": {
+        "n_a": 18375,
+        "n_b": 20855,
+        "count_a": 914,
+        "count_b": 863,
+        "pct_a": 4.97,
+        "pct_b": 4.14,
+        "pp_diff": 0.84,
+        "chi_square": 15.7888,
+        "p_value": 7.081968484202535e-05,
+        "cohens_h": 0.0401
+      },
+      "balance": {
+        "n_a": 18375,
+        "n_b": 20855,
+        "count_a": 1061,
+        "count_b": 1016,
+        "pct_a": 5.77,
+        "pct_b": 4.87,
+        "pp_diff": 0.9,
+        "chi_square": 15.865,
+        "p_value": 6.802622280860925e-05,
+        "cohens_h": 0.0402
+      }
     }
   }
 }

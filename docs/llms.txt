@@ -1,45 +1,49 @@
 # CensorZero: Independent Audit of IMI's Assessment of Ukrinform
 
-> This is an open-source research project analyzing 51,589 Ukrinform articles across two periods to verify claims made by the Institute of Mass Information (IMI) when excluding Ukrinform from its White List.
+> Open-source research with two visible layers:
+> - main public comparison: 79,505 audited articles across 3 periods
+> - source-audit subset: 51,589 audited articles across 2 post-appointment periods
 
-## Key Facts
+## Three-Period Public Layer
 
-- Author: Oleksiy Matsuka, former Director General of Ukrinform (Nov 2023 – May 2024), founder of CensorZero
-- Corpus: 51,589 audited articles (51,667 collected from public sitemaps)
-- Period 1 (Matsuka era): Nov 9, 2023 – Apr 25, 2024 (26,342 audited articles)
-- Period 2 (after departure): Jul 1, 2025 – Dec 15, 2025 (25,247 audited articles)
-- IMI excluded Ukrinform on April 26, 2024 citing "parket messages" and "insufficient balance"
-- Ukrinform returned to White List on December 16, 2025
+- P0: 2023-05-01 -> 2023-10-31, before Matsuka, Ukrinform remained in the White List
+- P1: 2023-11-09 -> 2024-04-25, Matsuka period, Ukrinform was excluded
+- P2: 2025-07-01 -> 2025-12-15, later period before re-inclusion
+- Audited totals: 27,916 + 26,342 + 25,247 = 79,505
 
-## Main Finding
+Without ATO, parket rates are:
+- P0: 5.80%
+- P1: 4.97%
+- P2: 4.14%
 
-Without military bulletins (39,230 articles): parket rate P1 6.61% vs P2 6.01% (p=0.007, Cohen's d=0.025 — negligible effect)
-With military bulletins (51,589 articles): parket rate P1 6.51% vs P2 6.42% (p=0.678 — not significant)
+With ATO, parket rates are:
+- P0: 5.87%
+- P1: 5.12%
+- P2: 4.67%
 
-The data do not support the claim that content quality deteriorated under Matsuka's leadership.
+## Two-Period Source-Audit Subset
 
-## What This Research Checks
+- 51,667 URLs collected from public sitemaps
+- 51,589 articles successfully audited
+- 78 articles unavailable during HTML fetch
+- Without ATO: 39,230 audited articles
 
-- Source count per article (official vs non-official)
-- "Parket" content proxy: official source + ≤1 source + 0 non-official sources
-- Balance risk: official source + 0 non-official sources
+Canonical two-period results:
+- Without ATO: parket 4.97% vs 4.14%; balance 5.77% vs 4.87%
+- With ATO: parket 5.12% vs 4.67%; balance 6.01% vs 5.57%
 
-## What This Research Does NOT Check
+## Canonical Method
 
-- Completeness (background, context)
-- Factual accuracy
-- Fact/comment separation
-- Sexism / hate speech
-- Sponsored content marking
+- Official URL classification uses word boundaries and known prefixes, not raw substring matches.
+- Official source classification uses Ukrainian/Cyrillic entity markers in extracted source names.
+- `parket` and `balance` are distinct metrics:
+  - `parket`: official URL + <=1 source + 0 non-official sources
+  - `balance`: official URL + 0 non-official sources
 
-## Methodology Note
+## Primary Files
 
-IMI's methodology (published Oct 28, 2022) allows balance to be provided within 12 hours across multiple articles. This analysis applies a stricter criterion — balance within each individual article. Even under this stricter standard, the difference between periods is negligible.
-
-## Links
-
-- Dashboard: https://ukrinform.censorzero.com/
-- English version: https://ukrinform.censorzero.com/en.html
-- Explorer (all articles): https://ukrinform.censorzero.com/explorer.html
-- GitHub: https://github.com/alexmazuka/ukrinform
-- Data (CSV): https://github.com/alexmazuka/ukrinform/blob/main/data/corpus_fast.csv
+- Site: https://ukrinform.censorzero.com/
+- English page: https://ukrinform.censorzero.com/en.html
+- Explorer: https://ukrinform.censorzero.com/explorer.html
+- Repo: https://github.com/alexmazuka/ukrinform
+- Corrections log: https://github.com/alexmazuka/ukrinform/blob/main/CORRECTIONS.md

@@ -1,136 +1,104 @@
-# CensorZero: Незалежний аудит оцінок ІМІ щодо Укрінформу
+# CensorZero: Audit of IMI's Assessment of Ukrinform
 
-> **51 667 статей зібрано. 51 589 проаналізовано. Кожна — відкрита для перевірки.**
+> Public version: **79,505 audited articles across 3 periods**  
+> Source-audit subset: **51,589 audited articles across 2 post-appointment periods**
 
-## Що це?
+This repository contains an open research project about IMI's public reasoning for excluding and later re-including Ukrinform in the White List.
 
-Це незалежне дослідження рішення [Інституту масової інформації (ІМІ)](https://imi.org.ua) щодо виключення Укрінформу з [Білого списку](https://imi.org.ua/monitorings) у квітні 2024 року.
+The project now keeps **both research layers visible**:
 
-Згідно з опублікованою методологією ІМІ, «за допомогою моніторингового робота з рубрики новин кожного сайту витягнуто по 100 матеріалів, які вийшли одночасно в стрічках новин кожного видання від 9:00 2 та 3 вересня 2024 року» ([джерело](https://imi.org.ua/monitorings/novyny-pid-chas-vijny-analiz-profesijnyh-standartiv-providnyh-onlajn-media-u-veresni-2024-roku-i64521)). Ми зібрали **весь публічний масив** за обидва досліджувані періоди — у **516 разів більше** — і зробили аналіз повністю **відтворюваним**.
+1. `docs/` and `data/explorer_data.json`
+   Main public comparison across three periods:
+   - `P0` before Matsuka, when Ukrinform was still in the White List
+   - `P1` Matsuka period, when Ukrinform was excluded
+   - `P2` later period before re-inclusion
 
-**🌐 Дашборд:** [alexmazuka.github.io/ukrinform](https://alexmazuka.github.io/ukrinform/)
+2. `data/corpus_fast.csv` and `dashboard/`
+   Two-period audited source-analysis subset:
+   - `P1` Matsuka period
+   - `P2` later period before re-inclusion
 
-## Числа корпусу
+Method corrections made on `2026-04-30` are documented in [CORRECTIONS.md](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/CORRECTIONS.md).
 
-| Показник | Число | Пояснення |
-|----------|-------|-----------|
-| Зібрано URL з sitemap | **51 667** | Повний масив з 7 рубрик за обидва періоди |
-| Спарсовано HTML (аудит) | **51 589** | 78 статей сервер не віддав (0.15%) |
-| Основний аналіз (без АТО) | **39 230** | Воєнні зведення виключені (окремий сценарій) |
-| Період 1 — у CSV | **26 380** | Мацука (09.11.2023 – 25.04.2024) |
-| Період 2 — у CSV | **25 287** | Перед поверненням (01.07.2025 – 15.12.2025) |
-| Період 1 — аудованих | **26 342** | Спарсовано HTML, є дані про джерела |
-| Період 2 — аудованих | **25 247** | Спарсовано HTML, є дані про джерела |
-| П1 без АТО | **18 375** | Для основного аналізу |
-| П2 без АТО | **20 855** | Для основного аналізу |
+## Canonical Results
 
-**Чому 51 667 ≠ 51 589?** 78 статей (0.15%) не вдалося завантажити з сервера Укрінформу під час парсингу HTML. Їхні URL є в корпусі, але аналіз джерел для них не виконаний. Це не впливає на результати.
+### Three periods, without ATO
 
-**Чому два сценарії?** Рубрика АТО/Оборона містить воєнні зведення, які за визначенням мають одне офіційне джерело (Генштаб ЗСУ). Це не питання журналістської якості. Ми показуємо обидва сценарії для прозорості.
+| Period | Audited | Parket | Balance |
+| --- | ---: | ---: | ---: |
+| P0: 2023-05-01 -> 2023-10-31 | 18,369 | 5.80% | 6.60% |
+| P1: 2023-11-09 -> 2024-04-25 | 18,375 | 4.97% | 5.77% |
+| P2: 2025-07-01 -> 2025-12-15 | 20,855 | 4.14% | 4.87% |
 
-## Результати
+Pairwise parket comparison without ATO:
+- `P0 vs P1`: `p=0.00047`, Cohen's `h=0.0365`
+- `P0 vs P2`: `p=3.27e-14`, Cohen's `h=0.0766`
+- `P1 vs P2`: `p=7.08e-05`, Cohen's `h=0.0401`
 
-| Метрика | П1 (Мацука) | П2 (після) | p-value | Cohen's d |
-|---------|-------------|------------|---------|-----------|
-| **Без АТО (39 230)** | | | | |
-| Паркет | 6.61% | 6.01% | 0.007 | 0.025 |
-| Дисбаланс | 7.98% | 7.55% | 0.100 | 0.016 |
-| **З АТО (51 589)** | | | | |
-| Паркет | 6.51% | 6.42% | 0.678 | 0.003 |
-| Дисбаланс | 7.86% | 7.98% | 0.606 | 0.005 |
+### Three periods, with ATO
 
-Cohen's d < 0.2 = мізерний ефект. В обох сценаріях різниця між періодами не має практичного значення.
+| Period | Audited | Parket | Balance |
+| --- | ---: | ---: | ---: |
+| P0: 2023-05-01 -> 2023-10-31 | 27,916 | 5.87% | 6.72% |
+| P1: 2023-11-09 -> 2024-04-25 | 26,342 | 5.12% | 6.01% |
+| P2: 2025-07-01 -> 2025-12-15 | 25,247 | 4.67% | 5.57% |
 
-## Ключові факти
+### Two-period audited subset
 
-| Подія | Дата |
-|-------|------|
-| Олексій Мацука призначений гендиректором Укрінформу | 09.11.2023 |
-| ІМІ виключає Укрінформ з Білого списку | 26.04.2024 |
-| Мацука залишає посаду | 24.05.2024 |
-| ІМІ: Укрінформ не повернувся (H2 2024) | 01.11.2024 |
-| ІМІ: Укрінформ повернувся (H2 2025) | 16.12.2025 |
+| Scenario | P1 Parket | P2 Parket | P1 Balance | P2 Balance |
+| --- | ---: | ---: | ---: | ---: |
+| Without ATO | 4.97% | 4.14% | 5.77% | 4.87% |
+| With ATO | 5.12% | 4.67% | 6.01% | 5.57% |
 
-## Дані
+## What Changed
 
-| Файл | Опис |
-|------|------|
-| `data/corpus_fast.csv` | Повний корпус: 51 667 записів (51 589 з аудитом) |
-| `data/explorer_data.json` | Дані для Message Explorer: 51 589 аудованих статей |
-| `data/statistical_tests.json` | Результати стат. тестів (Mann-Whitney, Chi-square, Cohen's d) |
-| `data/figures_analysis.json` | Аналіз згадок ключових персоналій |
-| `data/COMPLETENESS_REPORT.json` | Машиночитний звіт верифікації повноти |
-| `data/recovered_jan_feb_2024.json` | Відновлені дані за січень-лютий 2024 (9 594 URL) |
+The current canonical rebuild fixes three repo-wide problems:
 
-## Рубрики (7 рубрик у корпусі, 6 в основному аналізі)
+1. Official sources in article text are now classified against Ukrainian/Cyrillic entity markers, not transliterated URL markers.
+2. Official URL classification now uses word boundaries and known prefixes instead of naive substring matching.
+3. `parket` and `balance` are no longer computed with the same formula.
 
-| Рубрика | В аналізі | Примітка |
-|---------|-----------|----------|
-| Політика | ✅ | |
-| Економіка | ✅ | |
-| Суспільство | ✅ | |
-| Регіони | ✅ | |
-| Тимчасово окуповані | ✅ | |
-| Відбудова | ✅ | |
-| АТО/Оборона | окремий сценарій | Воєнні зведення — одне офіційне джерело за визначенням |
+The shared implementation lives in [`canonical_metrics.py`](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/canonical_metrics.py).
 
-## Скрипти
+## Main Files
 
-| Скрипт | Призначення |
-|--------|-------------|
-| `scripts/verify_completeness.py` | Фаза 0: верифікація повноти через sitemap |
-| `scripts/recover_missing.py` | Відновлення 9 594 відсутніх URL за січень-лютий 2024 |
-| `scripts/audit_full_corpus.py` | Повний аудит: парсинг HTML, підрахунок джерел |
-| `scripts/extended_detectors.py` | Розширені детектори: факт/коментар, джинса, мова ворожнечі |
-| `scripts/scrape_imi.py` | Збір звітів ІМІ для документування методології |
+| File | Scope |
+| --- | --- |
+| [`docs/index.html`](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/docs/index.html) | Main three-period public page |
+| [`docs/explorer_data.json`](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/docs/explorer_data.json) | Explorer dataset for `79,505` audited articles |
+| [`docs/graph_data.json`](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/docs/graph_data.json) | Monthly/rubric aggregates for 3 periods |
+| [`data/corpus_fast.csv`](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/data/corpus_fast.csv) | Canonical two-period audited corpus (`51,667` rows, `51,589` audited) |
+| [`data/statistical_tests_v3.json`](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/data/statistical_tests_v3.json) | Canonical two-period statistical summary |
+| [`data/statistical_tests_v3_three_periods.json`](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/data/statistical_tests_v3_three_periods.json) | Canonical three-period statistical summary |
+| [`data/period_zero/p0_audited.json`](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/data/period_zero/p0_audited.json) | Audited period-zero source data |
+| [`dashboard/index.html`](/Users/oleksiymatsuka/Desktop/ukrinform-imi-study/dashboard/index.html) | Two-period dashboard view kept for transparency |
 
-## Як відтворити
+## Rebuild
 
 ```bash
 git clone https://github.com/alexmazuka/ukrinform.git
 cd ukrinform
-pip install requests beautifulsoup4
-
-# Верифікація повноти
-python scripts/verify_completeness.py
-
-# Повний аудит (~1 година, 51 667 HTTP-запитів)
-python scripts/audit_full_corpus.py
+python3 scripts/rebuild_public_assets.py
 ```
 
-## Методологія ІМІ vs CensorZero
+To re-run collectors/parsers instead of only rebuilding published assets:
 
-| Параметр | ІМІ | CensorZero |
-|----------|-----|------------|
-| Вибірка | ~100 статей за 2 дні | 51 589 аудованих статей |
-| Масштаб | 1× | ~516× більше |
-| Метод | Ручний, експертний | Алгоритмічний (відтворюваний) |
-| Критерій балансу | Протягом 12 годин | Всередині кожної статті (суворіше) |
-| Прозорість | Список статей не публікується | Кожна стаття відкрита |
-| Відтворюваність | Залежить від експерта | Один скрипт → ті самі числа |
+```bash
+python3 scripts/recover_missing.py
+python3 scripts/audit_full_corpus.py
+python3 scripts/reparse_improved.py
+python3 scripts/fix_official_classification.py
+python3 scripts/collect_p0_pre_matsuka.py
+python3 scripts/rebuild_public_assets.py
+```
 
-**Важливо:** Згідно з методологією ІМІ, вони «розцінюють як достовірні і точні повідомлення від офіційних державних структур». Це означає що стаття з єдиним офіційним джерелом не порушує стандарт достовірності ІМІ — лише стандарт балансу.
+## Metric Definitions
 
-## Що ми НЕ перевіряємо
+- `parket`: official URL classification + `source_count <= 1` + `non_official_source_count == 0`
+- `balance`: official URL classification + `non_official_source_count == 0`
+- `source_count`: extracted cited sources in article text using the improved parser
 
-- Повноту (бекграунд, контекст)
-- Точність (чи правдиві факти)
-- Презумпцію невинуватості
+## Notes
 
-Ми чесно це визнаємо. Але причиною виключення ІМІ назвав «паркет» та «баланс» — і саме ці критерії ми перевірили.
-
-## Про проєкт
-
-**CensorZero** — незалежна платформа аудиту медійних стандартів.
-
-- Засновник: [Олексій Мацука](https://matsuka.online) (@alexmazuka)
-- Колишній генеральний директор Укрінформу (листопад 2023 — травень 2024)
-- Сайт: [censorzero.com](https://censorzero.com)
-
-## Ліцензія
-
-Код: MIT License. Дані: відкриті для використання з посиланням на джерело.
-
----
-
-*Цей проєкт — не пропаганда. Якщо дані покажуть, що ІМІ мав рацію — це буде відображено так само чесно.*
+- `data/corpus_v1_backup.csv`, `data/corpus_v2_parsed.csv`, and older public claims remain in Git history and backup files for auditability.
+- `data/corpus_fast.csv` is still a **two-period** corpus; the public **three-period** layer is assembled from that corpus plus `data/period_zero/p0_audited.json`.
